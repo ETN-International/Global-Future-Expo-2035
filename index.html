@@ -1089,7 +1089,7 @@
     </nav>
     <div class="sidebar-footer">
       Axonforce AI Lab<br />Dark cyber-editorial edition<br />
-      <a href="admin-docenti.html" id="adminLink">Admin</a>
+      <a href="admin-docenti.html">Admin</a>
     </div>
   </aside>
   <div class="mobile-menu-btn" onclick="toggleSidebar()">
@@ -1780,28 +1780,6 @@
       <div class="modal-footer">
         <a class="modal-btn modal-glossary-link" href="#glossario">📖 Glossario</a>
         <button class="modal-btn close-modal-btn">Chiudi</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="adminTokenModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>Accesso Admin Docenti</h3>
-        <span class="close-admin-modal">&times;</span>
-      </div>
-      <div class="modal-body">
-        <p>Inserisci il token docenti per aprire la guida riservata alla conduzione dei laboratori.</p>
-        <input class="token-input" id="adminTokenInput" type="password" placeholder="Token admin" autocomplete="off" />
-        <p class="token-error" id="adminTokenError">Token non valido. Controlla maiuscole, trattini e numeri.</p>
-        <a class="admin-open-link" id="adminOpenLink" href="admin-docenti.html" target="_blank" rel="noopener">Apri guida docenti</a>
-        <div class="modal-tip">
-          <p>Il token serve solo a separare la pagina docenti dalla pagina studenti. Non è una protezione di sicurezza avanzata.</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="modal-btn" id="cancelAdminToken">Annulla</button>
-        <button class="modal-btn" id="submitAdminToken">Entra</button>
       </div>
     </div>
   </div>
@@ -2768,23 +2746,6 @@
     const modalBody = document.getElementById('modalBody');
     const closeModalBtn = document.querySelector('.close-modal');
     const closeFooterBtn = document.querySelector('.close-modal-btn');
-    const adminToken = 'GFE2035-DOCENTI-18';
-    const adminLink = document.getElementById('adminLink');
-    const adminTokenModal = document.getElementById('adminTokenModal');
-    const adminTokenInput = document.getElementById('adminTokenInput');
-    const adminTokenError = document.getElementById('adminTokenError');
-    const submitAdminToken = document.getElementById('submitAdminToken');
-    const cancelAdminToken = document.getElementById('cancelAdminToken');
-    const closeAdminModalBtn = document.querySelector('.close-admin-modal');
-    const adminOpenLink = document.getElementById('adminOpenLink');
-
-    function normalizeAdminToken(value) {
-      return value
-        .trim()
-        .toUpperCase()
-        .normalize('NFKD')
-        .replace(/[^A-Z0-9]/g, '');
-    }
 
     function openModal(taskId) {
       const data = modalContents[taskId];
@@ -2808,31 +2769,6 @@
       modal.classList.remove('show');
     }
 
-    function openAdminTokenModal() {
-      adminTokenInput.value = '';
-      adminTokenError.classList.remove('show');
-      adminOpenLink.classList.remove('show');
-      adminTokenModal.classList.add('show');
-      setTimeout(() => adminTokenInput.focus(), 50);
-    }
-
-    function closeAdminTokenModal() {
-      adminTokenModal.classList.remove('show');
-    }
-
-    function submitAdminTokenValue() {
-      const value = normalizeAdminToken(adminTokenInput.value);
-      if (value === normalizeAdminToken(adminToken)) {
-        adminOpenLink.href = 'admin-docenti.html?token=' + encodeURIComponent(adminToken);
-        adminOpenLink.classList.add('show');
-        adminTokenError.classList.remove('show');
-        adminOpenLink.focus();
-        return;
-      }
-      adminTokenError.classList.add('show');
-      adminTokenInput.focus();
-    }
-
     // Aggiungi event listener a tutti i task
     document.querySelectorAll('.task').forEach(task => {
       task.addEventListener('click', (e) => {
@@ -2849,30 +2785,11 @@
     if (closeFooterBtn) closeFooterBtn.addEventListener('click', closeModal);
     const glossaryLink = document.querySelector('.modal-glossary-link');
     if (glossaryLink) glossaryLink.addEventListener('click', closeModal);
-    if (adminLink) {
-      adminLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        openAdminTokenModal();
-      });
-    }
-    if (submitAdminToken) submitAdminToken.addEventListener('click', submitAdminTokenValue);
-    if (cancelAdminToken) cancelAdminToken.addEventListener('click', closeAdminTokenModal);
-    if (closeAdminModalBtn) closeAdminModalBtn.addEventListener('click', closeAdminTokenModal);
-    if (adminTokenInput) {
-      adminTokenInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          submitAdminTokenValue();
-        }
-      });
-    }
 
     // Chiudi modal cliccando fuori dal contenuto
     window.addEventListener('click', (e) => {
       if (e.target === modal) {
         closeModal();
-      }
-      if (e.target === adminTokenModal) {
-        closeAdminTokenModal();
       }
     });
 
@@ -2880,9 +2797,6 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('show')) {
         closeModal();
-      }
-      if (e.key === 'Escape' && adminTokenModal.classList.contains('show')) {
-        closeAdminTokenModal();
       }
     });
   </script>
