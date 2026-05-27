@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event File · Template · Global Future Expo 2035</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1c1c2b;
+      --muted: #62626f;
+      --accent: #0a7d72;
+      --gold: #b8860b;
+      --line: #d7d4cc;
+      --soft: #f4f2ec;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #e9e7e1;
+      color: var(--ink);
+      font-family: Inter, sans-serif;
+      line-height: 1.65;
+      padding: 26px 16px 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .toolbar {
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .back { color: var(--accent); text-decoration: none; font-family: "JetBrains Mono", monospace; font-size: 0.74rem; }
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    .doc {
+      width: 100%;
+      max-width: 860px;
+      background: #fffdf8;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.16);
+      padding: 48px 56px 60px;
+    }
+    .howto {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 30px;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .cover { text-align: center; padding-bottom: 26px; border-bottom: 2px solid var(--gold); margin-bottom: 34px; }
+    .cover .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-size: 0.64rem;
+      margin-bottom: 12px;
+    }
+    .cover h1 { font-family: "Playfair Display", serif; font-size: 2.3rem; line-height: 1.1; }
+    .cover .doc-sub { color: var(--muted); margin-top: 6px; font-size: 0.95rem; }
+    .chap { margin-bottom: 30px; page-break-inside: avoid; }
+    .chap-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 8px; }
+    .chap-num {
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+    .chap-head h2 { font-family: "Playfair Display", serif; font-size: 1.35rem; }
+    .hint {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .ph {
+      border: 1px dashed #c4c0b6;
+      border-radius: 6px;
+      padding: 14px;
+      min-height: 70px;
+      font-size: 0.9rem;
+      background: #fffefb;
+      outline: none;
+    }
+    .ph:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(10, 125, 114, 0.08); }
+    .ph:empty::before {
+      content: attr(data-ph);
+      color: #b3b0a6;
+      font-style: italic;
+    }
+    .doc-foot {
+      text-align: center;
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.5px;
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+    @media (max-width: 620px) { .doc { padding: 28px 22px 40px; } }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .toolbar, .howto { display: none; }
+      .doc { box-shadow: none; border: none; max-width: 100%; padding: 0; }
+      .ph { border: 1px solid #ddd; }
+      .chap { page-break-inside: avoid; }
+      @page { size: A4; margin: 16mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <a class="back" href="Global%20Future%20Expo%202035.html#eventfile">&larr; Torna al progetto</a>
+    <button class="btn" onclick="window.print()">🖨 Esporta / Stampa</button>
+  </div>
+
+  <div class="doc">
+    <div class="howto">
+      <strong>Come usare questo template.</strong> Clicca dentro i riquadri tratteggiati per scrivere o incollare i contenuti dei moduli. Ogni capitolo indica quali moduli lo riempiono. Le modifiche <strong>non vengono salvate</strong>: quando hai finito, usa "Esporta / Stampa" per ottenere il PDF, oppure copia tutto nel documento condiviso / NotebookLM.
+    </div>
+
+    <div class="cover">
+      <div class="eyebrow">Event File · Dossier ufficiale</div>
+      <h1 contenteditable="true" class="ph" data-ph="Global Future Expo 2035" style="border:none;text-align:center;min-height:auto;">Global Future Expo 2035</h1>
+      <p class="doc-sub" contenteditable="true">Città ospitante · Anno 2035 · a cura del Future Creators Team</p>
+    </div>
+
+    <div class="chap">
+      <div class="chap-head"><span class="chap-num">01</span><h2>Copertina &amp; identità</h2></div>
+      <p class="hint">Cosa va qui: slogan, logo/colori, manifesto · Italiano M1 · Inglese M2 · Digitale M2</p>
+      <div class="ph" contenteditable="true" data-ph="Slogan ufficiale, logo/colori dell'Expo e manifesto…"></div>
+    </div>
+
+    <div class="chap">
+      <div class="chap-head"><span class="chap-num">02</span><h2>La visione: la città del 2035</h2></div>
+      <p class="hint">Cosa va qui: storytelling + articolo del giornale · Italiano M2 · M1</p>
+      <div class="ph" contenteditable="true" data-ph="Il racconto della città del futuro e l'articolo del giornale dell'Expo…"></div>
+    </div>
+
+    <div class="chap">
+      <div class="chap-head"><span class="chap-num">03</span><h2>Mappa &amp; padiglioni</h2></div>
+      <p class="hint">Cosa va qui: mappa con aree e legenda · Digitale M1</p>
+      <div class="ph" contenteditable="true" data-ph="Inserisci la mappa dell'Expo (immagine) e la legenda delle aree…"></div>
+    </div>
+
+    <div class="chap">
+      <div class="chap-head"><span class="chap-num">04</span><h2>Esperienza del visitatore</h2></div>
+      <p class="hint">Cosa va qui: home page, QR card, badge, percorso utente · Digitale M2 · M3</p>
+      <div class="ph" contenteditable="true" data-ph="Home page, QR card, badge e user journey dall'arrivo all'uscita…"></div>
+    </div>
+
+    <div class="chap">
+      <div class="chap-head"><span class="chap-num">05</span><h2>Assistente AI dell'Expo</h2></div>
+      <p class="hint">Cosa va qui: identità, FAQ, promptbook &amp; regole · AI M1 · M2 · M3</p>
+      <div class="ph" contenteditable="true" data-ph="Scheda dell'assistente, 10 FAQ con risposte, promptbook e regole d'uso…"></div>
+    </div>
+
+    <div class="chap">
+      <div class="chap-head"><span class="chap-num">06</span><h2>Comunicazione internazionale</h2></div>
+      <p class="hint">Cosa va qui: welcome kit, speech, slogan, press kit · Inglese M1 · M2 · M3</p>
+      <div class="ph" contenteditable="true" data-ph="Welcome message, speech di benvenuto, slogan e press kit in inglese…"></div>
+    </div>
+
+    <div class="chap">
+      <div class="chap-head"><span class="chap-num">07</span><h2>Accoglienza multiculturale</h2></div>
+      <p class="hint">Cosa va qui: passaporto, schede paese, dialoghi · Lingue M1 · M2</p>
+      <div class="ph" contenteditable="true" data-ph="Future Expo Passport, schede dei paesi europei e dialoghi staff/visitatori…"></div>
+    </div>
+
+    <div class="chap">
+      <div class="chap-head"><span class="chap-num">08</span><h2>I numeri dell'Expo</h2></div>
+      <p class="hint">Cosa va qui: stima visitatori, budget &amp; spazi, dashboard · Matematica M1 · M2 · M3</p>
+      <div class="ph" contenteditable="true" data-ph="Tabella visitatori, budget, percentuali degli spazi e dashboard con indicatori…"></div>
+    </div>
+
+    <div class="chap">
+      <div class="chap-head"><span class="chap-num">09</span><h2>Opening Ceremony</h2></div>
+      <p class="hint">Cosa va qui: script, conferenza stampa, scaletta &amp; regia · Comunicazione M1 · M2</p>
+      <div class="ph" contenteditable="true" data-ph="Script della cerimonia, domande per la conferenza stampa, scaletta e regia…"></div>
+    </div>
+
+    <div class="chap">
+      <div class="chap-head"><span class="chap-num">10</span><h2>Crediti &amp; team</h2></div>
+      <p class="hint">Cosa va qui: chi ha fatto cosa · Tutti i gruppi</p>
+      <div class="ph" contenteditable="true" data-ph="Elenco dei gruppi e dei moduli realizzati (senza dati personali non necessari)…"></div>
+    </div>
+
+    <div class="doc-foot">
+      Global Future Expo 2035 · Event File · ETN School — Ente accreditato dal Ministero dell'Istruzione e del Merito
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attestato · Global Future Expo 2035</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1c1c2b;
+      --muted: #5c5c6b;
+      --accent: #0a7d72;
+      --gold: #b8860b;
+      --line: #cfccc3;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #e9e7e1;
+      color: var(--ink);
+      font-family: Inter, sans-serif;
+      line-height: 1.6;
+      padding: 28px 18px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .toolbar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .back {
+      color: var(--accent);
+      text-decoration: none;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+    }
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    .cert {
+      width: 100%;
+      max-width: 900px;
+      background: #fffdf8;
+      border: 2px solid var(--gold);
+      border-radius: 6px;
+      padding: 46px 54px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+      position: relative;
+    }
+    .cert::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      pointer-events: none;
+    }
+    .cert-inner { position: relative; }
+    .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-size: 0.66rem;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.1rem;
+      text-align: center;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+    .who {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 14px 0 6px;
+    }
+    .field {
+      border-bottom: 1px solid var(--line);
+      min-height: 30px;
+      margin: 0 auto 4px;
+      max-width: 560px;
+    }
+    .field.name {
+      max-width: 520px;
+      min-height: 38px;
+    }
+    .lead-line {
+      text-align: center;
+      font-size: 0.9rem;
+      margin: 18px 0 14px;
+    }
+    .comp-list {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 8px 0 26px;
+    }
+    .comp-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 7px 0;
+      border-bottom: 1px dashed var(--line);
+      flex-wrap: wrap;
+    }
+    .comp-row:last-child { border-bottom: none; }
+    .comp-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .levels {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .lv {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.66rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .lv::before {
+      content: "";
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border: 1px solid #8a8a8a;
+      border-radius: 2px;
+    }
+    .signatures {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      margin-top: 34px;
+    }
+    .sig {
+      flex: 1;
+      text-align: center;
+    }
+    .sig-line {
+      border-top: 1px solid #8a8a8a;
+      margin: 26px 10px 6px;
+    }
+    .sig small {
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+    .cert-foot {
+      text-align: center;
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.5px;
+      margin-top: 26px;
+    }
+    @media (max-width: 620px) {
+      .cert { padding: 28px 22px; }
+      .comp-row { justify-content: flex-start; }
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .toolbar { display: none; }
+      .cert { box-shadow: none; max-width: 100%; border-color: var(--gold); }
+      @page { size: A4; margin: 14mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <a class="back" href="admin-docenti.html?token=GFE2035-DOCENTI-18">&larr; Torna all'area docenti</a>
+    <button class="btn" onclick="window.print()">🖨 Stampa attestato</button>
+  </div>
+
+  <div class="cert">
+    <div class="cert-inner">
+      <div class="eyebrow">ETN School · Ente accreditato dal Ministero dell'Istruzione e del Merito</div>
+      <h1>Attestato di partecipazione e competenze</h1>
+      <p class="sub">Percorso formativo · <strong>Global Future Expo 2035</strong></p>
+
+      <p class="who">Si attesta che</p>
+      <div class="field name"></div>
+
+      <p class="who">ha partecipato al laboratorio (disciplina · classe · modulo)</p>
+      <div class="field"></div>
+
+      <p class="lead-line">sviluppando le seguenti competenze, al livello indicato:</p>
+
+      <div class="comp-list">
+        <div class="comp-row">
+          <span class="comp-name">Uso critico dell'AI</span>
+          <span class="levels"><span class="lv">Iniziale</span><span class="lv">Base</span><span class="lv">Intermedio</span><span class="lv">Avanzato</span></span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-name">Creazione di contenuti digitali</span>
+          <span class="levels"><span class="lv">Iniziale</span><span class="lv">Base</span><span class="lv">Intermedio</span><span class="lv">Avanzato</span></span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-name">Comunicazione</span>
+          <span class="levels"><span class="lv">Iniziale</span><span class="lv">Base</span><span class="lv">Intermedio</span><span class="lv">Avanzato</span></span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-name">Collaborazione</span>
+          <span class="levels"><span class="lv">Iniziale</span><span class="lv">Base</span><span class="lv">Intermedio</span><span class="lv">Avanzato</span></span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-name">Problem solving</span>
+          <span class="levels"><span class="lv">Iniziale</span><span class="lv">Base</span><span class="lv">Intermedio</span><span class="lv">Avanzato</span></span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-name">Qualità del modulo e coerenza</span>
+          <span class="levels"><span class="lv">Iniziale</span><span class="lv">Base</span><span class="lv">Intermedio</span><span class="lv">Avanzato</span></span>
+        </div>
+      </div>
+
+      <div class="signatures">
+        <div class="sig">
+          <div class="sig-line"></div>
+          <small>Luogo e data</small>
+        </div>
+        <div class="sig">
+          <div class="sig-line"></div>
+          <small>Il formatore ETN</small>
+        </div>
+      </div>
+
+      <div class="cert-foot">
+        Livelli secondo la Certificazione delle competenze (MIM) · Quadri di riferimento: DigComp 2.2 · Competenze chiave europee · Educazione civica digitale · AI literacy
+      </div>
+    </div>
+  </div>
+</body>
+</html>

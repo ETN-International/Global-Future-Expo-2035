@@ -1,0 +1,2890 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Future Expo 2035 · AI Smart Labs</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #050505;
+      --surface: rgba(18, 18, 24, 0.85);
+      --surface2: rgba(26, 26, 34, 0.9);
+      --primary: #00f2ea;
+      --secondary: #ff0055;
+      --accent: #7b2cbf;
+      --gold: #f0b429;
+      --green: #00c27a;
+      --text: #e0e0e0;
+      --muted: #888;
+      --border: rgba(255, 255, 255, 0.07);
+      --sidebar-w: 280px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: var(--bg);
+      background-image: radial-gradient(circle at 8% 15%, rgba(0, 242, 234, 0.07) 0%, transparent 25%),
+        radial-gradient(circle at 92% 85%, rgba(255, 0, 85, 0.07) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(123, 44, 191, 0.04) 0%, transparent 35%);
+      color: var(--text);
+      font-family: Inter, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+    }
+    .sidebar {
+      width: var(--sidebar-w);
+      min-height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(8, 8, 12, 0.97);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      overflow-y: auto;
+    }
+    .sidebar-logo {
+      padding: 28px 22px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo-mark {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .sidebar-logo h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.3;
+    }
+    .sidebar-progress {
+      padding: 14px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    .progress-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .progress-bar {
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      width: 0%;
+      transition: width 0.4s;
+    }
+    .sidebar-nav {
+      flex: 1;
+      padding: 14px 0;
+    }
+    .nav-group-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.58rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 12px 22px 6px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 22px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-left: 2px solid transparent;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-item:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .nav-item.active {
+      color: var(--primary);
+      border-left-color: var(--primary);
+      background: rgba(0, 242, 234, 0.05);
+    }
+    .nav-num {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      min-width: 20px;
+    }
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .nav-item.active .nav-dot {
+      background: var(--primary);
+      box-shadow: 0 0 6px var(--primary);
+    }
+    .sidebar-footer {
+      padding: 16px 22px;
+      border-top: 1px solid var(--border);
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+    }
+    .sidebar-footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .sidebar-footer a:hover {
+      text-decoration: underline;
+    }
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      max-width: 980px;
+      padding: 0 54px 100px;
+    }
+    .hero {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 70px;
+    }
+    .hero-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(120deg, #fff 30%, var(--primary) 60%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 720px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .hero-chip {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 6px 14px;
+    }
+    .hero-chip i {
+      color: var(--primary);
+    }
+    .section {
+      margin-bottom: 80px;
+      scroll-margin-top: 40px;
+    }
+    .section-header {
+      margin-bottom: 36px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+    .section h2 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .section-intro {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 740px;
+    }
+    .prose p {
+      font-size: 0.92rem;
+      color: rgba(224, 224, 224, 0.85);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .prose strong {
+      color: var(--text);
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .linear-card {
+      border-left: 3px solid var(--primary);
+    }
+    .multi-card {
+      border-left: 3px solid var(--secondary);
+    }
+    .reactive-card {
+      border-left: 3px solid var(--accent);
+    }
+    .gold-card {
+      border-left: 3px solid var(--gold);
+    }
+    .green-card {
+      border-left: 3px solid var(--green);
+    }
+    .card h4 {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .linear-card h4 {
+      color: var(--primary);
+    }
+    .multi-card h4 {
+      color: var(--secondary);
+    }
+    .reactive-card h4 {
+      color: var(--accent);
+    }
+    .gold-card h4 {
+      color: var(--gold);
+    }
+    .green-card h4 {
+      color: var(--green);
+    }
+    .card p {
+      font-size: 0.88rem;
+      color: rgba(224, 224, 224, 0.8);
+      line-height: 1.75;
+    }
+    .pull-quote {
+      border-left: 3px solid var(--primary);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(0, 242, 234, 0.04);
+      border-radius: 0 12px 12px 0;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .stat-cell {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-val {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+    }
+    .stat-lbl {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+      display: block;
+    }
+    .matrix {
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    .matrix table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .matrix th {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+      color: var(--muted);
+    }
+    .matrix td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .matrix td:first-child {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .tabs-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 22px;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.025);
+    }
+    .tab-btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 14px 16px;
+      cursor: pointer;
+      border-right: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .tab-btn.active {
+      color: #000;
+      background: var(--primary);
+    }
+    .tab-panel {
+      display: none;
+      padding: 28px;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+    .tab-panel ul {
+      padding-left: 18px;
+      margin: 12px 0 0;
+    }
+    .tab-panel li {
+      font-size: 0.88rem;
+      color: rgba(224, 224, 224, 0.8);
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
+    .lab-title {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .lab-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 242, 234, 0.08);
+      border: 1px solid rgba(0, 242, 234, 0.18);
+      color: var(--primary);
+      font-size: 1.35rem;
+    }
+    .lab-title h3 {
+      font-size: 1.45rem;
+      line-height: 1.2;
+    }
+    .lab-title small {
+      display: block;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-top: 4px;
+    }
+    .group-label {
+      margin: 24px 0 4px;
+    }
+    .group-step {
+      display: inline-block;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #000;
+      background: var(--primary);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 9px;
+    }
+    .group-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin: 0 0 5px;
+    }
+    .group-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 680px;
+    }
+    .output-unico {
+      background: rgba(0, 242, 234, 0.06);
+      border: 1px solid rgba(0, 242, 234, 0.22);
+      border-left: 3px solid var(--primary);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 18px 0 4px;
+    }
+    .output-tag {
+      display: inline-block;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: var(--primary);
+      margin-bottom: 7px;
+    }
+    .output-unico p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: rgba(232, 232, 232, 0.9);
+      line-height: 1.6;
+    }
+    .module-year {
+      display: inline-block;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 8px;
+      margin-bottom: 8px;
+    }
+    .level-grid.two-modules {
+      grid-template-columns: 1fr 1fr;
+    }
+    .task-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 18px 0;
+    }
+    .level-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 18px 0 22px;
+    }
+    .level-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      min-height: 188px;
+    }
+    .level-card h4 {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-bottom: 10px;
+    }
+    .level-card:nth-child(1) h4 {
+      color: var(--green);
+    }
+    .level-card:nth-child(2) h4 {
+      color: var(--gold);
+    }
+    .level-card:nth-child(3) h4 {
+      color: var(--secondary);
+    }
+    .level-card p {
+      font-size: 0.84rem;
+      color: rgba(224, 224, 224, 0.82);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+    .level-card small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.74rem;
+      line-height: 1.5;
+    }
+    .task {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .task:hover {
+      background: rgba(0, 242, 234, 0.08);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .task b {
+      display: block;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .task p {
+      font-size: 0.86rem;
+      color: rgba(224, 224, 224, 0.82);
+      line-height: 1.65;
+    }
+    .checklist {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin: 20px 0;
+    }
+    .checklist h4 {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+    }
+    .checklist-item:last-child {
+      border-bottom: none;
+    }
+    .ci-box {
+      width: 16px;
+      height: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      transition: all 0.2s;
+    }
+    .checklist-item.checked .ci-box {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .checklist-item.checked .ci-box::after {
+      content: "✓";
+      color: #000;
+    }
+    .ci-text {
+      font-size: 0.83rem;
+      color: rgba(224, 224, 224, 0.8);
+      line-height: 1.5;
+    }
+    .checklist-item.checked .ci-text {
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    .insight {
+      background: rgba(240, 180, 41, 0.06);
+      border: 1px solid rgba(240, 180, 41, 0.2);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 24px 0;
+      display: flex;
+      gap: 14px;
+    }
+    .insight i {
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .insight p {
+      font-size: 0.87rem;
+      color: rgba(224, 224, 224, 0.85);
+      line-height: 1.7;
+    }
+    .warning {
+      background: rgba(255, 0, 85, 0.06);
+      border: 1px solid rgba(255, 0, 85, 0.2);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 24px 0;
+      display: flex;
+      gap: 14px;
+    }
+    .warning i {
+      color: var(--secondary);
+      font-size: 1.1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .warning p {
+      font-size: 0.87rem;
+      color: rgba(224, 224, 224, 0.85);
+      line-height: 1.7;
+    }
+    .takeaways {
+      background: rgba(0, 242, 234, 0.05);
+      border: 1px solid rgba(0, 242, 234, 0.15);
+      border-radius: 16px;
+      padding: 22px 26px;
+      margin-top: 36px;
+    }
+    .takeaways h4 {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .takeaways li {
+      list-style: none;
+      font-size: 0.87rem;
+      color: rgba(224, 224, 224, 0.85);
+      padding: 6px 0 6px 20px;
+      position: relative;
+      border-bottom: 1px solid rgba(0, 242, 234, 0.07);
+    }
+    .takeaways li:last-child {
+      border-bottom: none;
+    }
+    .takeaways li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 0.8rem;
+    }
+    .prompt-box {
+      background: #090910;
+      border: 1px solid rgba(0, 242, 234, 0.15);
+      border-radius: 12px;
+      padding: 16px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      color: rgba(224, 224, 224, 0.86);
+      line-height: 1.7;
+      white-space: pre-wrap;
+      margin: 14px 0 20px;
+    }
+    .mobile-menu-btn {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #000;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 200;
+      box-shadow: 0 4px 20px rgba(0, 242, 234, 0.4);
+    }
+
+    /* MODAL STYLES */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.show {
+      display: flex;
+    }
+    .modal-content {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      width: 90%;
+      max-width: 550px;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 242, 234, 0.2);
+    }
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(0, 242, 234, 0.05);
+    }
+    .modal-header h3 {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      margin: 0;
+    }
+    .close-modal {
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+    .close-modal:hover {
+      color: var(--primary);
+    }
+    .modal-body {
+      padding: 24px;
+    }
+    .modal-body h4 {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin: 20px 0 10px 0;
+    }
+    .modal-body h4:first-of-type {
+      margin-top: 0;
+    }
+    .modal-body p {
+      font-size: 0.9rem;
+      color: rgba(224, 224, 224, 0.85);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .modal-body ul {
+      margin: 10px 0 10px 20px;
+      color: rgba(224, 224, 224, 0.8);
+      font-size: 0.88rem;
+    }
+    .modal-body li {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+    .modal-prompt {
+      background: rgba(0, 242, 234, 0.08);
+      border-left: 3px solid var(--primary);
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      color: rgba(224, 224, 224, 0.9);
+      margin: 16px 0;
+    }
+    .modal-tip {
+      background: rgba(240, 180, 41, 0.08);
+      border-left: 3px solid var(--gold);
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    .modal-tip i {
+      color: var(--gold);
+      margin-right: 8px;
+    }
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+    .modal-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      padding: 8px 20px;
+      border-radius: 40px;
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .modal-btn:hover {
+      background: var(--primary);
+      color: #000;
+      border-color: var(--primary);
+    }
+    .modal-glossary-link {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      border-color: rgba(0, 242, 234, 0.35);
+    }
+    .token-input {
+      width: 100%;
+      background: #090910;
+      border: 1px solid rgba(0, 242, 234, 0.25);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.86rem;
+      padding: 12px 14px;
+      outline: none;
+      margin: 8px 0 10px;
+    }
+    .token-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 242, 234, 0.08);
+    }
+    .token-error {
+      display: none;
+      color: var(--secondary);
+      font-size: 0.82rem;
+      margin-top: 6px;
+    }
+    .token-error.show {
+      display: block;
+    }
+    .admin-open-link {
+      display: none;
+      margin-top: 12px;
+      color: #000;
+      background: var(--primary);
+      border-radius: 999px;
+      padding: 9px 14px;
+      text-decoration: none;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      width: fit-content;
+    }
+    .admin-open-link.show {
+      display: inline-block;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+    .gloss-cat {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.92rem;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+      margin: 28px 0 12px;
+    }
+    .gloss-cat:first-of-type {
+      margin-top: 8px;
+    }
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .gloss-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .gloss-item h4 {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .gloss-item p {
+      font-size: 0.84rem;
+      color: rgba(232, 232, 232, 0.82);
+      line-height: 1.6;
+      margin: 0 0 9px;
+    }
+    .gloss-where {
+      display: inline-block;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+    .gloss-back {
+      margin-top: 28px;
+      text-align: center;
+    }
+    .gloss-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      border: 1px solid rgba(0, 242, 234, 0.35);
+      border-radius: 999px;
+      padding: 9px 18px;
+      transition: all 0.2s;
+    }
+    .gloss-back-btn:hover {
+      background: var(--primary);
+      color: #000;
+      border-color: var(--primary);
+    }
+    @media (max-width: 900px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .main {
+        margin-left: 0;
+        padding: 0 22px 80px;
+      }
+      .stat-row {
+        grid-template-columns: 1fr 1fr;
+      }
+      .task-grid {
+        grid-template-columns: 1fr;
+      }
+      .level-grid {
+        grid-template-columns: 1fr;
+      }
+      .glossary-grid {
+        grid-template-columns: 1fr;
+      }
+      .mobile-menu-btn {
+        display: flex !important;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">AI Smart Labs<br />Sistema Turismo</div>
+      <h2>Global Future Expo 2035</h2>
+    </div>
+    <div class="sidebar-progress">
+      <div class="progress-label">
+        <span>mission progress</span>
+        <span id="progressText">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group-label">Start</div>
+      <a class="nav-item active" href="#intro"><span class="nav-num">00</span><span class="nav-dot"></span> Missione</a>
+      <a class="nav-item" href="#storia"><span class="nav-num">01</span><span class="nav-dot"></span> La città futura</a>
+      <a class="nav-item" href="#regole"><span class="nav-num">02</span><span class="nav-dot"></span> Regole AI</a>
+      <a class="nav-item" href="#programma"><span class="nav-num">03</span><span class="nav-dot"></span> Programma 10 ore</a>
+      <div class="nav-group-label">Laboratori</div>
+      <a class="nav-item" href="#eventfile"><span class="nav-num">04</span><span class="nav-dot"></span> Event File</a>
+      <a class="nav-item" href="#labs"><span class="nav-num">05</span><span class="nav-dot"></span> Task per Lab</a>
+      <a class="nav-item" href="#glossario"><span class="nav-num">06</span><span class="nav-dot"></span> Glossario output</a>
+      <a class="nav-item" href="#valutazione"><span class="nav-num">07</span><span class="nav-dot"></span> Valutazione</a>
+      <a class="nav-item" href="#finale"><span class="nav-num">08</span><span class="nav-dot"></span> Opening Ceremony</a>
+    </nav>
+    <div class="sidebar-footer">
+      Axonforce AI Lab<br />Dark cyber-editorial edition<br />
+      <a href="admin-docenti.html" id="adminLink">Admin</a>
+    </div>
+  </aside>
+  <div class="mobile-menu-btn" onclick="toggleSidebar()">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+  <main class="main">
+    <div class="hero" id="intro">
+      <div class="hero-label">Mission Briefing · Anno 2035</div>
+      <h1>Global Future Expo 2035</h1>
+      <p class="hero-sub">
+        Benvenuti nella più grande esposizione mondiale dedicata al futuro. Voi siete il <strong>Future Creators Team</strong>: una squadra di studenti scelta per immaginare, progettare e presentare il mondo del 2035 con l'aiuto dell'intelligenza artificiale.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-chip"><i class="fa-solid fa-clock"></i> 10 ore</div>
+        <div class="hero-chip"><i class="fa-solid fa-users"></i> lavoro in team</div>
+        <div class="hero-chip"><i class="fa-solid fa-robot"></i> ChatGPT · Gemini · NotebookLM</div>
+        <div class="hero-chip"><i class="fa-solid fa-star"></i> evento finale</div>
+      </div>
+    </div>
+
+    <section class="section" id="storia">
+      <div class="section-header">
+        <div class="section-label">La storia</div>
+        <h2>La città del futuro ha bisogno di voi</h2>
+        <p class="section-intro">
+          Nel 2035 una città europea ospiterà il Global Future Expo. Delegazioni, scuole, ricercatori, artisti, sportivi, robot, traduttori digitali e visitatori da tutto il mondo stanno arrivando. Ma l'Expo non è ancora pronto. Per questo siete stati scelti voi.
+        </p>
+      </div>
+      <div class="prose">
+        <div class="pull-quote">
+          "Non dovete immaginare il futuro da soli. Dovete imparare a fare le domande giuste all'AI, scegliere le idee migliori e trasformarle in qualcosa di vostro."
+        </div>
+        <div class="stat-row">
+          <div class="stat-cell"><span class="stat-val">7</span><span class="stat-lbl">aree lab</span></div>
+          <div class="stat-cell"><span class="stat-val">10</span><span class="stat-lbl">ore</span></div>
+          <div class="stat-cell"><span class="stat-val">1</span><span class="stat-lbl">missione comune</span></div>
+          <div class="stat-cell"><span class="stat-val">2035</span><span class="stat-lbl">anno futuro</span></div>
+        </div>
+        <div class="card green-card">
+          <h4>Obiettivo finale</h4>
+          <p>
+            Creare l'<strong>Event File ufficiale del Global Future Expo 2035</strong>: il dossier che dimostrerà che la città è pronta ad accogliere il mondo, costruito con le vostre idee, i vostri dati, i vostri testi, le vostre traduzioni e la vostra visione di futuro.
+          </p>
+        </div>
+        <p>
+          I padiglioni devono essere progettati. Le lingue devono dialogare. I dati devono diventare decisioni. Le storie devono emozionare. Le tecnologie devono funzionare. Gli spazi devono accogliere culture diverse. La cerimonia di apertura deve far capire al mondo che questa città non è solo un luogo, ma una promessa.
+        </p>
+        <p>
+          Da questo momento siete il <strong>Future Creators Team</strong>. Non siete spettatori: siete progettisti, narratori, analisti, comunicatori, traduttori, designer e consulenti del comitato organizzatore. Ogni laboratorio avrà una missione diversa, ma nessuna missione sarà sufficiente da sola.
+        </p>
+        <div class="pull-quote">
+          trasformare una città immaginaria in un'esperienza credibile, collaborativa e presentabile al mondo. E farlo con la vostra voce.
+        </div>
+        <div class="tabs-wrap">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="story-missione">Missione</button>
+            <button class="tab-btn" data-tab="story-creeremo">Cosa creeremo</button>
+            <button class="tab-btn" data-tab="story-metodo">Come lo faremo</button>
+            <button class="tab-btn" data-tab="story-lab">Laboratori</button>
+            <button class="tab-btn" data-tab="story-finale">Risultato finale</button>
+            <button class="tab-btn" data-tab="story-senso">Perché conta</button>
+          </div>
+          <div class="tab-content">
+            <div class="tab-panel active" id="tab-story-missione">
+              <div class="card linear-card">
+                <h4>Cosa dobbiamo realizzare</h4>
+                <p>La vostra missione è progettare il Global Future Expo 2035 come se fosse un vero evento internazionale. Ogni gruppo lavorerà su una parte dell'esperienza: identità dell'Expo, contenuti dei padiglioni, comunicazione, dati, lingue, tecnologie, cerimonia finale e materiali per i visitatori.</p>
+              </div>
+              <p>Il risultato finale non sarà una semplice raccolta di compiti. Sarà un unico prodotto condiviso: l'Event File, il dossier ufficiale che racconterà al pubblico chi siete, che cosa avete immaginato e perché la vostra città del futuro può funzionare.</p>
+            </div>
+            <div class="tab-panel" id="tab-story-creeremo">
+              <div class="card green-card">
+                <h4>Gli output dell'Expo</h4>
+                <p>Ogni elemento dovrà avere una vostra impronta. Dovrà essere chiaro, curato, coerente con l'identità del Global Future Expo 2035 e capace di far capire una cosa: il futuro non si aspetta, si progetta.</p>
+              </div>
+              <ul>
+                <li>Costruirete la visione narrativa della città ospitante.</li>
+                <li>Inventerete slogan, messaggi ufficiali, mappe e percorsi dei padiglioni.</li>
+                <li>Scriverete testi, storie e materiali multilingue.</li>
+                <li>Trasformerete dati e grafici in scelte comprensibili.</li>
+                <li>Progetterete contenuti digitali, strumenti interattivi e assistente AI dell'Expo.</li>
+                <li>Preparerete speech, presentazioni e scaletta dell'Opening Ceremony.</li>
+              </ul>
+            </div>
+            <div class="tab-panel" id="tab-story-metodo">
+              <div class="card gold-card">
+                <h4>Metodo di lavoro</h4>
+                <p>Lavorerete come un vero team creativo. Userete brainstorming, ricerca guidata, scrittura collaborativa, revisione, public speaking e strumenti di AI generativa. L'AI potrà accendere idee; sarete voi a trasformarle in progetto.</p>
+              </div>
+              <ul>
+                <li>Capire la missione e generare idee.</li>
+                <li>Scegliere le soluzioni migliori e produrre un contenuto.</li>
+                <li>Migliorare il lavoro con criteri condivisi e supporto AI.</li>
+                <li>Inserire il materiale nell'Event File.</li>
+                <li>Preparare il contributo per la presentazione finale.</li>
+              </ul>
+            </div>
+            <div class="tab-panel" id="tab-story-lab">
+              <div class="card reactive-card">
+                <h4>Come ogni disciplina partecipa</h4>
+                <p>Ogni laboratorio produrrà un pezzo dell'Expo, ma il pubblico dovrà percepire un unico grande progetto. Il vostro contributo conta perché completa quello degli altri.</p>
+              </div>
+              <ul>
+                <li><strong>Intelligenza Artificiale</strong>: darete forma all'assistente AI dell'Expo e userete prompt in modo responsabile.</li>
+                <li><strong>Competenze Digitali</strong>: costruirete materiali digitali, elementi interattivi e una struttura ordinata.</li>
+                <li><strong>Inglese</strong>: parlerete ai visitatori internazionali con testi e speech chiari.</li>
+                <li><strong>Italiano</strong>: darete voce all'Expo con manifesto, storytelling e storie dei padiglioni.</li>
+                <li><strong>Matematica</strong>: userete dati e grafici per rendere credibili le scelte della città futura.</li>
+                <li><strong>Lingue Comunitarie</strong>: renderete l'Expo europeo e multiculturale.</li>
+                <li><strong>Comunicazione efficace</strong>: preparerete pitch, public speaking, scaletta e regia dell'Opening Ceremony.</li>
+              </ul>
+            </div>
+            <div class="tab-panel" id="tab-story-finale">
+              <div class="card multi-card">
+                <h4>Opening Ceremony</h4>
+                <p>Alla fine tutto il vostro lavoro confluirà nell'Opening Ceremony del Global Future Expo 2035.</p>
+              </div>
+              <p>Presenterete la città, i padiglioni, le soluzioni tecnologiche, i dati, le storie, i messaggi multilingue e la visione comune dell'Expo. La domanda guida sarà: che cosa può diventare una città quando persone, culture, tecnologie e conoscenze lavorano insieme?</p>
+            </div>
+            <div class="tab-panel" id="tab-story-senso">
+              <div class="card linear-card">
+                <h4>Il significato educativo</h4>
+                <p>Il Global Future Expo 2035 vi farà vivere un'esperienza in cui le discipline non sono materie separate, ma strumenti per risolvere una sfida complessa.</p>
+              </div>
+              <p>Imparerete che progettare il futuro richiede immaginazione, metodo, responsabilità, collaborazione e capacità di comunicare. La città del futuro non è solo lo scenario del progetto: è la prova di quello che potete costruire quando lavorate insieme.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="regole">
+      <div class="section-header">
+        <div class="section-label">AI Code</div>
+        <h2>Come useremo l'intelligenza artificiale</h2>
+        <p class="section-intro">
+          L'AI non lavora al posto vostro: vi aiuta a generare idee, migliorare testi, organizzare dati, tradurre, creare scenari e verificare il vostro progetto.
+        </p>
+      </div>
+      <div class="matrix">
+        <table>
+          <thead>
+            <tr><th>Strumento</th><th>A cosa serve</th><th>Regola d'oro</th>
+          </thead>
+          <tbody>
+            <tr><td>ChatGPT</td><td>Brainstorming, testi, idee, simulazioni, scalette, revisioni.</td><td>Fate domande precise e chiedete sempre alternative.</td></tr>
+            <tr><td>Gemini</td><td>Ricerca guidata, confronto tra idee, sintesi, contenuti creativi.</td><td>Controllate sempre se le informazioni sono plausibili.</td></tr>
+            <tr><td>NotebookLM</td><td>Archivio centrale dell'Expo: documenti, appunti, FAQ, sintesi.</td><td>Usatelo come "cervello del progetto", non come motore casuale.</td></tr>
+            <tr><td>Canva / Slides</td><td>Poster, presentazioni, badge, mappe, visual.</td><td>La forma deve aiutare a capire l'idea.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="warning">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <p>Vietato copiare e incollare senza capire. Ogni gruppo deve saper spiegare: cosa ha chiesto all'AI, cosa ha cambiato, cosa ha scelto e perché.</p>
+      </div>
+      <h4>Prompt iniziale per tutti i gruppi</h4>
+      <div class="prompt-box">
+        Siamo studenti di scuola media e stiamo progettando una parte del Global Future Expo 2035. Aiutaci a generare idee semplici, creative e realistiche per il nostro laboratorio. Il nostro obiettivo è creare un output finale chiaro, bello da presentare e collegato al tema del futuro. Proponi 5 idee, spiegale in modo semplice e suggerisci come possiamo realizzarle in gruppo.
+      </div>
+    </section>
+
+    <section class="section" id="programma">
+      <div class="section-header">
+        <div class="section-label">Roadmap</div>
+        <h2>Programma delle 10 ore</h2>
+        <p class="section-intro">Il percorso funziona come una missione: prima si entra nella storia, poi si progetta, si produce, si revisiona e infine si presenta.</p>
+      </div>
+      <div class="matrix">
+        <table>
+          <thead><tr><th>Fase</th><th>Ore</th><th>Cosa succede</th><th>Output</th></tr></thead>
+          <tbody>
+            <tr><td>Launch</td><td>1</td><td>Presentazione della missione, divisione in team, scelta del ruolo.</td><td>Badge, nome team, prima idea.</td></tr>
+            <tr><td>Design</td><td>2-3</td><td>Brainstorming con AI, scelta dell'idea migliore, mini piano di lavoro.</td><td>Concept del laboratorio.</td></tr>
+            <tr><td>Build</td><td>4-7</td><td>Produzione dei contenuti: testi, immagini, dati, script, poster, mappe.</td><td>Materiale quasi completo.</td></tr>
+            <tr><td>Refine</td><td>8-9</td><td>Revisione, prove di presentazione, caricamento materiali in NotebookLM.</td><td>Versione finale.</td></tr>
+            <tr><td>Show</td><td>10</td><td>Opening Ceremony: ogni team presenta il proprio contributo.</td><td>Expo finale.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="eventfile">
+      <div class="section-header">
+        <div class="section-label">Event File</div>
+        <h2>Official Event File · Global Future Expo 2035</h2>
+        <p class="section-intro">
+          L'Event File è il <strong>dossier ufficiale</strong> dell'Expo: un unico documento dove confluiscono tutti i moduli di tutti i laboratori. Ha una struttura fissa, così ogni modulo ha già il suo posto. Quando tutti i pezzi sono dentro, l'Expo è pronto.
+        </p>
+      </div>
+
+      <div class="card linear-card">
+        <h4>📑 Indice ufficiale — dove va ogni modulo</h4>
+        <div class="matrix">
+          <table>
+            <thead>
+              <tr><th>Capitolo</th><th>Cosa contiene</th><th>Da quali moduli</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1 · Copertina &amp; identità</td><td>Titolo, logo, slogan, manifesto</td><td>Italiano M1 · Inglese M2 · Digitale M2</td></tr>
+              <tr><td>2 · La visione (città 2035)</td><td>Storytelling + articolo del giornale</td><td>Italiano M2 · M1</td></tr>
+              <tr><td>3 · Mappa &amp; padiglioni</td><td>Mappa con aree e legenda</td><td>Digitale M1</td></tr>
+              <tr><td>4 · Esperienza del visitatore</td><td>Home page, QR card, badge, percorso utente</td><td>Digitale M2 · M3</td></tr>
+              <tr><td>5 · Assistente AI</td><td>Identità, FAQ, promptbook &amp; regole</td><td>AI M1 · M2 · M3</td></tr>
+              <tr><td>6 · Comunicazione internazionale</td><td>Welcome kit, speech, slogan, press kit</td><td>Inglese M1 · M2 · M3</td></tr>
+              <tr><td>7 · Accoglienza multiculturale</td><td>Passaporto, schede paese, dialoghi</td><td>Lingue M1 · M2</td></tr>
+              <tr><td>8 · I numeri dell'Expo</td><td>Stima visitatori, budget &amp; spazi, dashboard</td><td>Matematica M1 · M2 · M3</td></tr>
+              <tr><td>9 · Opening Ceremony</td><td>Script, conferenza stampa, scaletta &amp; regia</td><td>Comunicazione M1 · M2</td></tr>
+              <tr><td>10 · Crediti &amp; team</td><td>Chi ha fatto cosa</td><td>Tutti i gruppi</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>🗂 Come si assembla (5 passi)</h4>
+        <ol>
+          <li>Salvate ogni modulo con un nome chiaro: <strong>GFE_[capitolo]_[lab]_[classe]</strong> — es. <em>GFE_05_AI_2A_FAQ</em>.</li>
+          <li>Caricate tutti i file in <strong>NotebookLM</strong>: diventa l'archivio e il "cervello" del dossier.</li>
+          <li>Un gruppo redazione (o il formatore) impagina i capitoli nell'ordine dell'indice.</li>
+          <li>Controllate la coerenza: stesso titolo, stessi colori e stesso tono in tutto il dossier.</li>
+          <li>Esportate il dossier in <strong>PDF</strong> e usatelo all'Opening Ceremony.</li>
+        </ol>
+        <div style="margin-top: 16px;">
+          <a class="gloss-back-btn" href="event-file.html" target="_blank" rel="noopener">📄 Apri il template dell'Event File</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="labs">
+      <div class="section-header">
+        <div class="section-label">Mission Tabs</div>
+        <h2>Task operative per ciascun laboratorio</h2>
+        <p class="section-intro">
+          Ogni laboratorio ha una missione autonoma, ma tutti i prodotti devono sembrare parte dello stesso grande evento: il Global Future Expo 2035.
+        </p>
+      </div>
+      <div class="tabs-wrap">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="ai">AI</button>
+          <button class="tab-btn" data-tab="digitale">Digitale</button>
+          <button class="tab-btn" data-tab="inglese">Inglese</button>
+          <button class="tab-btn" data-tab="italiano">Italiano</button>
+          <button class="tab-btn" data-tab="matematica">Matematica</button>
+          <button class="tab-btn" data-tab="lingue">Lingue</button>
+          <button class="tab-btn" data-tab="comunicazione">Comunicazione</button>
+        </div>
+
+        <!-- AI LAB -->
+        <div class="tab-panel active" id="tab-ai">
+          <div class="lab-title">
+            <div class="lab-icon"><i class="fa-solid fa-robot"></i></div>
+            <div><h3>AI Lab · Inventori del Futuro</h3><small>Robot, assistenti, prompt e idee impossibili rese semplici</small></div>
+          </div>
+          <div class="card linear-card"><h4>Missione</h4><p>Inventare un assistente AI ufficiale del Global Future Expo 2035: una mascotte digitale che aiuta visitatori, studenti e famiglie a scoprire l'evento.</p></div>
+          <div class="output-unico">
+            <span class="output-tag">Output unico del lab · 3 moduli</span>
+            <p><strong>1 Assistente AI ufficiale dell'Expo.</strong> Si costruisce a moduli: identità + conoscenza + regole d'uso. Ogni gruppo realizza un pezzo e insieme formano l'assistente completo che entra nell'Event File. La difficoltà cresce con la classe.</p>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 1 · Moduli per gruppo</span>
+            <h4 class="group-title">Ogni gruppo costruisce un modulo diverso</h4>
+            <p class="group-desc">L'output qui sopra è diviso in moduli complementari: <strong>trovate la card della vostra classe</strong>, è il pezzo che costruite voi. I moduli non si sovrappongono e senza uno l'output è incompleto. Cliccate la card per i dettagli.</p>
+          </div>
+          <div class="level-grid">
+            <div class="level-card task" data-modal="ai-base"><span class="module-year">1ª media</span><h4>Modulo 1 · Identità dell'assistente</h4><p>Create la scheda dell'assistente: nome, aspetto, personalità, ruolo e 5 domande tipo dei visitatori.</p><small>Output: identikit dell'assistente + mini dialogo guidato.</small></div>
+            <div class="level-card task" data-modal="ai-intermedio"><span class="module-year">2ª media</span><h4>Modulo 2 · Knowledge &amp; FAQ</h4><p>Scrivete 10 domande frequenti con risposte chiare e verificate: è il "cervello" che fa rispondere bene l'assistente.</p><small>Output: FAQ dell'assistente + 3 regole d'uso.</small></div>
+            <div class="level-card task" data-modal="ai-avanzato"><span class="module-year">3ª media</span><h4>Modulo 3 · Promptbook &amp; regole</h4><p>Definite tono di voce, limiti, casi d'uso, regole etiche e cosa fa l'assistente quando non sa rispondere.</p><small>Output: promptbook operativo + esempio di conversazione.</small></div>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 2 · Come si costruisce</span>
+            <h4 class="group-title">Le task operative del laboratorio</h4>
+            <p class="group-desc">Sono i <strong>passaggi che compongono l'intero output del lab</strong>. Ogni gruppo lavora soprattutto sui passi legati al proprio modulo, ma li conosce tutti per restare coerente con gli altri. Dividetevi i ruoli così partecipano tutti i componenti. Cliccate ogni task per istruzioni, prompt AI e output atteso.</p>
+          </div>
+          <div class="task-grid">
+            <div class="task" data-modal="ai1"><b>Task 1</b><p>Create il nome, la personalità e il ruolo dell'assistente AI.</p></div>
+            <div class="task" data-modal="ai2"><b>Task 2</b><p>Scrivete 10 domande che un visitatore potrebbe fare all'assistente.</p></div>
+            <div class="task" data-modal="ai3"><b>Task 3</b><p>Generate con ChatGPT/Gemini 3 risposte diverse e scegliete la migliore.</p></div>
+            <div class="task" data-modal="ai4"><b>Task 4</b><p>Create un mini promptbook: "come parlare bene con l'AI".</p></div>
+          </div>
+          <div class="checklist">
+            <h4>Output da consegnare</h4>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Scheda dell'assistente AI: nome, missione, tono di voce.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Esempio di dialogo visitatore-assistente.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Mini guida "5 regole per usare bene l'AI".</span></div>
+          </div>
+        </div>
+
+        <!-- DIGITALE LAB -->
+        <div class="tab-panel" id="tab-digitale">
+          <div class="lab-title">
+            <div class="lab-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <div><h3>Competenze Digitali · Creators Studio</h3><small>Sito, mappe, QR code e identità digitale dell'Expo</small></div>
+          </div>
+          <div class="card reactive-card"><h4>Missione</h4><p>Progettare l'esperienza digitale dell'Expo: come i visitatori si orientano, scoprono i padiglioni e raccolgono informazioni.</p></div>
+          <div class="output-unico">
+            <span class="output-tag">Output unico del lab · 3 moduli</span>
+            <p><strong>1 sistema di orientamento per i visitatori.</strong> Si costruisce a moduli: mappa + identità digitale + percorso utente. Ogni gruppo realizza un pezzo e insieme formano il sistema completo che entra nell'Event File. La difficoltà cresce con la classe.</p>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 1 · Moduli per gruppo</span>
+            <h4 class="group-title">Ogni gruppo costruisce un modulo diverso</h4>
+            <p class="group-desc">L'output qui sopra è diviso in moduli complementari: <strong>trovate la card della vostra classe</strong>, è il pezzo che costruite voi. I moduli non si sovrappongono e senza uno l'output è incompleto. Cliccate la card per i dettagli.</p>
+          </div>
+          <div class="level-grid">
+            <div class="level-card task" data-modal="dig-base"><span class="module-year">1ª media</span><h4>Modulo 1 · Mappa dell'Expo</h4><p>Disegnate la mappa con 5 aree, icone chiare, legenda e brevi descrizioni.</p><small>Output: mappa visuale + legenda.</small></div>
+            <div class="level-card task" data-modal="dig-intermedio"><span class="module-year">2ª media</span><h4>Modulo 2 · Identità digitale</h4><p>Progettate home page, QR card e badge visitatore con uno stile grafico coerente.</p><small>Output: mockup home + 3 QR card + badge.</small></div>
+            <div class="level-card task" data-modal="dig-avanzato"><span class="module-year">3ª media</span><h4>Modulo 3 · Percorso utente</h4><p>Collegate mappa, badge e QR in un percorso completo: arrivo, orientamento, visita, uscita.</p><small>Output: user journey + prototipo o storyboard.</small></div>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 2 · Come si costruisce</span>
+            <h4 class="group-title">Le task operative del laboratorio</h4>
+            <p class="group-desc">Sono i <strong>passaggi che compongono l'intero output del lab</strong>. Ogni gruppo lavora soprattutto sui passi legati al proprio modulo, ma li conosce tutti per restare coerente con gli altri. Dividetevi i ruoli così partecipano tutti i componenti. Cliccate ogni task per istruzioni, prompt AI e output atteso.</p>
+          </div>
+          <div class="task-grid">
+            <div class="task" data-modal="dig1"><b>Task 1</b><p>Disegnate la home page ideale del Global Future Expo 2035.</p></div>
+            <div class="task" data-modal="dig2"><b>Task 2</b><p>Create una mappa semplice con 5 aree: AI, Sport, Cultura, Ambiente, Scuola.</p></div>
+            <div class="task" data-modal="dig3"><b>Task 3</b><p>Generate testi brevi per QR code informativi.</p></div>
+            <div class="task" data-modal="dig4"><b>Task 4</b><p>Progettate un badge digitale per i visitatori.</p></div>
+          </div>
+          <div class="checklist">
+            <h4>Output da consegnare</h4>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Mockup della home page o poster digitale.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Mappa dell'Expo.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">3 QR card con titolo e descrizione.</span></div>
+          </div>
+        </div>
+
+        <!-- INGLESE LAB -->
+        <div class="tab-panel" id="tab-inglese">
+          <div class="lab-title">
+            <div class="lab-icon"><i class="fa-solid fa-language"></i></div>
+            <div><h3>Inglese · International Communication Team</h3><small>Welcome message, slogan, interviews and global visitors</small></div>
+          </div>
+          <div class="card green-card"><h4>Missione</h4><p>Creare i materiali in inglese per accogliere visitatori internazionali e raccontare il Global Future Expo 2035 al mondo.</p></div>
+          <div class="output-unico">
+            <span class="output-tag">Output unico del lab · 3 moduli</span>
+            <p><strong>1 kit di comunicazione internazionale in inglese.</strong> Si costruisce a moduli: accoglienza + apertura + stampa. Ogni gruppo realizza un pezzo e insieme formano il kit completo che entra nell'Event File. La difficoltà cresce con la classe.</p>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 1 · Moduli per gruppo</span>
+            <h4 class="group-title">Ogni gruppo costruisce un modulo diverso</h4>
+            <p class="group-desc">L'output qui sopra è diviso in moduli complementari: <strong>trovate la card della vostra classe</strong>, è il pezzo che costruite voi. I moduli non si sovrappongono e senza uno l'output è incompleto. Cliccate la card per i dettagli.</p>
+          </div>
+          <div class="level-grid">
+            <div class="level-card task" data-modal="eng-base"><span class="module-year">1ª media</span><h4>Modulo 1 · Welcome kit</h4><p>Welcome message breve, saluti e 5-8 frasi utili per i visitatori internazionali.</p><small>Output: welcome card in inglese + traduzione.</small></div>
+            <div class="level-card task" data-modal="eng-intermedio"><span class="module-year">2ª media</span><h4>Modulo 2 · Speech &amp; slogan</h4><p>Speech di benvenuto e 5 slogan ufficiali, curando lessico, pronuncia e chiarezza.</p><small>Output: welcome speech + slogans + note di lettura.</small></div>
+            <div class="level-card task" data-modal="eng-avanzato"><span class="module-year">3ª media</span><h4>Modulo 3 · Press kit</h4><p>Intervista, social captions e mini comunicato stampa in inglese per i media.</p><small>Output: interview script + captions + press text.</small></div>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 2 · Come si costruisce</span>
+            <h4 class="group-title">Le task operative del laboratorio</h4>
+            <p class="group-desc">Sono i <strong>passaggi che compongono l'intero output del lab</strong>. Ogni gruppo lavora soprattutto sui passi legati al proprio modulo, ma li conosce tutti per restare coerente con gli altri. Dividetevi i ruoli così partecipano tutti i componenti. Cliccate ogni task per istruzioni, prompt AI e output atteso.</p>
+          </div>
+          <div class="task-grid">
+            <div class="task" data-modal="eng1"><b>Task 1</b><p>Write a short welcome speech for international visitors.</p></div>
+            <div class="task" data-modal="eng2"><b>Task 2</b><p>Create 5 slogans in English for the Expo.</p></div>
+            <div class="task" data-modal="eng3"><b>Task 3</b><p>Prepare a short interview: journalist + student inventor.</p></div>
+            <div class="task" data-modal="eng4"><b>Task 4</b><p>Create social captions for the opening day.</p></div>
+          </div>
+          <div class="checklist">
+            <h4>Output da consegnare</h4>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Welcome speech in English.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">5 slogans con traduzione italiana.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Mini interview script.</span></div>
+          </div>
+        </div>
+
+        <!-- ITALIANO LAB -->
+        <div class="tab-panel" id="tab-italiano">
+          <div class="lab-title">
+            <div class="lab-icon"><i class="fa-solid fa-pen-nib"></i></div>
+            <div><h3>Italiano · Storytelling Team</h3><small>Manifesto, racconto, giornale ufficiale e parole del futuro</small></div>
+          </div>
+          <div class="card gold-card"><h4>Missione</h4><p>Raccontare l'Expo come se fosse un vero evento: creare il manifesto, un articolo e una breve storia ambientata nel 2035.</p></div>
+          <div class="output-unico">
+            <span class="output-tag">Output unico del lab · 2 moduli</span>
+            <p><strong>1 identità testuale dell'Expo, istituzionale e narrativa.</strong> Si costruisce a moduli: manifesto/giornale + storytelling. Questo lab gira solo in 2ª e 3ª media: i due gruppi realizzano un pezzo ciascuno e insieme formano l'output completo dell'Event File.</p>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 1 · Moduli per gruppo</span>
+            <h4 class="group-title">Ogni gruppo costruisce un modulo diverso</h4>
+            <p class="group-desc">L'output qui sopra è diviso in moduli complementari: <strong>trovate la card della vostra classe</strong>, è il pezzo che costruite voi. I moduli non si sovrappongono e senza uno l'output è incompleto. Cliccate la card per i dettagli.</p>
+          </div>
+          <div class="level-grid two-modules">
+            <div class="level-card task" data-modal="ita-intermedio"><span class="module-year">2ª media</span><h4>Modulo 1 · Manifesto &amp; giornale</h4><p>Manifesto ufficiale dell'Expo + articolo per il giornale (titolo, occhiello, 5W, citazione, chiusura).</p><small>Output: manifesto + articolo breve.</small></div>
+            <div class="level-card task" data-modal="ita-avanzato"><span class="module-year">3ª media</span><h4>Modulo 2 · Storytelling 2035</h4><p>Racconto completo ambientato nel 2035 con personaggio, conflitto, soluzione e messaggio finale.</p><small>Output: racconto o podcast script + revisione.</small></div>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 2 · Come si costruisce</span>
+            <h4 class="group-title">Le task operative del laboratorio</h4>
+            <p class="group-desc">Sono i <strong>passaggi che compongono l'intero output del lab</strong>. Ogni gruppo lavora soprattutto sui passi legati al proprio modulo, ma li conosce tutti per restare coerente con gli altri. Dividetevi i ruoli così partecipano tutti i componenti. Cliccate ogni task per istruzioni, prompt AI e output atteso.</p>
+          </div>
+          <div class="task-grid">
+            <div class="task" data-modal="ita1"><b>Task 1</b><p>Scrivete il Manifesto del Global Future Expo 2035.</p></div>
+            <div class="task" data-modal="ita2"><b>Task 2</b><p>Create un articolo per il giornale ufficiale dell'Expo.</p></div>
+            <div class="task" data-modal="ita3"><b>Task 3</b><p>Inventate una breve storia: "Il mio primo giorno all'Expo del Futuro".</p></div>
+            <div class="task" data-modal="ita4"><b>Task 4</b><p>Chiedete all'AI di migliorare stile, chiarezza e titolo.</p></div>
+          </div>
+          <div class="checklist">
+            <h4>Output da consegnare</h4>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Manifesto ufficiale in 8-10 frasi.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Articolo breve con titolo.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Racconto o podcast script di 1 minuto.</span></div>
+          </div>
+        </div>
+
+        <!-- MATEMATICA LAB -->
+        <div class="tab-panel" id="tab-matematica">
+          <div class="lab-title">
+            <div class="lab-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <div><h3>Matematica · Mission Control</h3><small>Budget, visitatori, grafici, spazi e decisioni basate sui dati</small></div>
+          </div>
+          <div class="card linear-card"><h4>Missione</h4><p>Organizzare l'Expo usando numeri e dati: visitatori previsti, costi, spazi, percentuali e grafici semplici.</p></div>
+          <div class="output-unico">
+            <span class="output-tag">Output unico del lab · 3 moduli</span>
+            <p><strong>1 cruscotto dati dell'Expo.</strong> Si costruisce a moduli: stima visitatori + budget/spazi + dashboard finale. Ogni gruppo realizza un pezzo e insieme formano il cruscotto completo che entra nell'Event File. La difficoltà cresce con la classe.</p>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 1 · Moduli per gruppo</span>
+            <h4 class="group-title">Ogni gruppo costruisce un modulo diverso</h4>
+            <p class="group-desc">L'output qui sopra è diviso in moduli complementari: <strong>trovate la card della vostra classe</strong>, è il pezzo che costruite voi. I moduli non si sovrappongono e senza uno l'output è incompleto. Cliccate la card per i dettagli.</p>
+          </div>
+          <div class="level-grid">
+            <div class="level-card task" data-modal="mat-base"><span class="module-year">1ª media</span><h4>Modulo 1 · Stima visitatori</h4><p>Stimate i visitatori in 3 giorni e rappresentateli con tabella e grafico a barre.</p><small>Output: tabella visitatori + grafico a barre.</small></div>
+            <div class="level-card task" data-modal="mat-intermedio"><span class="module-year">2ª media</span><h4>Modulo 2 · Budget &amp; spazi</h4><p>Budget, percentuali degli spazi e confronto tra padiglioni, con scelte spiegate dai dati.</p><small>Output: budget + grafico a torta + 3 decisioni.</small></div>
+            <div class="level-card task" data-modal="mat-avanzato"><span class="module-year">3ª media</span><h4>Modulo 3 · Dashboard finale</h4><p>Integrate i dati dei moduli 1 e 2 in un cruscotto con indicatori e soglie: visitatori, costi, sostenibilità, affollamento.</p><small>Output: dashboard + commento interpretativo.</small></div>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 2 · Come si costruisce</span>
+            <h4 class="group-title">Le task operative del laboratorio</h4>
+            <p class="group-desc">Sono i <strong>passaggi che compongono l'intero output del lab</strong>. Ogni gruppo lavora soprattutto sui passi legati al proprio modulo, ma li conosce tutti per restare coerente con gli altri. Dividetevi i ruoli così partecipano tutti i componenti. Cliccate ogni task per istruzioni, prompt AI e output atteso.</p>
+          </div>
+          <div class="task-grid">
+            <div class="task" data-modal="mat1"><b>Task 1</b><p>Stimate quanti visitatori arriveranno in 3 giorni.</p></div>
+            <div class="task" data-modal="mat2"><b>Task 2</b><p>Create un piccolo budget: biglietti, materiali, stand, comunicazione.</p></div>
+            <div class="task" data-modal="mat3"><b>Task 3</b><p>Dividete gli spazi tra i padiglioni con percentuali.</p></div>
+            <div class="task" data-modal="mat4"><b>Task 4</b><p>Create un grafico semplice e spiegatelo in modo chiaro.</p></div>
+          </div>
+          <div class="checklist">
+            <h4>Output da consegnare</h4>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Tabella visitatori e budget.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Grafico a barre o torta.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">3 decisioni spiegate con i numeri.</span></div>
+          </div>
+        </div>
+
+        <!-- LINGUE LAB -->
+        <div class="tab-panel" id="tab-lingue">
+          <div class="lab-title">
+            <div class="lab-icon"><i class="fa-solid fa-earth-europe"></i></div>
+            <div><h3>Lingue Comunitarie · Global Culture Team</h3><small>Accoglienza, culture europee, mini stand e passaporto del futuro</small></div>
+          </div>
+          <div class="card multi-card"><h4>Missione</h4><p>Creare l'area internazionale dell'Expo: parole utili, saluti, mini stand europei e un passaporto per i visitatori.</p></div>
+          <div class="output-unico">
+            <span class="output-tag">Output unico del lab · 2 moduli</span>
+            <p><strong>1 kit di accoglienza multiculturale europea.</strong> Si costruisce a moduli: passaporto + dialoghi/accoglienza. Questo lab ha 2 gruppi (uno di 2ª media e un gruppo misto 1ª/3ª/superiori): ciascuno realizza un pezzo e insieme formano il kit completo dell'Event File.</p>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 1 · Moduli per gruppo</span>
+            <h4 class="group-title">Ogni gruppo costruisce un modulo diverso</h4>
+            <p class="group-desc">L'output qui sopra è diviso in moduli complementari: <strong>trovate la card del vostro gruppo</strong>, è il pezzo che costruite voi. I moduli non si sovrappongono e senza uno l'output è incompleto. Cliccate la card per i dettagli.</p>
+          </div>
+          <div class="level-grid two-modules">
+            <div class="level-card task" data-modal="lin-intermedio"><span class="module-year">2ª media · 6 studenti</span><h4>Modulo 1 · Future Expo Passport</h4><p>Passaporto con tappe, timbri, 10 frasi utili tradotte e schede dei paesi europei scelti.</p><small>Output: passaporto + schede paese.</small></div>
+            <div class="level-card task" data-modal="lin-avanzato"><span class="module-year">Gruppo misto 1ª/3ª · 3 studenti</span><h4>Modulo 2 · Dialoghi &amp; accoglienza</h4><p>Saluti, bandiere e parole utili dei paesi + role-play realistici staff/visitatori. I più grandi guidano i più piccoli.</p><small>Output: dialoghi multilingue + mini guida interculturale.</small></div>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 2 · Come si costruisce</span>
+            <h4 class="group-title">Le task operative del laboratorio</h4>
+            <p class="group-desc">Sono i <strong>passaggi che compongono l'intero output del lab</strong>. Ogni gruppo lavora soprattutto sui passi legati al proprio modulo, ma li conosce tutti per restare coerente con gli altri. Dividetevi i ruoli così partecipano tutti i componenti. Cliccate ogni task per istruzioni, prompt AI e output atteso.</p>
+          </div>
+          <div class="task-grid">
+            <div class="task" data-modal="lin1"><b>Task 1</b><p>Scegliete 3 paesi europei e create una mini scheda per ciascuno.</p></div>
+            <div class="task" data-modal="lin2"><b>Task 2</b><p>Traducete 10 frasi utili per accogliere i visitatori.</p></div>
+            <div class="task" data-modal="lin3"><b>Task 3</b><p>Create il "Future Expo Passport" con timbri e tappe.</p></div>
+            <div class="task" data-modal="lin4"><b>Task 4</b><p>Scrivete un dialogo tra visitatore e staff internazionale.</p></div>
+          </div>
+          <div class="checklist">
+            <h4>Output da consegnare</h4>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Welcome kit multilingua.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Passaporto dell'Expo.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Mini stand di 3 paesi.</span></div>
+          </div>
+        </div>
+
+        <!-- COMUNICAZIONE LAB -->
+        <div class="tab-panel" id="tab-comunicazione">
+          <div class="lab-title">
+            <div class="lab-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+            <div><h3>Comunicazione Efficace · Media & Stage Team</h3><small>Presentazione finale, conferenza stampa, speaker e palco</small></div>
+          </div>
+          <div class="card reactive-card"><h4>Missione</h4><p>Preparare la comunicazione pubblica dell'Expo: apertura ufficiale, presentazioni, conferenza stampa e gestione del palco.</p></div>
+          <div class="output-unico">
+            <span class="output-tag">Output unico del lab · 2 moduli</span>
+            <p><strong>1 regia completa dell'Opening Ceremony.</strong> Si costruisce a moduli: script/conferenza stampa + scaletta/regia. Questo lab gira solo in 2ª e 3ª media: i due gruppi realizzano un pezzo ciascuno e insieme formano la cerimonia pronta da mettere in scena.</p>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 1 · Moduli per gruppo</span>
+            <h4 class="group-title">Ogni gruppo costruisce un modulo diverso</h4>
+            <p class="group-desc">L'output qui sopra è diviso in moduli complementari: <strong>trovate la card della vostra classe</strong>, è il pezzo che costruite voi. I moduli non si sovrappongono e senza uno l'output è incompleto. Cliccate la card per i dettagli.</p>
+          </div>
+          <div class="level-grid two-modules">
+            <div class="level-card task" data-modal="com-intermedio"><span class="module-year">2ª media</span><h4>Modulo 1 · Script &amp; conferenza stampa</h4><p>Parte dello script dell'Opening Ceremony + 5 domande per la conferenza stampa.</p><small>Output: script breve + Q&amp;A.</small></div>
+            <div class="level-card task" data-modal="com-avanzato"><span class="module-year">3ª media</span><h4>Modulo 2 · Scaletta &amp; regia</h4><p>Scaletta completa, tempi, passaggi tra speaker, tono di voce e piano B della cerimonia.</p><small>Output: scaletta completa + rehearsal plan.</small></div>
+          </div>
+          <div class="group-label">
+            <span class="group-step">Step 2 · Come si costruisce</span>
+            <h4 class="group-title">Le task operative del laboratorio</h4>
+            <p class="group-desc">Sono i <strong>passaggi che compongono l'intero output del lab</strong>. Ogni gruppo lavora soprattutto sui passi legati al proprio modulo, ma li conosce tutti per restare coerente con gli altri. Dividetevi i ruoli così partecipano tutti i componenti. Cliccate ogni task per istruzioni, prompt AI e output atteso.</p>
+          </div>
+          <div class="task-grid">
+            <div class="task" data-modal="com1"><b>Task 1</b><p>Scrivete lo script dell'Opening Ceremony.</p></div>
+            <div class="task" data-modal="com2"><b>Task 2</b><p>Create 5 domande per una conferenza stampa.</p></div>
+            <div class="task" data-modal="com3"><b>Task 3</b><p>Preparate una scaletta: chi parla, quando, per quanto tempo.</p></div>
+            <div class="task" data-modal="com4"><b>Task 4</b><p>Allenate tono di voce, postura, chiarezza e tempi.</p></div>
+          </div>
+          <div class="checklist">
+            <h4>Output da consegnare</h4>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Script della cerimonia.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Domande e risposte della conferenza stampa.</span></div>
+            <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Scaletta finale dell'evento.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="glossario">
+      <div class="section-header">
+        <div class="section-label">Glossario</div>
+        <h2>Dizionario degli output</h2>
+        <p class="section-intro">Che cos'è un chatbot? Uno script? Un mockup? Qui trovi spiegati in parole semplici tutti i tipi di output che i laboratori possono produrre. Usalo ogni volta che non sei sicuro di che cosa devi creare.</p>
+      </div>
+
+      <h3 class="gloss-cat">🤖 AI &amp; assistente</h3>
+      <div class="glossary-grid">
+        <div class="gloss-item"><h4>Chatbot / Assistente AI</h4><p>Un programma che "chiacchiera" con le persone: risponde a domande scritte come farebbe una guida. All'Expo accoglie e aiuta i visitatori.</p><span class="gloss-where">AI Lab</span></div>
+        <div class="gloss-item"><h4>Prompt</h4><p>L'istruzione che scrivi all'AI per ottenere ciò che vuoi. Più è chiaro e dettagliato, migliore è la risposta.</p><span class="gloss-where">Tutti i lab</span></div>
+        <div class="gloss-item"><h4>Promptbook</h4><p>Un piccolo manuale con i prompt migliori e le regole per usare bene l'assistente: tono di voce, limiti e cosa fare quando non sa rispondere.</p><span class="gloss-where">AI Lab</span></div>
+        <div class="gloss-item"><h4>FAQ</h4><p>Dall'inglese "Frequently Asked Questions": l'elenco delle domande più comuni con le risposte già pronte. È la conoscenza di base dell'assistente.</p><span class="gloss-where">AI Lab</span></div>
+        <div class="gloss-item"><h4>Dialogo</h4><p>Uno scambio di battute scritto tra due "voci" (es. visitatore e assistente) per mostrare come funziona una conversazione.</p><span class="gloss-where">AI Lab</span></div>
+      </div>
+
+      <h3 class="gloss-cat">✍️ Testi &amp; comunicazione</h3>
+      <div class="glossary-grid">
+        <div class="gloss-item"><h4>Manifesto</h4><p>Un testo breve e forte che dichiara i valori e la visione dell'Expo. Si legge in pochi secondi e fa capire "chi siamo".</p><span class="gloss-where">Italiano</span></div>
+        <div class="gloss-item"><h4>Articolo</h4><p>Un testo da giornale con titolo, occhiello (la frase sopra il titolo), le 5W (chi, cosa, dove, quando, perché), una citazione e una chiusura.</p><span class="gloss-where">Italiano</span></div>
+        <div class="gloss-item"><h4>Storytelling / Racconto</h4><p>Raccontare con una storia: un personaggio, un problema, una soluzione e un messaggio finale. Serve a emozionare e far capire.</p><span class="gloss-where">Italiano</span></div>
+        <div class="gloss-item"><h4>Speech</h4><p>Un discorso pensato per essere detto a voce davanti a un pubblico (es. il benvenuto all'Expo). Ha apertura, messaggio centrale e chiusura.</p><span class="gloss-where">Inglese · Comunicazione</span></div>
+        <div class="gloss-item"><h4>Slogan</h4><p>Una frase brevissima e memorabile che riassume l'Expo, come in una pubblicità.</p><span class="gloss-where">Inglese</span></div>
+        <div class="gloss-item"><h4>Welcome message</h4><p>Un breve messaggio di benvenuto per accogliere i visitatori, di solito in inglese e con frasi semplici.</p><span class="gloss-where">Inglese</span></div>
+        <div class="gloss-item"><h4>Press kit</h4><p>Il "kit per la stampa": l'insieme di materiali (comunicato, foto, frasi pronte) che si consegnano a giornalisti e media.</p><span class="gloss-where">Inglese</span></div>
+        <div class="gloss-item"><h4>Intervista</h4><p>Un testo a domande e risposte tra un giornalista e una persona (es. uno studente inventore).</p><span class="gloss-where">Inglese</span></div>
+        <div class="gloss-item"><h4>Captions (social)</h4><p>Le frasi brevi che accompagnano i post sui social, spesso con emoji e hashtag.</p><span class="gloss-where">Inglese</span></div>
+        <div class="gloss-item"><h4>Script</h4><p>Il copione scritto di ciò che si dirà e si farà durante un evento: battute, momenti, chi parla e quando.</p><span class="gloss-where">Comunicazione</span></div>
+        <div class="gloss-item"><h4>Conferenza stampa / Q&amp;A</h4><p>Un incontro con i giornalisti fatto di domande e risposte ("Q&amp;A" = Questions &amp; Answers).</p><span class="gloss-where">Comunicazione</span></div>
+        <div class="gloss-item"><h4>Scaletta</h4><p>L'elenco ordinato dei momenti di un evento, con i tempi e chi interviene. È la "mappa" della cerimonia.</p><span class="gloss-where">Comunicazione</span></div>
+        <div class="gloss-item"><h4>Pitch</h4><p>Una presentazione brevissima (es. 45 secondi) che spiega in modo convincente chi siete e cosa avete creato.</p><span class="gloss-where">Comunicazione</span></div>
+      </div>
+
+      <h3 class="gloss-cat">🎨 Digitale &amp; visual</h3>
+      <div class="glossary-grid">
+        <div class="gloss-item"><h4>Mappa</h4><p>Il disegno dall'alto degli spazi dell'Expo, con aree e percorsi, per orientare i visitatori.</p><span class="gloss-where">Digitale</span></div>
+        <div class="gloss-item"><h4>Legenda</h4><p>La piccola tabella che spiega cosa significano i colori e le icone della mappa.</p><span class="gloss-where">Digitale</span></div>
+        <div class="gloss-item"><h4>Home page</h4><p>La prima pagina di un sito: ciò che vedi appena entri, con il menù e le informazioni principali.</p><span class="gloss-where">Digitale</span></div>
+        <div class="gloss-item"><h4>Mockup</h4><p>Un finto disegno di come apparirà una pagina o un'app, fatto per mostrare l'idea prima di costruirla davvero.</p><span class="gloss-where">Digitale</span></div>
+        <div class="gloss-item"><h4>QR code / QR card</h4><p>Il quadratino che si inquadra col telefono per aprire un link o un'informazione. La "QR card" è il cartoncino che lo contiene.</p><span class="gloss-where">Digitale</span></div>
+        <div class="gloss-item"><h4>Badge</h4><p>Il cartellino di riconoscimento del visitatore (nome, ruolo, accesso), in versione cartacea o digitale.</p><span class="gloss-where">Digitale</span></div>
+        <div class="gloss-item"><h4>User journey / Percorso utente</h4><p>Il viaggio del visitatore passo dopo passo: arrivo, orientamento, visita, uscita. Serve a non far perdere nessuno.</p><span class="gloss-where">Digitale</span></div>
+        <div class="gloss-item"><h4>Storyboard</h4><p>Una sequenza di riquadri che mostra, scena per scena, come si svolge un'esperienza o un video.</p><span class="gloss-where">Digitale</span></div>
+        <div class="gloss-item"><h4>Prototipo</h4><p>Una prima versione "di prova" di un prodotto, da testare e migliorare prima di quella definitiva.</p><span class="gloss-where">Digitale</span></div>
+      </div>
+
+      <h3 class="gloss-cat">📊 Dati &amp; numeri</h3>
+      <div class="glossary-grid">
+        <div class="gloss-item"><h4>Tabella</h4><p>Una griglia di righe e colonne per mettere in ordine i numeri (es. visitatori per giorno).</p><span class="gloss-where">Matematica</span></div>
+        <div class="gloss-item"><h4>Grafico</h4><p>Il disegno dei dati: a barre (per confrontare quantità) o a torta (per mostrare le percentuali di un totale).</p><span class="gloss-where">Matematica</span></div>
+        <div class="gloss-item"><h4>Budget</h4><p>Il piano dei soldi: quanto entra e quanto si spende (biglietti, materiali, stand, comunicazione).</p><span class="gloss-where">Matematica</span></div>
+        <div class="gloss-item"><h4>Percentuale</h4><p>Una parte su 100. Serve a dire "quanto" di un totale (es. il 30% dello spazio ai padiglioni).</p><span class="gloss-where">Matematica</span></div>
+        <div class="gloss-item"><h4>Dashboard / Cruscotto</h4><p>Un pannello che mostra a colpo d'occhio i numeri più importanti (visitatori, costi, sostenibilità) tramite indicatori.</p><span class="gloss-where">Matematica</span></div>
+        <div class="gloss-item"><h4>Indicatore / Soglia</h4><p>Un numero-spia che dice se le cose vanno bene; la soglia è il limite tra "buono", "medio" e "critico".</p><span class="gloss-where">Matematica</span></div>
+      </div>
+
+      <h3 class="gloss-cat">🌍 Lingue &amp; accoglienza</h3>
+      <div class="glossary-grid">
+        <div class="gloss-item"><h4>Passaporto (Future Expo Passport)</h4><p>Un libretto-gioco con tappe e timbri: il visitatore lo compila visitando gli stand dei vari paesi.</p><span class="gloss-where">Lingue</span></div>
+        <div class="gloss-item"><h4>Scheda paese</h4><p>Una mini carta d'identità di un paese europeo: bandiera, saluti, parole utili e curiosità culturali.</p><span class="gloss-where">Lingue</span></div>
+        <div class="gloss-item"><h4>Role-play</h4><p>Una simulazione in cui si recitano ruoli reali (es. staff e visitatore straniero) per allenare i dialoghi.</p><span class="gloss-where">Lingue</span></div>
+      </div>
+
+      <h3 class="gloss-cat">📦 Parole del progetto</h3>
+      <div class="glossary-grid">
+        <div class="gloss-item"><h4>Output</h4><p>Il prodotto finito che un gruppo consegna (un testo, una mappa, un grafico…). È ciò che resta del lavoro.</p><span class="gloss-where">Tutti</span></div>
+        <div class="gloss-item"><h4>Modulo</h4><p>Un pezzo dell'output del laboratorio. Più moduli, costruiti da gruppi diversi, formano insieme l'output completo del lab.</p><span class="gloss-where">Tutti</span></div>
+        <div class="gloss-item"><h4>Event File</h4><p>Il dossier ufficiale dell'Expo: raccoglie in un unico documento tutti gli output di tutti i laboratori.</p><span class="gloss-where">Progetto</span></div>
+      </div>
+
+      <div class="gloss-back">
+        <a class="gloss-back-btn" href="#intro">↑ Torna su</a>
+      </div>
+    </section>
+
+    <section class="section" id="valutazione">
+      <div class="section-header">
+        <div class="section-label">Valutazione</div>
+        <h2>Come valutiamo il lavoro</h2>
+        <p class="section-intro">Non conta solo il prodotto finito: contano le competenze che metti in gioco. Qui trovi i criteri (così sai su cosa migliorare) e gli strumenti per autovalutarti e dare un feedback agli altri gruppi. La scala segue i livelli ufficiali: Iniziale, Base, Intermedio, Avanzato.</p>
+      </div>
+
+      <h3 class="gloss-cat">📊 Su cosa sei valutato</h3>
+      <div class="glossary-grid">
+        <div class="gloss-item"><h4>Uso critico dell'AI</h4><p>Usi l'AI con prompt tuoi, controlli le risposte e le riscrivi con parole tue.</p><span class="gloss-where">AI literacy</span></div>
+        <div class="gloss-item"><h4>Contenuti digitali</h4><p>Crei un prodotto digitale chiaro, ordinato e curato.</p><span class="gloss-where">DigComp 2.2</span></div>
+        <div class="gloss-item"><h4>Comunicazione</h4><p>Sai spiegare ciò che hai fatto in modo chiaro e con sicurezza.</p><span class="gloss-where">Competenze chiave</span></div>
+        <div class="gloss-item"><h4>Collaborazione</h4><p>Fai la tua parte, rispetti ruoli e tempi, aiuti il gruppo.</p><span class="gloss-where">Competenze chiave</span></div>
+        <div class="gloss-item"><h4>Problem solving</h4><p>Affronti gli ostacoli con metodo e sai motivare le tue scelte.</p><span class="gloss-where">Competenze chiave</span></div>
+        <div class="gloss-item"><h4>Qualità del modulo</h4><p>Il tuo modulo è curato e coerente con l'Expo e con gli altri gruppi.</p><span class="gloss-where">Event File</span></div>
+      </div>
+
+      <h3 class="gloss-cat">✅ Autovalutazione — segna cosa è vero per te</h3>
+      <div class="card">
+        <div class="checklist">
+          <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Ho capito qual era il mio modulo e cosa dovevo consegnare.</span></div>
+          <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Ho usato l'AI con un prompt mio e ho controllato la risposta.</span></div>
+          <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Ho riscritto almeno una parte con parole mie.</span></div>
+          <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Ho collaborato e rispettato il mio ruolo nel gruppo.</span></div>
+          <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">So spiegare a voce cosa ho fatto e perché.</span></div>
+          <div class="checklist-item"><span class="ci-box"></span><span class="ci-text">Il nostro modulo è coerente con l'Expo e con gli altri gruppi.</span></div>
+        </div>
+      </div>
+
+      <h3 class="gloss-cat">🤝 Valutazione tra gruppi</h3>
+      <div class="card">
+        <p>Quando un altro gruppo presenta il suo modulo, dategli un feedback onesto e gentile su:</p>
+        <ul>
+          <li><strong>Chiarezza</strong> — si capisce cosa hanno fatto?</li>
+          <li><strong>Utilità</strong> — serve davvero all'Expo?</li>
+          <li><strong>Coerenza</strong> — si collega agli altri moduli?</li>
+          <li><strong>Presentazione</strong> — l'hanno spiegato bene?</li>
+        </ul>
+        <p>Poi scrivete due frasi: <strong>una cosa che vi è piaciuta</strong> e <strong>un consiglio</strong> per migliorare.</p>
+      </div>
+    </section>
+
+    <section class="section" id="finale">
+      <div class="section-header">
+        <div class="section-label">Final Event</div>
+        <h2>Opening Ceremony</h2>
+        <p class="section-intro">
+          L'ultima ora è il momento in cui il Global Future Expo 2035 prende vita. Ogni gruppo presenta il proprio contributo come se fosse davanti a visitatori, giornalisti, famiglie e organizzatori.
+        </p>
+      </div>
+      <div class="matrix">
+        <table>
+          <thead><tr><th>Momento</th><th>Chi interviene</th><th>Cosa mostra</th></tr></thead>
+          <tbody>
+            <tr><td>Apertura</td><td>Comunicazione efficace</td><td>Benvenuto, scaletta, atmosfera dell'evento.</td></tr>
+            <tr><td>Visione</td><td>Italiano + Inglese</td><td>Manifesto, slogan, welcome speech.</td></tr>
+            <tr><td>Esperienza</td><td>Digitale + Lingue</td><td>Mappa, passaporto, QR card, area internazionale.</td></tr>
+            <tr><td>Innovazione</td><td>AI + Matematica</td><td>Assistente AI, dati, budget, grafici e decisioni.</td></tr>
+            <tr><td>Chiusura</td><td>Tutti</td><td>Una frase finale: "Il futuro che vogliamo costruire è…"</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="takeaways">
+        <h4><i class="fa-solid fa-star"></i> Cosa conta davvero</h4>
+        <ul>
+          <li>Usare l'AI per pensare meglio, non per copiare.</li>
+          <li>Creare un prodotto semplice, chiaro e presentabile.</li>
+          <li>Collaborare: ogni laboratorio è un pezzo dello stesso Expo.</li>
+          <li>Saper spiegare le scelte fatte: idea, AI usata, modifiche, risultato.</li>
+          <li>Divertirsi immaginando un futuro migliore.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODALE -->
+  <div id="taskModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Task</h3>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Contenuto dinamico -->
+      </div>
+      <div class="modal-footer">
+        <a class="modal-btn modal-glossary-link" href="#glossario">📖 Glossario</a>
+        <button class="modal-btn close-modal-btn">Chiudi</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="adminTokenModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Accesso Admin Docenti</h3>
+        <span class="close-admin-modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Inserisci il token docenti per aprire la guida riservata alla conduzione dei laboratori.</p>
+        <input class="token-input" id="adminTokenInput" type="password" placeholder="Token admin" autocomplete="off" />
+        <p class="token-error" id="adminTokenError">Token non valido. Controlla maiuscole, trattini e numeri.</p>
+        <a class="admin-open-link" id="adminOpenLink" href="admin-docenti.html" target="_blank" rel="noopener">Apri guida docenti</a>
+        <div class="modal-tip">
+          <p>Il token serve solo a separare la pagina docenti dalla pagina studenti. Non è una protezione di sicurezza avanzata.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn" id="cancelAdminToken">Annulla</button>
+        <button class="modal-btn" id="submitAdminToken">Entra</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sidebar toggle
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    // Scroll progress e navigazione attiva
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('.hero, .section');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+
+    function updateNavAndProgress() {
+      const scrollY = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const percent = Math.max(0, Math.min(100, Math.round((scrollY / docHeight) * 100)));
+      progressFill.style.width = percent + '%';
+      progressText.textContent = percent + '%';
+
+      let current = 'intro';
+      sections.forEach(section => {
+        const offsetTop = section.offsetTop - 120;
+        if (scrollY >= offsetTop) {
+          current = section.id || 'intro';
+        }
+      });
+
+      navItems.forEach(item => {
+        const href = item.getAttribute('href');
+        item.classList.toggle('active', href === '#' + current);
+      });
+    }
+
+    window.addEventListener('scroll', updateNavAndProgress);
+    updateNavAndProgress();
+
+    // Tab switching
+    document.querySelectorAll('.tabs-wrap').forEach(wrap => {
+      wrap.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          wrap.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          wrap.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+          btn.classList.add('active');
+          wrap.querySelector('#tab-' + btn.dataset.tab).classList.add('active');
+        });
+      });
+    });
+
+    // Checklist toggle
+    document.querySelectorAll('.checklist-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        item.classList.toggle('checked');
+      });
+    });
+
+    // ========================
+    // MODAL DATABASE - Contenuti per ogni task
+    // ========================
+    const modalContents = {
+      // AI LAB
+      ai1: {
+        title: "AI Lab · Task 1",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Creare un assistente AI unico per l'Expo del Futuro!</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Inventa un nome originale e facile da ricordare</li>
+            <li>Descrivi la personalità: è divertente? Seria? Entusiasta?</li>
+            <li>Qual è il suo ruolo principale? (es. guida, traduttore, animatore)</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Inventa 5 nomi creativi per un assistente AI di un'Expo sul futuro. Per ogni nome scrivi una breve personalità e ruolo."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Nome dell'assistente</li>
+            <li>3 aggettivi che lo descrivono</li>
+            <li>Missione in una frase</li>
+          </ul>
+        `
+      },
+      ai2: {
+        title: "AI Lab · Task 2",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Immaginare cosa chiederebbe un visitatore all'assistente AI.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Pensa a 10 domande che potrebbero fare bambini, adulti o insegnanti</li>
+            <li>Esempi: "Qual è il padiglione più divertente?" "Posso parlare con un robot?"</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Scrivi 10 domande che i visitatori di un'Expo del futuro potrebbero fare a un assistente AI. Dai un tono semplice e curioso."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Lista di 10 domande divise per categoria (bambini, adulti, scuole)</li>
+          </ul>
+        `
+      },
+      ai3: {
+        title: "AI Lab · Task 3",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Sperimentare come l'AI risponde e scegliere la risposta migliore.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Scegli 3 domande dal Task 2</li>
+            <li>Chiedi a ChatGPT o Gemini di rispondere in 3 modi diversi</li>
+            <li>Confronta le risposte e scegli quella più chiara e utile</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Rispondi a questa domanda [inserisci domanda] in 3 stili diversi: 1) semplice per bambini, 2) dettagliato per adulti, 3) divertente con emoji."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>3 risposte originali</li>
+            <li>Spiegazione della scelta</li>
+          </ul>
+        `
+      },
+      ai4: {
+        title: "AI Lab · Task 4",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Creare una mini guida su come usare bene l'AI.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Scrivi 5 regole semplici per parlare con l'AI</li>
+            <li>Esempi: "Fai domande precise", "Chiedi sempre alternative"</li>
+            <li>Aggiungi un esempio di prompt ben fatto e uno sbagliato</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Scrivi 5 regole per studenti su come usare al meglio ChatGPT per progetti scolastici. Includi esempi di prompt efficaci."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Mini promptbook (max 1 pagina)</li>
+          </ul>
+        `
+      },
+      // DIGITALE LAB
+      dig1: {
+        title: "Competenze Digitali · Task 1",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Disegnare la home page ideale dell'Expo.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Decidi quali elementi deve avere: mappa, assistente AI, orari, biglietti</li>
+            <li>Fai uno schizzo su carta o usando Canva</li>
+            <li>Pensa a colori e caratteri futuristici</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Descrivi la struttura ideale della home page di un'Expo sul futuro. Quali sezioni dovrebbe avere? Dai 5 suggerimenti."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Mockup (disegno o digitale) della home page</li>
+          </ul>
+        `
+      },
+      dig2: {
+        title: "Competenze Digitali · Task 2",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Creare una mappa semplice dell'Expo con 5 aree tematiche.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Scegli 5 aree: AI, Sport, Cultura, Ambiente, Scuola</li>
+            <li>Disegna la mappa indicando posizioni e percorsi</li>
+            <li>Aggiungi una legenda</li>
+          </ul>
+          <div class="modal-tip"><i class="fa-regular fa-lightbulb"></i> Puoi usare Google Draw, Canva o disegnare a mano e fotografare.</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Mappa dell'Expo con legenda</li>
+          </ul>
+        `
+      },
+      dig3: {
+        title: "Competenze Digitali · Task 3",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Scrivere testi brevi per QR code informativi.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Scegli 3 luoghi dell'Expo (es. Padiglione AI, Area Sport, Zona Cibo)</li>
+            <li>Per ognuno scrivi un testo di max 100 caratteri</li>
+            <li>Usa un linguaggio semplice e accattivante</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Scrivi 3 testi brevi (max 100 caratteri) per QR code informativi in un'Expo. Temi: robot, sport del futuro, cibo sostenibile."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>3 QR card (titolo + descrizione breve)</li>
+          </ul>
+        `
+      },
+      dig4: {
+        title: "Competenze Digitali · Task 4",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Progettare un badge digitale per i visitatori dell'Expo.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Decidi quali informazioni deve contenere: nome, data, area preferita</li>
+            <li>Scegli colori, logo e uno sfondo futuristico</li>
+            <li>Puoi usare Canva o disegnarlo a mano</li>
+          </ul>
+          <div class="modal-tip"><i class="fa-regular fa-lightbulb"></i> I badge possono essere colorati in base all'area tematica scelta dal visitatore!</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Modello di badge digitale</li>
+          </ul>
+        `
+      },
+      // INGLESE LAB
+      eng1: {
+        title: "Inglese · Task 1",
+        content: `
+          <h4>🎯 Goal</h4>
+          <p>Write a short welcome speech for international visitors.</p>
+          <h4>💡 What to do</h4>
+          <ul>
+            <li>Start with "Welcome to Global Future Expo 2035"</li>
+            <li>Introduce the main themes: technology, culture, environment</li>
+            <li>End with an invitation to explore</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggestion: "Write a 100-word welcome speech for an international expo about the future. Use simple, friendly English."</div>
+          <h4>📦 Output</h4>
+          <ul>
+            <li>A welcome speech in English</li>
+          </ul>
+        `
+      },
+      eng2: {
+        title: "Inglese · Task 2",
+        content: `
+          <h4>🎯 Goal</h4>
+          <p>Create 5 slogans in English for the Expo.</p>
+          <h4>💡 What to do</h4>
+          <ul>
+            <li>Each slogan should be short and catchy</li>
+            <li>Examples: "Future starts here" "Innovation for everyone"</li>
+            <li>Add Italian translation for each</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggestion: "Create 10 catchy slogans for a future expo. Choose the best 5 and translate them into Italian."</div>
+          <h4>📦 Output</h4>
+          <ul>
+            <li>5 English slogans + Italian translation</li>
+          </ul>
+        `
+      },
+      eng3: {
+        title: "Inglese · Task 3",
+        content: `
+          <h4>🎯 Goal</h4>
+          <p>Prepare a short interview: journalist + student inventor.</p>
+          <h4>💡 What to do</h4>
+          <ul>
+            <li>Write 5 questions from the journalist</li>
+            <li>Write 5 answers from the student inventor</li>
+            <li>Topic: an invention for the future</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggestion: "Write a short interview between a journalist and a student who invented something for a future expo. 5 questions and answers."</div>
+          <h4>📦 Output</h4>
+          <ul>
+            <li>Interview script</li>
+          </ul>
+        `
+      },
+      eng4: {
+        title: "Inglese · Task 4",
+        content: `
+          <h4>🎯 Goal</h4>
+          <p>Create social captions for the opening day.</p>
+          <h4>💡 What to do</h4>
+          <ul>
+            <li>Write 3 short captions for Instagram/TikTok</li>
+            <li>Use emojis and hashtags: #FutureExpo2035</li>
+            <li>Keep them under 150 characters</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggestion: "Write 3 engaging social media captions for the opening day of a future expo. Use emojis and hashtags."</div>
+          <h4>📦 Output</h4>
+          <ul>
+            <li>3 social captions in English</li>
+          </ul>
+        `
+      },
+      // ITALIANO LAB
+      ita1: {
+        title: "Italiano · Task 1",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Scrivere il Manifesto del Global Future Expo 2035.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Il manifesto è un testo che dichiara i valori dell'evento</li>
+            <li>Usa frasi brevi e potenti</li>
+            <li>Parla di futuro, innovazione, inclusione, sostenibilità</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Scrivi un manifesto per un'Expo sul futuro. Usa 8-10 frasi che parlino di innovazione, sostenibilità, inclusione e speranza."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Manifesto ufficiale (8-10 frasi)</li>
+          </ul>
+        `
+      },
+      ita2: {
+        title: "Italiano · Task 2",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Creare un articolo per il giornale ufficiale dell'Expo.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Titolo accattivante</li>
+            <li>Descrivi un momento speciale dell'Expo</li>
+            <li>Lunghezza: circa 150 parole</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Scrivi un breve articolo di giornale (150 parole) su una giornata al Global Future Expo 2035. Usa un tono entusiasta."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Articolo con titolo</li>
+          </ul>
+        `
+      },
+      ita3: {
+        title: "Italiano · Task 3",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Inventare una breve storia ambientata all'Expo.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Protagonista: un bambino, una famiglia o un inventore</li>
+            <li>"Il mio primo giorno all'Expo del Futuro"</li>
+            <li>Descrivi un incontro, una scoperta o un'emozione</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Inventa una breve storia (200 parole) dal titolo 'Il mio primo giorno all'Expo del Futuro'. Usa un tono semplice e immaginativo."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Racconto di max 200 parole</li>
+          </ul>
+        `
+      },
+      ita4: {
+        title: "Italiano · Task 4",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Migliorare i propri testi con l'aiuto dell'AI.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Prendi il Manifesto o l'articolo che hai scritto</li>
+            <li>Chiedi all'AI di migliorare stile, chiarezza, titolo</li>
+            <li>Confronta la versione originale con quella migliorata</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Ecco il mio testo [incolla testo]. Puoi migliorare lo stile, rendere le frasi più chiare e suggerire un titolo migliore?"</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Testo originale e versione migliorata</li>
+            <li>Breve spiegazione dei cambiamenti</li>
+          </ul>
+        `
+      },
+      // MATEMATICA LAB
+      mat1: {
+        title: "Matematica · Task 1",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Stimare quanti visitatori arriveranno all'Expo in 3 giorni.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Decidi una capienza massima per giorno (es. 5000 persone)</li>
+            <li>Calcola il totale nei 3 giorni</li>
+            <li>Dividi i visitatori per fasce: bambini, adulti, anziani</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Aiutami a stimare i visitatori di un'Expo di 3 giorni. Capacità massima 6000 al giorno. Quanti visitatori totali? E come li divido per età?"</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Tabella con numeri e percentuali</li>
+          </ul>
+        `
+      },
+      mat2: {
+        title: "Matematica · Task 2",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Creare un piccolo budget per l'Expo.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Decidi le voci di spesa: biglietti, materiali, stand, comunicazione</li>
+            <li>Assegna un costo fittizio a ogni voce (es. 500€ per i materiali)</li>
+            <li>Calcola il totale e il costo per visitatore</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Creiamo un semplice budget per un'Expo scolastica. Voci: biglietti (200€), stand (300€), materiali (150€), comunicazione (100€). Calcola totale e costo per 500 visitatori."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Tabella del budget</li>
+          </ul>
+        `
+      },
+      mat3: {
+        title: "Matematica · Task 3",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Dividere gli spazi tra i padiglioni usando percentuali.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Hai 10.000 mq quadrati totali</li>
+            <li>Assegna percentuali a 5 padiglioni: AI (30%), Sport (20%), Cultura (20%), Ambiente (15%), Scuola (15%)</li>
+            <li>Calcola i mq per ogni padiglione</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Ho 10.000 mq per un'Expo. Assegna percentuali a 5 aree e calcola i mq di ciascuna."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Tabella con percentuali e mq</li>
+          </ul>
+        `
+      },
+      mat4: {
+        title: "Matematica · Task 4",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Creare un grafico semplice e spiegarlo.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Scegli i dati dal Task 1, 2 o 3</li>
+            <li>Disegna un grafico a barre o a torta (manualmente o con Canva)</li>
+            <li>Scrivi 3 frasi che spiegano cosa dice il grafico</li>
+          </ul>
+          <div class="modal-tip"><i class="fa-regular fa-lightbulb"></i> Puoi usare foglio di calcolo o disegnare a mano e fotografare.</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Grafico + spiegazione scritta</li>
+          </ul>
+        `
+      },
+      // LINGUE LAB
+      lin1: {
+        title: "Lingue Comunitarie · Task 1",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Scegliere 3 paesi europei e creare una mini scheda per ciascuno.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Per ogni paese: capitale, lingua, un piatto tipico, un'invenzione famosa</li>
+            <li>Aggiungi una curiosità sul futuro di quel paese</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Crea una mini scheda per Francia, Germania e Spagna per un'Expo. Per ognuno: capitale, lingua, piatto tipico, invenzione famosa."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>3 schede paese (max 1 pagina)</li>
+          </ul>
+        `
+      },
+      lin2: {
+        title: "Lingue Comunitarie · Task 2",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Tradurre 10 frasi utili per accogliere i visitatori.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Frasi: "Benvenuto", "Dov'è il bagno?", "Quanto costa?", "Aiuto", "Grazie"</li>
+            <li>Traduci in francese, tedesco, spagnolo (o altre lingue a scelta)</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Traduci queste 10 frasi in francese, tedesco e spagnolo: [lista frasi]."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Tabella con frasi nelle 3 lingue</li>
+          </ul>
+        `
+      },
+      lin3: {
+        title: "Lingue Comunitarie · Task 3",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Creare il "Future Expo Passport" con timbri e tappe.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Disegna un passaporto con 5 tappe (es. Padiglione AI, Area Sport, Zona Cultura)</li>
+            <li>Ogni tappa ha uno spazio per un timbro</li>
+            <li>Crea 5 timbri simbolici</li>
+          </ul>
+          <div class="modal-tip"><i class="fa-regular fa-lightbulb"></i> Puoi disegnare a mano o usare Canva per creare il passaporto.</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Passaporto con tappe e timbri</li>
+          </ul>
+        `
+      },
+      lin4: {
+        title: "Lingue Comunitarie · Task 4",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Scrivere un dialogo tra visitatore e staff internazionale.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Un turista straniero chiede informazioni in inglese/francese/tedesco</li>
+            <li>Lo staff risponde nella stessa lingua</li>
+            <li>Il dialogo deve includere 6 scambi</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Scrivi un dialogo di 6 battute tra un turista francese e un membro dello staff in un'Expo. Il turista chiede dove si trova il padiglione dell'AI."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Dialogo bilingue (italiano + lingua scelta)</li>
+          </ul>
+        `
+      },
+      // COMUNICAZIONE LAB
+      com1: {
+        title: "Comunicazione Efficace · Task 1",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Scrivere lo script dell'Opening Ceremony.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Apertura: benvenuto e presentazione dell'evento</li>
+            <li>Interventi: 3-4 persone che parlano (max 1 minuto ciascuno)</li>
+            <li>Chiusura: frase simbolica e invito a visitare l'Expo</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Scrivi lo script di un'Opening Ceremony per un'Expo del futuro. Durata 5 minuti. Includi benvenuto, 3 interventi e chiusura."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Script completo della cerimonia</li>
+          </ul>
+        `
+      },
+      com2: {
+        title: "Comunicazione Efficace · Task 2",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Creare 5 domande per una conferenza stampa.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Immagina di essere un giornalista</li>
+            <li>Domande su: sicurezza, costi, innovazione, accessibilità, futuro</li>
+            <li>Scrivi anche le risposte che darebbe l'organizzatore</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Scrivi 5 domande per una conferenza stampa di un'Expo. Temi: innovazione, sostenibilità, costi, sicurezza, inclusione. Aggiungi risposte brevi."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>5 domande + risposte</li>
+          </ul>
+        `
+      },
+      com3: {
+        title: "Comunicazione Efficace · Task 3",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Preparare la scaletta dell'evento: chi parla, quando, per quanto tempo.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Durata totale: 30 minuti</li>
+            <li>Assegna tempo a ogni intervento (es. apertura 3 min, discorsi 5 min ciascuno)</li>
+            <li>Includi momenti di pausa e musica</li>
+          </ul>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Crea una scaletta di 30 minuti per l'apertura di un'Expo. Includi: benvenuto, 4 discorsi, pausa musicale, chiusura."</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Scaletta con orari</li>
+          </ul>
+        `
+      },
+      com4: {
+        title: "Comunicazione Efficace · Task 4",
+        content: `
+          <h4>🎯 Obiettivo</h4>
+          <p>Allenare tono di voce, postura, chiarezza e tempi.</p>
+          <h4>💡 Cosa fare</h4>
+          <ul>
+            <li>Scegli una persona del gruppo che parlerà</li>
+            <li>Prova a leggere lo script ad alta voce</li>
+            <li>Usa un timer per rispettare i tempi</li>
+            <li>Fai attenzione a: parlare piano, guardare il pubblico, non leggere troppo veloce</li>
+          </ul>
+          <div class="modal-tip"><i class="fa-regular fa-lightbulb"></i> Registrati con il telefono per ascoltare la tua voce e migliorare!</div>
+          <h4>📦 Output atteso</h4>
+          <ul>
+            <li>Prova registrata (video o audio)</li>
+            <li>Autovalutazione: 3 cose buone e 3 da migliorare</li>
+          </ul>
+        `
+      }
+    };
+
+    function levelModalContent(data) {
+      return `
+        <p>${data.objective}</p>
+        <h4>🧭 Procedura step by step</h4>
+        <ol>
+          ${data.steps.map(step => `<li>${step}</li>`).join('')}
+        </ol>
+        <h4>🤖 Prompt AI suggerito</h4>
+        <div class="modal-prompt">${data.prompt}</div>
+        <h4>✅ Controllo prima della consegna</h4>
+        <ul>
+          ${data.check.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+        <h4>📦 Output atteso</h4>
+        <ul>
+          ${data.output.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+      `;
+    }
+
+    Object.assign(modalContents, {
+      "ai-base": {
+        title: "AI Lab · Modulo 1 · Identità (1ª media)",
+        content: levelModalContent({
+          objective: "Create un assistente AI semplice e riconoscibile, capace di rispondere alle prime domande dei visitatori del Global Future Expo 2035.",
+          steps: [
+            "Scegliete un nome breve e facile da ricordare.",
+            "Descrivete l'aspetto dell'assistente: colori, simbolo, voce, carattere.",
+            "Scrivete il suo ruolo in una frase: che cosa aiuta a fare?",
+            "Inventate 5 domande semplici che un visitatore potrebbe fare.",
+            "Scrivete un mini dialogo con almeno 3 scambi tra visitatore e assistente.",
+            "Rileggete: le risposte devono essere gentili, brevi e comprensibili."
+          ],
+          prompt: "Siamo studenti di 1a media. Aiutaci a inventare un assistente AI per il Global Future Expo 2035. Deve avere nome, personalità, ruolo e 5 domande semplici dei visitatori. Usa parole facili e tono positivo.",
+          check: ["Il nome è chiaro.", "Il ruolo dell'assistente si capisce subito.", "Le domande sono realistiche.", "Il dialogo è breve e ordinato."],
+          output: ["Identikit dell'assistente AI.", "5 domande dei visitatori.", "Mini dialogo visitatore-assistente."]
+        })
+      },
+      "ai-intermedio": {
+        title: "AI Lab · Modulo 2 · Knowledge & FAQ (2ª media)",
+        content: levelModalContent({
+          objective: "Costruite una piccola FAQ dell'assistente AI, controllando che le risposte siano utili, corrette e coerenti con l'Expo.",
+          steps: [
+            "Dividete le domande in categorie: orari, padiglioni, lingue, sostenibilità, aiuto pratico.",
+            "Scrivete 10 domande frequenti dei visitatori.",
+            "Chiedete all'AI tre versioni di risposta per alcune domande.",
+            "Scegliete la risposta migliore e spiegate perché.",
+            "Riscrivete le risposte con parole vostre.",
+            "Create 3 regole per far rispondere bene l'assistente."
+          ],
+          prompt: "Siamo studenti di 2a media. Crea 10 FAQ per un assistente AI del Global Future Expo 2035. Per ogni domanda scrivi una risposta breve, gentile e utile. Poi suggerisci 3 regole per mantenere un tono chiaro e responsabile.",
+          check: ["Le 10 domande coprono bisogni diversi.", "Le risposte non sono troppo lunghe.", "Avete modificato le risposte dell'AI.", "Le 3 regole sono applicabili."],
+          output: ["FAQ con 10 domande e risposte.", "3 regole di tono e comportamento.", "Breve spiegazione delle scelte."]
+        })
+      },
+      "ai-avanzato": {
+        title: "AI Lab · Modulo 3 · Promptbook & regole (3ª media)",
+        content: levelModalContent({
+          objective: "Progettate il promptbook dell'assistente AI: una guida operativa che spiega come deve rispondere, che cosa può fare e quali limiti deve rispettare.",
+          steps: [
+            "Definite missione, utenti principali e tono di voce dell'assistente.",
+            "Scrivete 5 casi d'uso: orientamento, informazioni, traduzioni, sostenibilità, emergenze leggere.",
+            "Create un prompt principale che istruisca l'assistente.",
+            "Aggiungete limiti chiari: cosa non deve inventare, cosa deve chiedere se non sa.",
+            "Testate il prompt con 3 domande facili e 2 domande difficili.",
+            "Revisionate il promptbook dopo il test."
+          ],
+          prompt: "Agisci come consulente AI. Aiutaci a creare il promptbook per un assistente del Global Future Expo 2035. Deve includere missione, tono di voce, 5 casi d'uso, limiti, regole etiche e un esempio di conversazione complessa.",
+          check: ["Il prompt principale è chiaro.", "Sono presenti limiti e regole etiche.", "Gli esempi dimostrano come funziona l'assistente.", "Avete indicato cosa fare quando l'AI non sa rispondere."],
+          output: ["Promptbook operativo.", "5 casi d'uso.", "Esempio di conversazione complessa.", "Regole etiche dell'assistente."]
+        })
+      },
+      "dig-base": {
+        title: "Competenze Digitali · Modulo 1 · Mappa dell'Expo (1ª media)",
+        content: levelModalContent({
+          objective: "Disegnate una mappa semplice dell'Expo che aiuti i visitatori a orientarsi senza confusione.",
+          steps: [
+            "Scegliete 5 aree dell'Expo: AI, Sport, Cultura, Ambiente, Scuola.",
+            "Disegnate ogni area con un colore e un'icona.",
+            "Aggiungete ingresso, uscita, info point e servizi.",
+            "Scrivete una descrizione di massimo 10 parole per ogni area.",
+            "Create una legenda chiara.",
+            "Controllate se un visitatore capirebbe dove andare."
+          ],
+          prompt: "Siamo studenti di 1a media. Aiutaci a progettare una mappa semplice del Global Future Expo 2035 con 5 aree, icone, colori e brevi descrizioni. Deve essere facile da capire per visitatori e famiglie.",
+          check: ["Ci sono 5 aree visibili.", "I colori aiutano a distinguere gli spazi.", "La legenda è chiara.", "Le descrizioni sono brevi."],
+          output: ["Mappa visuale dell'Expo.", "Legenda.", "5 descrizioni brevi."]
+        })
+      },
+      "dig-intermedio": {
+        title: "Competenze Digitali · Modulo 2 · Identità digitale (2ª media)",
+        content: levelModalContent({
+          objective: "Progettate tre strumenti digitali collegati: home page, QR card e badge visitatore.",
+          steps: [
+            "Definite cosa deve vedere un visitatore appena apre la home page.",
+            "Disegnate il mockup con titolo, menu, immagine/area centrale e pulsanti principali.",
+            "Create 3 QR card: titolo, descrizione, informazione utile.",
+            "Progettate un badge digitale con nome, ruolo e simbolo dell'Expo.",
+            "Usate lo stesso stile grafico per tutti i materiali.",
+            "Verificate che testi e pulsanti siano leggibili."
+          ],
+          prompt: "Siamo studenti di 2a media. Aiutaci a progettare home page, 3 QR card e badge digitale per il Global Future Expo 2035. Suggerisci contenuti, ordine delle informazioni e stile grafico coerente.",
+          check: ["Home, QR card e badge sembrano parte dello stesso evento.", "Le informazioni principali sono facili da trovare.", "Il testo è breve e leggibile.", "Il badge identifica bene il visitatore."],
+          output: ["Mockup home page.", "3 QR card.", "Badge digitale.", "Breve spiegazione dello stile scelto."]
+        })
+      },
+      "dig-avanzato": {
+        title: "Competenze Digitali · Modulo 3 · Percorso utente (3ª media)",
+        content: levelModalContent({
+          objective: "Costruite il percorso digitale completo di un visitatore, dall'arrivo all'uscita dall'Expo.",
+          steps: [
+            "Scegliete un tipo di visitatore: studente, famiglia, giornalista, docente.",
+            "Descrivete 6 momenti del percorso: arrivo, registrazione, orientamento, visita, interazione, uscita.",
+            "Indicate per ogni momento quale strumento digitale serve.",
+            "Disegnate uno storyboard o un prototipo a schermate.",
+            "Individuate un possibile problema e proponete una soluzione.",
+            "Presentate il percorso in modo sintetico al resto del gruppo."
+          ],
+          prompt: "Agisci come UX designer. Aiutaci a progettare il percorso digitale di un visitatore del Global Future Expo 2035: arrivo, registrazione, mappa, visita ai padiglioni, QR code, badge e uscita. Includi problemi possibili e soluzioni.",
+          check: ["Il percorso ha un inizio e una fine.", "Ogni passaggio ha uno strumento digitale.", "Avete previsto almeno un problema reale.", "La soluzione è semplice da spiegare."],
+          output: ["User journey.", "Storyboard o prototipo.", "Problema + soluzione.", "Sintesi per presentazione."]
+        })
+      },
+      "eng-base": {
+        title: "Inglese · Modulo 1 · Welcome kit (1ª media)",
+        content: levelModalContent({
+          objective: "Create una welcome card in inglese per accogliere i visitatori internazionali con frasi semplici.",
+          steps: [
+            "Scrivete un saluto iniziale in inglese.",
+            "Aggiungete 3 frasi per spiegare che cos'è l'Expo.",
+            "Scrivete 5 frasi utili per accogliere o aiutare un visitatore.",
+            "Aggiungete la traduzione italiana.",
+            "Controllate spelling e pronuncia.",
+            "Provate a leggere il testo ad alta voce."
+          ],
+          prompt: "We are first-year middle school students. Help us write a simple welcome card in English for Global Future Expo 2035. Use easy words, short sentences, 5 useful visitor phrases, and include Italian translation.",
+          check: ["Le frasi sono brevi.", "La traduzione italiana è presente.", "Sapete pronunciare le parole principali.", "Il messaggio è gentile."],
+          output: ["Welcome card in English.", "Traduzione italiana.", "5 useful visitor phrases."]
+        })
+      },
+      "eng-intermedio": {
+        title: "Inglese · Modulo 2 · Speech & slogan (2ª media)",
+        content: levelModalContent({
+          objective: "Scrivete uno speech di benvenuto e 5 slogan per presentare l'Expo a un pubblico internazionale.",
+          steps: [
+            "Scrivete un'apertura con saluto e nome dell'evento.",
+            "Spiegate in 4-5 frasi perché l'Expo è importante.",
+            "Aggiungete una frase conclusiva forte.",
+            "Create 5 slogan brevi in inglese.",
+            "Scegliete lo slogan migliore e motivate la scelta.",
+            "Provate lo speech ad alta voce segnando pause e parole difficili."
+          ],
+          prompt: "We are second-year middle school students. Write a short welcome speech for Global Future Expo 2035 and 5 English slogans. Use clear language, a positive tone, and add pronunciation tips for difficult words.",
+          check: ["Lo speech ha inizio, sviluppo e chiusura.", "Gli slogan sono brevi.", "Avete scelto lo slogan migliore.", "Avete provato la lettura."],
+          output: ["Welcome speech.", "5 slogans.", "Traduzione o note lessicali.", "Rehearsal notes."]
+        })
+      },
+      "eng-avanzato": {
+        title: "Inglese · Modulo 3 · Press kit (3ª media)",
+        content: levelModalContent({
+          objective: "Create un mini press kit in inglese con intervista, social captions e testo ufficiale per raccontare l'Expo al mondo.",
+          steps: [
+            "Definite il pubblico: visitors, journalists, schools, families.",
+            "Scrivete una breve descrizione ufficiale dell'Expo.",
+            "Preparate 6 domande e risposte per un'intervista.",
+            "Create 4 social captions con tono diverso.",
+            "Controllate lessico, tempi verbali e coerenza.",
+            "Scegliete due contenuti da presentare oralmente."
+          ],
+          prompt: "Act as an English communication coach. Help us create a mini press kit for Global Future Expo 2035: official description, 6 interview questions and answers, 4 social captions, and vocabulary suggestions for third-year middle school students.",
+          check: ["Il press kit ha più formati comunicativi.", "L'inglese è chiaro e controllato.", "Le risposte dell'intervista sono realistiche.", "I social captions hanno tono adatto."],
+          output: ["Official description.", "Interview script.", "4 social captions.", "Vocabulary list."]
+        })
+      },
+      "ita-base": {
+        title: "Italiano · Base · 1a media",
+        content: levelModalContent({
+          objective: "Scrivete una descrizione chiara della città del futuro e un manifesto breve con frasi semplici ma significative.",
+          steps: [
+            "Scegliete 5 parole chiave della vostra città: tecnologia, ambiente, sport, cultura, scuola.",
+            "Scrivete una descrizione di 8-10 righe.",
+            "Create 6 frasi per il manifesto, una per ogni valore importante.",
+            "Aggiungete un titolo forte.",
+            "Chiedete all'AI di suggerire parole più chiare, non di scrivere al posto vostro.",
+            "Riscrivete la versione finale con parole vostre."
+          ],
+          prompt: "Siamo studenti di 1a media. Aiutaci a migliorare una descrizione della città del futuro e un manifesto in 6 frasi per il Global Future Expo 2035. Usa parole chiare e suggerisci titoli, ma lasciaci riscrivere il testo finale.",
+          check: ["Il testo descrive una città precisa.", "Il manifesto ha 6 frasi.", "Il titolo è efficace.", "Avete riscritto con parole vostre."],
+          output: ["Descrizione della città.", "Manifesto in 6 frasi.", "Titolo."]
+        })
+      },
+      "ita-intermedio": {
+        title: "Italiano · Modulo 1 · Manifesto & giornale (2ª media)",
+        content: levelModalContent({
+          objective: "Scrivete un articolo per il giornale ufficiale dell'Expo con struttura giornalistica semplice.",
+          steps: [
+            "Scegliete la notizia: apertura, padiglione speciale, robot guida, cerimonia.",
+            "Scrivete titolo e occhiello.",
+            "Aprite l'articolo rispondendo a chi, che cosa, dove, quando, perché.",
+            "Inserite una citazione inventata ma credibile.",
+            "Chiudete con una frase che guarda al futuro.",
+            "Revisionate chiarezza, punteggiatura e ripetizioni."
+          ],
+          prompt: "Siamo studenti di 2a media. Aiutaci a scrivere un articolo giornalistico sul Global Future Expo 2035. Deve avere titolo, occhiello, apertura con 5W, una citazione e una conclusione. Suggerisci una scaletta chiara.",
+          check: ["Titolo e occhiello sono presenti.", "Le 5W sono riconoscibili.", "La citazione è coerente.", "La conclusione non è generica."],
+          output: ["Articolo breve.", "Titolo e occhiello.", "Citazione.", "Versione revisionata."]
+        })
+      },
+      "ita-avanzato": {
+        title: "Italiano · Modulo 2 · Storytelling 2035 (3ª media)",
+        content: levelModalContent({
+          objective: "Costruite uno storytelling completo ambientato nel 2035, con personaggio, problema, scelta e messaggio finale.",
+          steps: [
+            "Inventate un protagonista e il suo obiettivo all'Expo.",
+            "Definite un problema o una sfida da risolvere.",
+            "Scegliete 3 scene: arrivo, difficoltà, soluzione.",
+            "Inserite dettagli sensoriali: suoni, luci, tecnologie, persone.",
+            "Scrivete un finale con un messaggio sul futuro.",
+            "Chiedete all'AI una revisione dello stile e poi decidete cosa accettare."
+          ],
+          prompt: "Agisci come editor narrativo. Aiutaci a costruire uno storytelling ambientato al Global Future Expo 2035 con protagonista, conflitto, 3 scene, dettagli sensoriali e messaggio finale. Non scrivere tutto: dammi scaletta e suggerimenti di stile.",
+          check: ["Il protagonista ha un obiettivo.", "C'è un problema da risolvere.", "Le scene sono collegate.", "Il finale comunica un messaggio."],
+          output: ["Racconto o podcast script.", "Scaletta narrativa.", "Revisione stilistica.", "Titolo finale."]
+        })
+      },
+      "mat-base": {
+        title: "Matematica · Modulo 1 · Stima visitatori (1ª media)",
+        content: levelModalContent({
+          objective: "Stimate i visitatori dell'Expo in 3 giorni e rappresentate i dati con una tabella e un grafico semplice.",
+          steps: [
+            "Scegliete un numero realistico di visitatori per il giorno 1.",
+            "Decidete se nei giorni 2 e 3 aumentano o diminuiscono.",
+            "Create una tabella con giorno e visitatori.",
+            "Calcolate il totale dei 3 giorni.",
+            "Disegnate un grafico a barre.",
+            "Scrivete 2 frasi per spiegare cosa mostra il grafico."
+          ],
+          prompt: "Siamo studenti di 1a media. Aiutaci a creare dati realistici sui visitatori del Global Future Expo 2035 per 3 giorni. Proponi una tabella semplice, il totale e come rappresentarla con un grafico a barre.",
+          check: ["I numeri sono realistici.", "Il totale è corretto.", "Il grafico ha titolo e legenda.", "Le 2 frasi spiegano i dati."],
+          output: ["Tabella visitatori.", "Totale dei visitatori.", "Grafico a barre.", "Commento in 2 frasi."]
+        })
+      },
+      "mat-intermedio": {
+        title: "Matematica · Modulo 2 · Budget & spazi (2ª media)",
+        content: levelModalContent({
+          objective: "Create budget e distribuzione degli spazi dell'Expo, usando percentuali e grafici per motivare le decisioni.",
+          steps: [
+            "Stabilite un budget totale simbolico.",
+            "Dividetelo in 4 categorie: materiali, stand, comunicazione, tecnologia.",
+            "Calcolate percentuali o quote per ogni categoria.",
+            "Dividete anche gli spazi tra i padiglioni.",
+            "Create un grafico a torta o a barre.",
+            "Scrivete 3 decisioni spiegate con i numeri."
+          ],
+          prompt: "Siamo studenti di 2a media. Aiutaci a creare un budget simbolico e una distribuzione percentuale degli spazi per il Global Future Expo 2035. Includi tabella, percentuali, grafico consigliato e 3 decisioni motivate dai dati.",
+          check: ["Il budget torna con il totale.", "Le percentuali sono comprensibili.", "Il grafico è coerente con i dati.", "Le decisioni usano numeri, non opinioni generiche."],
+          output: ["Budget diviso per categorie.", "Percentuali degli spazi.", "Grafico.", "3 decisioni motivate."]
+        })
+      },
+      "mat-avanzato": {
+        title: "Matematica · Modulo 3 · Dashboard finale (3ª media)",
+        content: levelModalContent({
+          objective: "Progettate una mini dashboard con indicatori utili per gestire l'Expo e prendere decisioni.",
+          steps: [
+            "Scegliete 5 indicatori: visitatori, costi, affollamento, sostenibilità, soddisfazione.",
+            "Create un dato o una scala per ogni indicatore.",
+            "Stabilite quando un dato è buono, medio o critico.",
+            "Rappresentate gli indicatori in una tabella o dashboard.",
+            "Individuate 2 problemi possibili leggendo i dati.",
+            "Proponete 2 decisioni operative basate sui numeri."
+          ],
+          prompt: "Agisci come data analyst. Aiutaci a progettare una mini dashboard per il Global Future Expo 2035 con 5 indicatori, soglie buono/medio/critico, tabella dati, problemi possibili e decisioni operative basate sui numeri.",
+          check: ["Gli indicatori sono utili.", "Le soglie sono spiegate.", "I problemi derivano dai dati.", "Le decisioni sono motivate."],
+          output: ["Mini dashboard.", "Tabella indicatori.", "2 problemi individuati.", "2 decisioni operative."]
+        })
+      },
+      "lin-base": {
+        title: "Lingue Comunitarie · Base · 1a media",
+        content: levelModalContent({
+          objective: "Create un welcome kit multilingua semplice per accogliere visitatori di diversi paesi europei.",
+          steps: [
+            "Scegliete 2 o 3 paesi europei.",
+            "Per ogni paese indicate bandiera, capitale e una curiosità culturale.",
+            "Scrivete saluto, grazie e benvenuto nella lingua scelta.",
+            "Aggiungete 2 frasi utili per i visitatori.",
+            "Controllate pronuncia e accenti.",
+            "Impaginate tutto in una mini scheda ordinata."
+          ],
+          prompt: "Siamo studenti di 1a media. Aiutaci a creare un welcome kit multilingua per 3 paesi europei: saluti, parole utili, capitale, bandiera e una curiosità culturale. Usa frasi semplici e aggiungi pronuncia facile.",
+          check: ["Ogni paese ha una scheda.", "Le parole sono scritte correttamente.", "La pronuncia è indicata.", "Le frasi sono utili all'accoglienza."],
+          output: ["Welcome kit multilingua.", "Mini schede paese.", "Parole e frasi utili."]
+        })
+      },
+      "lin-intermedio": {
+        title: "Lingue Comunitarie · Modulo 1 · Future Expo Passport (2ª media · 6 studenti)",
+        content: levelModalContent({
+          objective: "Create il Future Expo Passport, un passaporto di visita con tappe, timbri e frasi multilingue.",
+          steps: [
+            "Decidete 5 tappe dell'Expo da inserire nel passaporto.",
+            "Create un timbro o simbolo per ogni tappa.",
+            "Scrivete una consegna breve per ogni tappa.",
+            "Traducete 10 frasi utili per i visitatori.",
+            "Aggiungete uno spazio per nome visitatore e completamento tappe.",
+            "Controllate che il passaporto sia chiaro e usabile."
+          ],
+          prompt: "Siamo studenti di 2a media. Aiutaci a progettare un Future Expo Passport con 5 tappe, timbri, consegne brevi e 10 frasi utili tradotte in una lingua europea. Deve essere semplice da usare durante la visita.",
+          check: ["Ci sono 5 tappe.", "Ogni tappa ha una consegna.", "Le 10 frasi sono utili.", "Il passaporto guida davvero la visita."],
+          output: ["Future Expo Passport.", "5 tappe con timbri.", "10 frasi tradotte.", "Istruzioni per il visitatore."]
+        })
+      },
+      "lin-avanzato": {
+        title: "Lingue Comunitarie · Modulo 2 · Dialoghi & accoglienza (gruppo misto 1ª/3ª · 3 studenti)",
+        content: levelModalContent({
+          objective: "Scrivete role-play realistici per gestire visitatori internazionali, richieste pratiche e piccoli problemi.",
+          steps: [
+            "Scegliete 3 situazioni: richiesta informazioni, problema di orientamento, visita a uno stand.",
+            "Definite i ruoli: staff, visitatore, accompagnatore, traduttore.",
+            "Scrivete dialoghi brevi ma realistici.",
+            "Inserite formule di cortesia e almeno 8 parole chiave.",
+            "Aggiungete una mini guida interculturale: cosa dire, cosa evitare.",
+            "Provate il role-play ad alta voce."
+          ],
+          prompt: "Agisci come coach linguistico interculturale. Aiutaci a creare 3 role-play per il Global Future Expo 2035 tra staff e visitatori internazionali. Includi richieste, problemi, soluzioni, formule di cortesia e una mini guida interculturale.",
+          check: ["I dialoghi hanno una situazione chiara.", "Le formule di cortesia sono presenti.", "Il problema viene risolto.", "La guida interculturale è concreta."],
+          output: ["3 role-play.", "Glossario di parole chiave.", "Mini guida interculturale.", "Prova orale."]
+        })
+      },
+      "com-base": {
+        title: "Comunicazione · Base · 1a media",
+        content: levelModalContent({
+          objective: "Preparate un pitch breve per raccontare il vostro laboratorio in modo chiaro e sicuro.",
+          steps: [
+            "Scrivete chi siete e quale laboratorio rappresentate.",
+            "Spiegate in una frase la vostra missione.",
+            "Mostrate che cosa avete creato.",
+            "Dite perché il vostro contributo è utile all'Expo.",
+            "Chiudete con una frase forte.",
+            "Provate il pitch cronometrando 45 secondi."
+          ],
+          prompt: "Siamo studenti di 1a media. Aiutaci a scrivere un pitch di 45 secondi per presentare il nostro laboratorio del Global Future Expo 2035. Deve dire chi siamo, cosa abbiamo creato e perché è utile.",
+          check: ["Il pitch dura circa 45 secondi.", "Si capisce il laboratorio.", "La voce finale è forte.", "Tutti sanno cosa dire."],
+          output: ["Pitch da 45 secondi.", "Scaletta in 5 punti.", "Prova orale."]
+        })
+      },
+      "com-intermedio": {
+        title: "Comunicazione · Modulo 1 · Script & conferenza stampa (2ª media)",
+        content: levelModalContent({
+          objective: "Scrivete una parte dello script dell'Opening Ceremony e preparate domande per una conferenza stampa.",
+          steps: [
+            "Scegliete quale momento della cerimonia scrivere: apertura, presentazione lab, chiusura.",
+            "Scrivete lo script con battute brevi e chiare.",
+            "Indicate chi parla e in quale ordine.",
+            "Create 5 domande da giornalisti.",
+            "Preparate risposte brevi ma complete.",
+            "Provate lo script ad alta voce con ruoli assegnati."
+          ],
+          prompt: "Siamo studenti di 2a media. Aiutaci a scrivere una parte dello script dell'Opening Ceremony del Global Future Expo 2035 e 5 domande con risposte per una conferenza stampa. Usa tono chiaro, coinvolgente e realistico.",
+          check: ["Lo script indica chi parla.", "Le battute sono brevi.", "Le domande sono realistiche.", "Le risposte spiegano bene il progetto."],
+          output: ["Script breve.", "5 domande e risposte.", "Ruoli degli speaker.", "Prova orale."]
+        })
+      },
+      "com-avanzato": {
+        title: "Comunicazione · Modulo 2 · Scaletta & regia (3ª media)",
+        content: levelModalContent({
+          objective: "Coordinate la regia comunicativa della presentazione finale: tempi, passaggi, speaker e ritmo.",
+          steps: [
+            "Elencate tutti i gruppi che devono parlare.",
+            "Assegnate tempi precisi a ogni intervento.",
+            "Scrivete frasi di passaggio tra un gruppo e l'altro.",
+            "Definite tono di voce, postura e ritmo.",
+            "Create un rehearsal plan con almeno 2 prove.",
+            "Preparate una soluzione se un gruppo sfora il tempo o dimentica una parte."
+          ],
+          prompt: "Agisci come event director. Aiutaci a coordinare l'Opening Ceremony del Global Future Expo 2035: scaletta, tempi, passaggi tra speaker, tono di voce, prove e piano B se qualcosa va storto.",
+          check: ["La scaletta ha tempi realistici.", "I passaggi tra speaker sono scritti.", "Il piano prove è chiaro.", "Esiste un piano B."],
+          output: ["Scaletta completa.", "Frasi di raccordo.", "Rehearsal plan.", "Piano B per imprevisti."]
+        })
+      }
+    });
+
+    // MODALE LOGIC
+    const modal = document.getElementById('taskModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const closeModalBtn = document.querySelector('.close-modal');
+    const closeFooterBtn = document.querySelector('.close-modal-btn');
+    const adminToken = 'GFE2035-DOCENTI-18';
+    const adminLink = document.getElementById('adminLink');
+    const adminTokenModal = document.getElementById('adminTokenModal');
+    const adminTokenInput = document.getElementById('adminTokenInput');
+    const adminTokenError = document.getElementById('adminTokenError');
+    const submitAdminToken = document.getElementById('submitAdminToken');
+    const cancelAdminToken = document.getElementById('cancelAdminToken');
+    const closeAdminModalBtn = document.querySelector('.close-admin-modal');
+    const adminOpenLink = document.getElementById('adminOpenLink');
+
+    function normalizeAdminToken(value) {
+      return value
+        .trim()
+        .toUpperCase()
+        .normalize('NFKD')
+        .replace(/[^A-Z0-9]/g, '');
+    }
+
+    function openModal(taskId) {
+      const data = modalContents[taskId];
+      if (data) {
+        modalTitle.textContent = data.title;
+        modalBody.innerHTML = data.content;
+        modal.classList.add('show');
+      } else {
+        // Fallback generico
+        modalTitle.textContent = "Task Details";
+        modalBody.innerHTML = `
+          <p>Contenuto del task in fase di sviluppo.</p>
+          <p>Usa l'AI per sviluppare questo task seguendo le indicazioni del laboratorio.</p>
+          <div class="modal-prompt">🤖 Prompt suggerito: "Aiutami a completare il task: ${taskId}"</div>
+        `;
+        modal.classList.add('show');
+      }
+    }
+
+    function closeModal() {
+      modal.classList.remove('show');
+    }
+
+    function openAdminTokenModal() {
+      adminTokenInput.value = '';
+      adminTokenError.classList.remove('show');
+      adminOpenLink.classList.remove('show');
+      adminTokenModal.classList.add('show');
+      setTimeout(() => adminTokenInput.focus(), 50);
+    }
+
+    function closeAdminTokenModal() {
+      adminTokenModal.classList.remove('show');
+    }
+
+    function submitAdminTokenValue() {
+      const value = normalizeAdminToken(adminTokenInput.value);
+      if (value === normalizeAdminToken(adminToken)) {
+        adminOpenLink.href = 'admin-docenti.html?token=' + encodeURIComponent(adminToken);
+        adminOpenLink.classList.add('show');
+        adminTokenError.classList.remove('show');
+        adminOpenLink.focus();
+        return;
+      }
+      adminTokenError.classList.add('show');
+      adminTokenInput.focus();
+    }
+
+    // Aggiungi event listener a tutti i task
+    document.querySelectorAll('.task').forEach(task => {
+      task.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const modalId = task.getAttribute('data-modal');
+        if (modalId) {
+          openModal(modalId);
+        }
+      });
+    });
+
+    // Chiudi modal con i bottoni
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+    if (closeFooterBtn) closeFooterBtn.addEventListener('click', closeModal);
+    const glossaryLink = document.querySelector('.modal-glossary-link');
+    if (glossaryLink) glossaryLink.addEventListener('click', closeModal);
+    if (adminLink) {
+      adminLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openAdminTokenModal();
+      });
+    }
+    if (submitAdminToken) submitAdminToken.addEventListener('click', submitAdminTokenValue);
+    if (cancelAdminToken) cancelAdminToken.addEventListener('click', closeAdminTokenModal);
+    if (closeAdminModalBtn) closeAdminModalBtn.addEventListener('click', closeAdminTokenModal);
+    if (adminTokenInput) {
+      adminTokenInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          submitAdminTokenValue();
+        }
+      });
+    }
+
+    // Chiudi modal cliccando fuori dal contenuto
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+      if (e.target === adminTokenModal) {
+        closeAdminTokenModal();
+      }
+    });
+
+    // Chiudi modal con ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('show')) {
+        closeModal();
+      }
+      if (e.key === 'Escape' && adminTokenModal.classList.contains('show')) {
+        closeAdminTokenModal();
+      }
+    });
+  </script>
+</body>
+</html>
