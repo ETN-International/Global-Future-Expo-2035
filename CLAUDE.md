@@ -181,11 +181,15 @@ Sezione `#glossario` in `index.html` con **39 termini** in 6 categorie, scritti 
 ## Architettura della pagina studenti (`index.html`)
 
 ```
+Hero · Mission briefing (#intro)
+   ↓
+Inizia da qui · onboarding 5 min + mini-glossario (#inizia)
+   ↓
 La storia (#storia)
    ↓
 Regole AI (#regole)
    ↓
-Programma 10 ore (#programma)
+Programma 12 ore (#programma)
    ↓
 Event File · indice + 5 passi assemblaggio (#eventfile)
    ↓
@@ -200,6 +204,17 @@ Opening Ceremony (#finale)
 
 Stile: **Dark Cyber Editorial** con sidebar fissa, navigazione interna, scrollspy, progress bar generica (non hardcoded sulle sezioni), checklist interattive, ~40 modal di dettaglio.
 
+### Onboarding studenti (`#inizia`)
+
+Sezione di benvenuto operativo (5-10 min) per gruppi che arrivano cold. Risponde a 4 domande in altrettante card (riusando le classi `.card.linear-card / .multi-card / .reactive-card / .gold-card / .green-card` esistenti, zero CSS nuovo):
+
+- 🎯 **Chi sei** — Future Creators Team, 18 squadre, 105 ragazzi
+- 🏗 **Cosa costruiamo** — Event File ufficiale dell'Expo
+- ⏱ **Come funziona** — Lab dura 12h, 2-3 moduli in parallelo, 11 blocchi (Blocco 1 · 2h alfabetizzazione AI)
+- 🚀 **Cosa fate adesso** — 3 passi: trova Lab → trova modulo → inizia Blocco 1 (alfabetizzazione AI)
+
+Più un mini-glossario inline (Lab, Modulo, Blocco, Event File) per disinnescare il gergo prima che lo studente lo incontri in `#programma` e nelle sezioni successive. Rimanda al glossario completo `#glossario` per gli output specifici (chatbot, mappa, press kit, dashboard, …).
+
 ---
 
 ## Struttura didattica (5 fasi)
@@ -210,30 +225,31 @@ Stile: **Dark Cyber Editorial** con sidebar fissa, navigazione interna, scrollsp
 4. **Refine** — revisione, miglioramento con AI, organizzazione in NotebookLM
 5. **Opening Ceremony** — presentazione finale, simulazione inaugurazione Expo
 
-→ La cadenza operativa concreta è il [micro-programma 10 ore per Lab](#distribuzione-delle-10-ore-per-lab) qui sotto.
+→ La cadenza operativa concreta è il [micro-programma 12 ore per Lab](#distribuzione-delle-12-ore-per-lab) qui sotto.
 
 ---
 
-## Distribuzione delle 10 ore per Lab
+## Distribuzione delle 12 ore per Lab
 
-Ogni Lab dura **10 ore complessive**: i suoi 2-3 moduli vanno **in parallelo** nelle stesse 10 ore. Un docente conduce un gruppo nel suo modulo dentro questa finestra condivisa (quindi "10h per Lab" = "10h per gruppo" = "10h per docente"). Le 10 ore si distribuiscono in **10 blocchi**: i blocchi 3-6 ospitano le 4 task operative del lab; gli altri 6 sono lo scaffolding (brainstorm, peer review, integrazione Event File, prove cerimonia). Ogni blocco produce un'**evidenza tracciabile** (taccuino, bozza, feedback, file nominato, registrazione) — è ciò che rende le 10 ore difendibili in audit MIM.
+Ogni Lab dura **12 ore complessive**: i suoi 2-3 moduli vanno **in parallelo** nelle stesse 12 ore. Un docente conduce un gruppo nel suo modulo dentro questa finestra condivisa (quindi "12h per Lab" = "12h per gruppo" = "12h per docente"). Le 12 ore si distribuiscono in **11 blocchi**: il **Blocco 1 (2h)** è di alfabetizzazione AI (AI generativa + NotebookLM); i blocchi 4-7 ospitano le 4 task operative del lab; gli altri sono scaffolding (launch, brainstorm, peer review, integrazione Event File, prove cerimonia). Ogni blocco produce un'**evidenza tracciabile** (taccuino, bozza, feedback, file nominato, registrazione) — è ciò che rende le 12 ore difendibili in audit MIM.
 
 | # | Blocco | Durata |
 |---|--------|--------|
-| 1 | Launch &amp; identità del gruppo | 1h |
-| 2 | Brainstorm guidato | 1h |
-| 3 | Task 1 del lab | 1h |
-| 4 | Task 2 + revisione AI | 1,5h |
-| 5 | Task 3 + revisione AI | 1,5h |
-| 6 | Task 4 → draft 1 del modulo | 1h |
-| 7 | Peer review con un altro gruppo | 1h |
-| 8 | Iterazione &amp; polish | 1h |
-| 9 | Integrazione nell'Event File | 0,5h |
-| 10 | Prove Opening Ceremony | 1h |
+| 1 | Alfabetizzazione AI · generativa + NotebookLM | 2h |
+| 2 | Launch &amp; identità del gruppo | 1h |
+| 3 | Brainstorm guidato | 1h |
+| 4 | Task 1 del lab | 1h |
+| 5 | Task 2 + revisione AI | 1,5h |
+| 6 | Task 3 + revisione AI | 1,5h |
+| 7 | Task 4 → draft 1 del modulo | 1h |
+| 8 | Peer review con un altro gruppo | 1h |
+| 9 | Iterazione &amp; polish | 1h |
+| 10 | Integrazione nell'Event File | 0,5h |
+| 11 | Prove Opening Ceremony | 0,5h |
 
-**Totale: 10 ore esatte.** Dettaglio universale in `index.html` § `#programma` (studenti) e `admin-docenti.html` § `#programma10` (docenti). Per ognuno dei 7 lab, la specializzazione dei blocchi 3-6 con tool e task concrete vive nel box "Distribuzione delle 10 ore" all'interno di ogni lab in `admin-docenti.html` § `#laboratori`.
+**Totale: 12 ore esatte.** Dettaglio universale in `index.html` § `#programma` (studenti) e `admin-docenti.html` § `#programma12` (docenti). Per ognuno dei 7 lab, la specializzazione dei blocchi 4-7 con tool e task concrete vive nel box "Distribuzione delle 12 ore" all'interno di ogni lab in `admin-docenti.html` § `#laboratori`.
 
-> La "Lezione tipo (90 min)" in `admin-docenti.html` § `#timeline` non è il modulo intero: è la singola lezione dentro un blocco di esecuzione task (blocchi 3-6).
+> La "Lezione tipo (90 min)" in `admin-docenti.html` § `#timeline` non è il modulo intero: è la singola lezione dentro un blocco di esecuzione task (blocchi 4-7).
 
 ---
 

@@ -29,6 +29,8 @@
 11. [Template dell'Event File](#11-template-dellevent-file)
 12. [Fix ritorno dal certificato all'admin](#12-fix-ritorno-dal-certificato-alladmin)
 13. [Micro-programma 10 ore per Lab](#13-micro-programma-10-ore-per-lab)
+14. [Sezione "Inizia da qui" per i ragazzi](#14-sezione-inizia-da-qui-per-i-ragazzi)
+15. [Alfabetizzazione AI · Blocco 1 da 2 ore + 10h → 12h](#15-alfabetizzazione-ai--blocco-1-da-2-ore--10h--12h)
 
 ---
 
@@ -326,6 +328,70 @@ Ogni blocco è etichettato con un'**evidenza tracciabile** (taccuino, bozza, fee
 - Griglia peer review (blocco 7) → linka alla sezione `#valutazione` già introdotta in § 10 (autovalutazione + griglia "una cosa bella + un consiglio"), niente duplicazione.
 - Naming convenzionale Event File (blocco 9) → riusa lo schema `GFE_[capitolo]_[lab]_[classe]` documentato in § 11.
 - Stile visivo coerente con il Dark Cyber Editorial (border-left ciano, badge JetBrains Mono come `.group-step`).
+
+---
+
+## 14. Sezione "Inizia da qui" per i ragazzi
+
+**Problema emerso dall'audit della "prima impressione" studente:** un gruppo di 6 ragazzi che apre `index.html` per la prima volta su un dispositivo proprio non trova alcun punto d'ingresso operativo. L'hero `#intro` è puramente narrativo (zero CTA), `#storia` orienta sul senso (6 tab narrativi) ma non sull'azione, e l'intro di `#programma` (riga 1338) usa "Lab", "moduli", "output unico", "scaffolding", "4 task", "Event File" prima ancora di averli spiegati. Ricerche per "welcome", "benvenuto", "inizia", "comincia", "primo passo", "onboarding" non trovano nulla.
+
+**Soluzione:** una sola sezione `#inizia` ("Inizia da qui") subito dopo l'hero che risponde in 5 minuti a 4 domande e disinnesca il gergo prima che lo studente lo incontri nelle sezioni successive.
+
+### Struttura
+
+5 card stacked (riuso totale delle classi esistenti `.card.linear-card / .multi-card / .reactive-card / .gold-card / .green-card`, zero CSS nuovo):
+
+| Card | Border | Contenuto |
+|------|--------|-----------|
+| 🎯 Chi sei | ciano (linear) | Future Creators Team, 18 squadre, 105 ragazzi, missione comune |
+| 🏗 Cosa costruiamo | magenta (multi) | I 18 gruppi in parallelo confluiscono nell'Event File ufficiale |
+| ⏱ Come funziona | accent (reactive) | Lab dura 10h, 2-3 gruppi in parallelo, 10 blocchi, blocchi 3-6 = 4 task del lab |
+| 🚀 Cosa fate adesso | oro (gold) | 3 passi: trova Lab → trova modulo → inizia Blocco 1 (con link interni a `#labs` e `#programma`) |
+| 📖 Mini-glossario | verde (green) | 4 termini: Lab, Modulo, Blocco, Event File. Rimando al glossario completo `#glossario`. |
+
+### Placement & nav
+
+- Sezione inserita **dopo `#intro` e prima di `#storia`** in `index.html`.
+- Voce nav sidebar aggiunta: **"01 · Inizia da qui"** → `#inizia`.
+- Rinumerazione cosmetica delle voci successive: 01→02 (La città futura) … 08→09 (Opening Ceremony). Solo etichette, anchor invariati.
+
+### Principio guida
+
+Il ragazzo che arriva cold deve poter rispondere in 5 minuti a: **chi sono, cosa costruisco, come funziona, cosa faccio adesso**. La narrazione lunga di `#storia` resta intatta come "il perché"; la nuova sezione è "il cosa fai adesso".
+
+---
+
+## 15. Alfabetizzazione AI · Blocco 1 da 2 ore + 10h → 12h
+
+**Decisione editoriale post-`#inizia`:** prima di entrare nel lavoro di lab, ogni gruppo deve avere un vocabolario AI condiviso. Aggiunto un **modulo trasversale di alfabetizzazione AI da 2 ore** in testa al programma. Il Lab passa quindi da 10 a **12 ore complessive**.
+
+### Struttura
+
+- Nuovo **Blocco 1 · Alfabetizzazione AI (2h)** in cima al programma. Contenuto: 1ª ora su AI generativa (cos'è ChatGPT/Gemini, formula prompt base, 3 domande obbligatorie), 2ª ora su NotebookLM (archivio del progetto, upload file, query). Output / evidenza: vocabolario AI nel taccuino + prima query a NotebookLM.
+- I 10 blocchi originali del § 13 sono **rinumerati 2→11**: Launch → Blocco 2, Brainstorm → Blocco 3, Task 1 → Blocco 4, …, Prove Opening Ceremony → Blocco 11.
+- I riferimenti "blocchi 3-6 = 4 task" diventano "blocchi 4-7 = 4 task" ovunque.
+- Totale: 2 + 1 + 1 + 1 + 1,5 + 1,5 + 1 + 1 + 1 + 0,5 + 0,5 = **12 ore esatte** (11 blocchi). Per chiudere a 12 esatte ho ridotto il Blocco 11 (Prove Opening Ceremony) da 1h a 0,5h — il sommatorio originale del § 13 era leggermente sbagliato (1+1+1+1,5+1,5+1+1+1+0,5+1 = 10,5h, non 10).
+
+### Ricaduta nei file
+
+| File | Cambio |
+|------|--------|
+| `index.html` § `#programma` | Nuovo Blocco 1 in testa, blocchi 2-11 rinumerati, h2 "Programma delle 12 ore", intro riformulata, totale aggiornato |
+| `index.html` § `#inizia` | Card "Come funziona": "12 ore / 11 blocchi", riferimenti task 4-7; Card "3 passi": Blocco 1 diventa AI literacy; mini-glossario "Blocco" aggiornato |
+| `index.html` hero | Chip "10 ore" → "12 ore" |
+| `index.html` sidebar nav | "04 · Programma 10 ore" → "04 · Programma 12 ore" |
+| `index.html` § `#labs` | Intro: "blocchi 3-6" → "blocchi 4-7", "programma 10 ore" → "programma 12 ore" |
+| `admin-docenti.html` § `#timeline` | "blocchi 3-6 del programma 10 ore" → "blocchi 4-7 del programma 12 ore"; "10 ore complessive" → "12 ore complessive" |
+| `admin-docenti.html` § `#programma10` | Anchor rinominato `#programma12`; h2 "Programma 12 Ore Per Lab"; intro riformulata con menzione Blocco 1 AI literacy; tabella blocchi con nuovo Blocco 1 + rinumerazione 2-11; totale aggiornato |
+| `admin-docenti.html` nav | "Programma 10h" → "Programma 12h" (href aggiornato a `#programma12`) |
+| `admin-docenti.html` § `#laboratori` | Per ognuno dei 7 lab: "Distribuzione delle 10 ore — [Lab]" → "Distribuzione delle 12 ore — [Lab]"; blocchi delle task rinumerati 3-6 → 4-7 |
+| `CLAUDE.md` | Architecture flow: "Programma 10 ore" → "Programma 12 ore"; sezione "Distribuzione delle 10 ore per Lab" → "12 ore", tabella con nuovo Blocco 1 + 11 righe totali, anchor `#distribuzione-delle-12-ore-per-lab`; Onboarding studenti: "Lab dura 10h" → "12h, 11 blocchi (Blocco 1 · 2h alfabetizzazione AI)" |
+
+### Note di coerenza
+
+- Le **4 task per lab** in `index.html` § `#labs` restano invariate come contenuto; cambia solo il riferimento "blocchi 3-6" → "blocchi 4-7".
+- La **"Lezione tipo (90 min)"** in `admin-docenti.html` § `#timeline` resta com'è (scheletro di una sessione tipo dentro un blocco di esecuzione task), aggiornati solo i riferimenti al programma.
+- Il § 13 di questo CHANGELOG resta **storia**: la sua tabella riflette lo stato precedente all'aggiunta del Blocco 1. Questa voce 15 lo aggiorna.
 
 ---
 
