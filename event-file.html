@@ -227,14 +227,15 @@
 
     <!--
       ⚙️  CONFIGURAZIONE LINK DRIVE
-      Sostituire gli href="https://drive.google.com/" con gli URL effettivi:
-      1. Cartella Drive principale: cerca data-chapter="MASTER" (la sezione .drive-master qui sotto).
-      2. Sottocartelle per capitolo: 10 link, uno per capitolo. Cercare data-chapter="01"…"10".
-      Le textarea per i link dei moduli si compilano direttamente dall'interfaccia (salvataggio automatico).
+      Gli URL della cartella Drive principale e delle 10 sottocartelle per capitolo
+      sono già configurati. Se il Drive viene rifatto da zero, sostituire gli href
+      dei link con data-chapter="MASTER" e data-chapter="01"…"10".
+      Le textarea per i link dei singoli moduli si compilano direttamente
+      dall'interfaccia (salvataggio automatico in localStorage).
     -->
 
     <div class="drive-master">
-      <a class="drive-folder-btn drive-folder-btn--master" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="MASTER">📁 Cartella Drive principale · GFE 2035</a>
+      <a class="drive-folder-btn drive-folder-btn--master" href="https://drive.google.com/drive/folders/1bL4R6LZP-kDRCxhd4-g4n5yu2-YrOAeO" target="_blank" rel="noopener" data-chapter="MASTER">📁 Cartella Drive principale · GFE 2035</a>
       <p class="drive-master-note">Tutto il materiale del dossier vive in questa cartella Drive. Ogni capitolo qui sotto ha una sua sottocartella: caricate lì i file del vostro modulo (PDF, immagini, fogli, slide), poi incollate il link nel riquadro del capitolo corrispondente.</p>
     </div>
 
@@ -248,7 +249,7 @@
       <div class="chap-head"><span class="chap-num">01</span><h2>Copertina &amp; identità</h2></div>
       <p class="hint">Cosa va qui: slogan, logo/colori, manifesto · Italiano M1 · Inglese M2 · Digitale M2</p>
       <div class="drive-panel">
-        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="01">📁 Cartella Drive · Capitolo 01</a>
+        <a class="drive-folder-btn" href="https://drive.google.com/drive/folders/1NmdQeDtdhRMOo50wrYq_Pj4M8BKUnba6" target="_blank" rel="noopener" data-chapter="01">📁 Cartella Drive · Capitolo 01</a>
         <label class="drive-label" for="drive-cap-01">Link Drive ai moduli (uno per riga · es. "Italiano M1 — https://drive.google.com/…")</label>
         <textarea class="drive-links" id="drive-cap-01" data-chapter="01" placeholder="Italiano M1 — https://drive.google.com/file/d/...&#10;Inglese M2 — https://drive.google.com/file/d/...&#10;Digitale M2 — https://drive.google.com/file/d/..."></textarea>
         <div class="drive-links-print" id="drive-cap-01-print" aria-hidden="true"></div>
@@ -260,7 +261,7 @@
       <div class="chap-head"><span class="chap-num">02</span><h2>La visione: la città del 2035</h2></div>
       <p class="hint">Cosa va qui: storytelling + articolo del giornale · Italiano M2 · M1</p>
       <div class="drive-panel">
-        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="02">📁 Cartella Drive · Capitolo 02</a>
+        <a class="drive-folder-btn" href="https://drive.google.com/drive/folders/12Z5Pdg0zIbv8mCIWlAtle9DbV6JQJvQD" target="_blank" rel="noopener" data-chapter="02">📁 Cartella Drive · Capitolo 02</a>
         <label class="drive-label" for="drive-cap-02">Link Drive ai moduli (uno per riga)</label>
         <textarea class="drive-links" id="drive-cap-02" data-chapter="02" placeholder="Italiano M2 — https://drive.google.com/file/d/...&#10;Italiano M1 — https://drive.google.com/file/d/..."></textarea>
         <div class="drive-links-print" id="drive-cap-02-print" aria-hidden="true"></div>
@@ -272,7 +273,7 @@
       <div class="chap-head"><span class="chap-num">03</span><h2>Mappa &amp; padiglioni</h2></div>
       <p class="hint">Cosa va qui: mappa con aree e legenda · Digitale M1</p>
       <div class="drive-panel">
-        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="03">📁 Cartella Drive · Capitolo 03</a>
+        <a class="drive-folder-btn" href="https://drive.google.com/drive/folders/1PJm22lFyhIZyKEPdEUzimMTiJz99C9Ad" target="_blank" rel="noopener" data-chapter="03">📁 Cartella Drive · Capitolo 03</a>
         <label class="drive-label" for="drive-cap-03">Link Drive ai moduli (uno per riga)</label>
         <textarea class="drive-links" id="drive-cap-03" data-chapter="03" placeholder="Digitale M1 — https://drive.google.com/file/d/..."></textarea>
         <div class="drive-links-print" id="drive-cap-03-print" aria-hidden="true"></div>
@@ -284,7 +285,7 @@
       <div class="chap-head"><span class="chap-num">04</span><h2>Esperienza del visitatore</h2></div>
       <p class="hint">Cosa va qui: home page, QR card, badge, percorso utente · Digitale M2 · M3</p>
       <div class="drive-panel">
-        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="04">📁 Cartella Drive · Capitolo 04</a>
+        <a class="drive-folder-btn" href="https://drive.google.com/drive/folders/1tZ8u32kkdkqHpo7Few67zR4IBkxaCDcf" target="_blank" rel="noopener" data-chapter="04">📁 Cartella Drive · Capitolo 04</a>
         <label class="drive-label" for="drive-cap-04">Link Drive ai moduli (uno per riga)</label>
         <textarea class="drive-links" id="drive-cap-04" data-chapter="04" placeholder="Digitale M2 — https://drive.google.com/file/d/...&#10;Digitale M3 — https://drive.google.com/file/d/..."></textarea>
         <div class="drive-links-print" id="drive-cap-04-print" aria-hidden="true"></div>
@@ -296,7 +297,7 @@
       <div class="chap-head"><span class="chap-num">05</span><h2>Assistente AI dell'Expo</h2></div>
       <p class="hint">Cosa va qui: identità, FAQ, promptbook &amp; regole · AI M1 · M2 · M3</p>
       <div class="drive-panel">
-        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="05">📁 Cartella Drive · Capitolo 05</a>
+        <a class="drive-folder-btn" href="https://drive.google.com/drive/folders/1ILOvWfDOZjQvSrPMVgWaAnAJ4VA1NgXx" target="_blank" rel="noopener" data-chapter="05">📁 Cartella Drive · Capitolo 05</a>
         <label class="drive-label" for="drive-cap-05">Link Drive ai moduli (uno per riga)</label>
         <textarea class="drive-links" id="drive-cap-05" data-chapter="05" placeholder="AI M1 — https://drive.google.com/file/d/...&#10;AI M2 — https://drive.google.com/file/d/...&#10;AI M3 — https://drive.google.com/file/d/..."></textarea>
         <div class="drive-links-print" id="drive-cap-05-print" aria-hidden="true"></div>
@@ -308,7 +309,7 @@
       <div class="chap-head"><span class="chap-num">06</span><h2>Comunicazione internazionale</h2></div>
       <p class="hint">Cosa va qui: welcome kit, speech, slogan, press kit · Inglese M1 · M2 · M3</p>
       <div class="drive-panel">
-        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="06">📁 Cartella Drive · Capitolo 06</a>
+        <a class="drive-folder-btn" href="https://drive.google.com/drive/folders/16lTqP_BTESt-28KlnBN0tWaLf7HcqEBt" target="_blank" rel="noopener" data-chapter="06">📁 Cartella Drive · Capitolo 06</a>
         <label class="drive-label" for="drive-cap-06">Link Drive ai moduli (uno per riga)</label>
         <textarea class="drive-links" id="drive-cap-06" data-chapter="06" placeholder="Inglese M1 — https://drive.google.com/file/d/...&#10;Inglese M2 — https://drive.google.com/file/d/...&#10;Inglese M3 — https://drive.google.com/file/d/..."></textarea>
         <div class="drive-links-print" id="drive-cap-06-print" aria-hidden="true"></div>
@@ -320,7 +321,7 @@
       <div class="chap-head"><span class="chap-num">07</span><h2>Accoglienza multiculturale</h2></div>
       <p class="hint">Cosa va qui: passaporto, schede paese, dialoghi · Lingue M1 · M2</p>
       <div class="drive-panel">
-        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="07">📁 Cartella Drive · Capitolo 07</a>
+        <a class="drive-folder-btn" href="https://drive.google.com/drive/folders/1MZ4REZ1MlXZBBKnsZxnstKe6k8bDuEfe" target="_blank" rel="noopener" data-chapter="07">📁 Cartella Drive · Capitolo 07</a>
         <label class="drive-label" for="drive-cap-07">Link Drive ai moduli (uno per riga)</label>
         <textarea class="drive-links" id="drive-cap-07" data-chapter="07" placeholder="Lingue M1 — https://drive.google.com/file/d/...&#10;Lingue M2 — https://drive.google.com/file/d/..."></textarea>
         <div class="drive-links-print" id="drive-cap-07-print" aria-hidden="true"></div>
@@ -332,7 +333,7 @@
       <div class="chap-head"><span class="chap-num">08</span><h2>I numeri dell'Expo</h2></div>
       <p class="hint">Cosa va qui: stima visitatori, budget &amp; spazi, dashboard · Matematica M1 · M2 · M3</p>
       <div class="drive-panel">
-        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="08">📁 Cartella Drive · Capitolo 08</a>
+        <a class="drive-folder-btn" href="https://drive.google.com/drive/folders/1K07UqsEY_UJR7iBMjYpldwpFWOGKaqyK" target="_blank" rel="noopener" data-chapter="08">📁 Cartella Drive · Capitolo 08</a>
         <label class="drive-label" for="drive-cap-08">Link Drive ai moduli (uno per riga)</label>
         <textarea class="drive-links" id="drive-cap-08" data-chapter="08" placeholder="Matematica M1 — https://drive.google.com/file/d/...&#10;Matematica M2 — https://drive.google.com/file/d/...&#10;Matematica M3 — https://drive.google.com/file/d/..."></textarea>
         <div class="drive-links-print" id="drive-cap-08-print" aria-hidden="true"></div>
@@ -344,7 +345,7 @@
       <div class="chap-head"><span class="chap-num">09</span><h2>Opening Ceremony</h2></div>
       <p class="hint">Cosa va qui: script, conferenza stampa, scaletta &amp; regia · Comunicazione M1 · M2</p>
       <div class="drive-panel">
-        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="09">📁 Cartella Drive · Capitolo 09</a>
+        <a class="drive-folder-btn" href="https://drive.google.com/drive/folders/1ivS3JUgpf38kSw54K4m5vdHwAzn-VNL7" target="_blank" rel="noopener" data-chapter="09">📁 Cartella Drive · Capitolo 09</a>
         <label class="drive-label" for="drive-cap-09">Link Drive ai moduli (uno per riga)</label>
         <textarea class="drive-links" id="drive-cap-09" data-chapter="09" placeholder="Comunicazione M1 — https://drive.google.com/file/d/...&#10;Comunicazione M2 — https://drive.google.com/file/d/..."></textarea>
         <div class="drive-links-print" id="drive-cap-09-print" aria-hidden="true"></div>
@@ -356,7 +357,7 @@
       <div class="chap-head"><span class="chap-num">10</span><h2>Crediti &amp; team</h2></div>
       <p class="hint">Cosa va qui: chi ha fatto cosa · Tutti i gruppi</p>
       <div class="drive-panel">
-        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="10">📁 Cartella Drive · Capitolo 10</a>
+        <a class="drive-folder-btn" href="https://drive.google.com/drive/folders/1hZK4U4A8TovilJbKjPTdRl9TakshVJFv" target="_blank" rel="noopener" data-chapter="10">📁 Cartella Drive · Capitolo 10</a>
         <label class="drive-label" for="drive-cap-10">Link Drive ai contributi (uno per riga · gruppo + modulo)</label>
         <textarea class="drive-links" id="drive-cap-10" data-chapter="10" placeholder="AI M1 — https://drive.google.com/file/d/...&#10;Digitale M1 — https://drive.google.com/file/d/...&#10;… (tutti i 18 moduli)"></textarea>
         <div class="drive-links-print" id="drive-cap-10-print" aria-hidden="true"></div>
