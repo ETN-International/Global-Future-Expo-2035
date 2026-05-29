@@ -28,6 +28,7 @@
 10. [Sistema di valutazione accreditation-grade](#10-sistema-di-valutazione-accreditation-grade)
 11. [Template dell'Event File](#11-template-dellevent-file)
 12. [Fix ritorno dal certificato all'admin](#12-fix-ritorno-dal-certificato-alladmin)
+13. [Micro-programma 10 ore per gruppo](#13-micro-programma-10-ore-per-gruppo)
 
 ---
 
@@ -277,6 +278,54 @@ Validazione: 18 moduli, 54 blocchi teleguidati (18×3), 0 residui del vecchio fo
 
 1. In `attestato.html` il link "← Torna all'area docenti" ora punta a `admin-docenti.html?token=GFE2035-DOCENTI-18` (stesso meccanismo di handoff della pagina principale).
 2. In `admin-docenti.html` lo sblocco è migrato da `sessionStorage` (per-scheda) a **`localStorage`** (condiviso tra schede e persistente). Dopo il primo sblocco, qualsiasi visita all'admin resta sbloccata finché non si svuotano i dati del browser.
+
+---
+
+## 13. Micro-programma 10 ore per gruppo
+
+**Problema emerso dall'audit:** il progetto dichiara 10 ore di attività per ogni gruppo (un docente, una classe, un modulo), ma lo scaffolding esistente copriva solo ~1,5 ore reali.
+
+- `index.html` § `#programma` era una macro-timeline generica in 5 fasi (Launch / Design / Build / Refine / Show) senza distribuzione oraria sui task del singolo gruppo.
+- `admin-docenti.html` § `#timeline` prescriveva una sessione singola da 90 minuti per modulo — quindi 1,5 ore per gruppo, non 10.
+- Le 4 task operative dei lab si esauriscono realisticamente in 60-75 minuti di lavoro studenti.
+
+Risultato: ~8,5 ore per gruppo erano non scaffoldate.
+
+**Soluzione: micro-programma a 10 blocchi orari** che avvolge le 4 task esistenti. I blocchi 3-6 ospitano le 4 task del lab; gli altri 6 blocchi sono il nuovo scaffolding (brainstorm, peer review, iterazione, integrazione Event File, prove cerimonia).
+
+### Struttura universale dei 10 blocchi
+
+| # | Blocco | Durata | Output (evidenza tracciabile) |
+|---|--------|--------|-------------------------------|
+| 1 | Launch &amp; identità | 1h | Ruoli + taccuino |
+| 2 | Brainstorm guidato | 1h | 3-5 direzioni scelte |
+| 3 | Task 1 del lab | 1h | Bozza pezzo 1 |
+| 4 | Task 2 + revisione AI | 1,5h | Bozza pezzo 2 |
+| 5 | Task 3 + revisione AI | 1,5h | Bozza pezzo 3 |
+| 6 | Task 4 → draft 1 | 1h | Deliverable modulo (draft 1) |
+| 7 | Peer review | 1h | Feedback ricevuti |
+| 8 | Iterazione &amp; polish | 1h | Deliverable finale |
+| 9 | Integrazione Event File | 0,5h | Modulo nel dossier |
+| 10 | Prove Opening Ceremony | 1h | Presentazione provata |
+
+**Totale: 10 ore esatte.**
+
+### Ricaduta nei file
+
+- **`index.html`** § `#programma`: la vecchia tabella a 5 fasi è stata sostituita da una **timeline in 10 blocchi** (markup `.tenh-grid` + `.tenh-block`), linguaggio studente, link interni a `#valutazione` (blocco 7), `#eventfile` (9), `#finale` (10). Aggiunti stili CSS dedicati (`.tenh-*`).
+- **`admin-docenti.html`**: nuova sezione `#programma10` con la struttura universale + box "promemoria accreditation-grade" che ricorda che ogni blocco produce un'evidenza tracciabile per audit MIM. Aggiunta voce nav "Programma 10h".
+- **`admin-docenti.html`** § `#timeline`: riqualificato in **"Lezione tipo (90 min) dentro un blocco di esecuzione"** — non è il modulo intero ma la singola lezione dentro un blocco 3-6. Aggiornato anche il link nav da "Timeline" a "Lezione tipo".
+- **`admin-docenti.html`** § `#laboratori`: per ognuno dei 7 lab aggiunto un box compatto **"Distribuzione delle 10 ore — [Lab]"** che istanzia i blocchi 3-6 con i nomi esatti delle 4 task (presi da `index.html`) e i tool concreti del lab. I blocchi 1-2 e 7-10 restano universali nella sezione `#programma10`.
+
+### Ancoraggio accreditation-grade
+
+Ogni blocco è etichettato con un'**evidenza tracciabile** (taccuino, bozza, feedback ricevuti, file nominato, registrazione delle prove). Questo è ciò che rende le 10 ore difendibili in sede di audit MIM, coerentemente col percorso accreditation-grade già definito in [§ 10](#10-sistema-di-valutazione-accreditation-grade).
+
+### Riuso di componenti esistenti
+
+- Griglia peer review (blocco 7) → linka alla sezione `#valutazione` già introdotta in § 10 (autovalutazione + griglia "una cosa bella + un consiglio"), niente duplicazione.
+- Naming convenzionale Event File (blocco 9) → riusa lo schema `GFE_[capitolo]_[lab]_[classe]` documentato in § 11.
+- Stile visivo coerente con il Dark Cyber Editorial (border-left ciano, badge JetBrains Mono come `.group-step`).
 
 ---
 

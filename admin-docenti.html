@@ -336,6 +336,99 @@
     .guide-block ol li {
       margin-bottom: 5px;
     }
+    .tenh-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 14px 0 6px;
+    }
+    .tenh-block {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .tenh-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .tenh-num {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: #000;
+      background: var(--primary);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+    .tenh-hours {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+    .tenh-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .tenh-desc {
+      font-size: 0.84rem;
+      color: rgba(232, 232, 232, 0.85);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .tenh-out {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      color: var(--primary);
+    }
+    .tenh-total {
+      margin: 12px 0 4px;
+      padding: 10px 14px;
+      background: rgba(0, 242, 234, 0.06);
+      border: 1px solid rgba(0, 242, 234, 0.22);
+      border-radius: 10px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      color: rgba(232, 232, 232, 0.9);
+      text-align: center;
+      letter-spacing: 0.4px;
+    }
+    .ten-lab {
+      background: rgba(0, 242, 234, 0.05);
+      border: 1px solid rgba(0, 242, 234, 0.22);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 14px;
+    }
+    .ten-lab-head {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .ten-lab table {
+      font-size: 0.78rem;
+    }
+    .ten-lab th,
+    .ten-lab td {
+      padding: 8px 10px;
+    }
+    .ten-lab td:first-child {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      color: var(--primary);
+      white-space: nowrap;
+    }
     @media (max-width: 860px) {
       .grid,
       .two {
@@ -346,6 +439,9 @@
       }
       .wrap {
         padding: 30px 18px 70px;
+      }
+      .tenh-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -374,7 +470,8 @@
       <nav>
         <a href="#prima">Prima di iniziare</a>
         <a href="#ruolo">Ruolo docente</a>
-        <a href="#timeline">Timeline</a>
+        <a href="#timeline">Lezione tipo</a>
+        <a href="#programma10">Programma 10h</a>
         <a href="#ai">AI for dummies</a>
         <a href="#livelli">Moduli</a>
         <a href="#laboratori">Laboratori</a>
@@ -433,7 +530,8 @@
     </section>
 
     <section id="timeline">
-      <h2>Timeline Semplice Per Ogni Laboratorio</h2>
+      <h2>Lezione tipo (90 min) dentro un blocco di esecuzione</h2>
+      <p>Questa è la <strong>singola lezione tipo</strong>, da usare quando il gruppo è dentro uno dei blocchi di esecuzione task (blocchi 3-6 del programma 10 ore). <em>Non</em> è il modulo intero: ogni gruppo lavora per <strong>10 ore complessive</strong>, distribuite come vedi nella sezione qui sotto.</p>
       <div class="panel">
         <table>
           <thead>
@@ -449,6 +547,78 @@
           </tbody>
         </table>
       </div>
+    </section>
+
+    <section id="programma10">
+      <h2>Programma 10 Ore Per Gruppo</h2>
+      <p>Ogni gruppo (un docente, una classe, un modulo) lavora <strong>10 ore complessive</strong>. Le 10 ore si distribuiscono in <strong>10 blocchi</strong>: i blocchi 3-6 ospitano le 4 task operative del tuo laboratorio (vedi la sezione "Istruzioni per laboratorio"); gli altri 6 blocchi sono lo scaffolding che tiene insieme il percorso (brainstorm, peer review, integrazione nell'Event File, prove per la cerimonia).</p>
+      <div class="panel gold">
+        <p><strong>Promemoria accreditation-grade:</strong> ogni blocco produce un'<strong>evidenza tracciabile</strong> (taccuino, bozza, feedback ricevuti, file nominato, registrazione delle prove). Questo è ciò che rende le 10 ore difendibili in sede di audit MIM.</p>
+      </div>
+      <div class="tenh-grid">
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 1</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Launch &amp; identità del gruppo</h4>
+          <p class="tenh-desc">Spieghi la missione del modulo, fai assegnare i 5 ruoli (coordinatore, scrittore, designer, speaker, controllore AI), apri il taccuino di lab. Niente AI in questo blocco.</p>
+          <div class="tenh-out">→ Evidenza: ruoli scritti + taccuino aperto</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 2</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Brainstorm guidato</h4>
+          <p class="tenh-desc">Guidi il gruppo a generare molte idee, poi a sceglierne 3-5. ChatGPT/Gemini entra solo come stimolatore (alternative, esempi), mai come scrittore.</p>
+          <div class="tenh-out">→ Evidenza: 3-5 direzioni scelte</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 3</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Task 1 del laboratorio</h4>
+          <p class="tenh-desc">Esecuzione della prima task del tuo lab seguendo la lezione tipo qui sopra. La task è quella del modulo del tuo gruppo (vedi "Istruzioni per laboratorio").</p>
+          <div class="tenh-out">→ Evidenza: bozza del primo pezzo</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 4</span><span class="tenh-hours">1,5 ore</span></div>
+          <h4 class="tenh-title">Task 2 + revisione AI</h4>
+          <p class="tenh-desc">Esecuzione della seconda task. Sempre prima la loro idea, poi l'AI come revisore: chiedi "cosa avete tenuto della risposta AI? cosa avete riscritto con parole vostre?"</p>
+          <div class="tenh-out">→ Evidenza: bozza del secondo pezzo + decisioni AI annotate</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 5</span><span class="tenh-hours">1,5 ore</span></div>
+          <h4 class="tenh-title">Task 3 + revisione AI</h4>
+          <p class="tenh-desc">Esecuzione della terza task. Stesso schema. Controlla che il tono e le scelte restino coerenti con i blocchi precedenti.</p>
+          <div class="tenh-out">→ Evidenza: bozza del terzo pezzo</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 6</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Task 4 → draft 1 del modulo</h4>
+          <p class="tenh-desc">Esecuzione della quarta task e finalizzazione: i tre pezzi precedenti più la task 4 compongono la prima versione completa del modulo.</p>
+          <div class="tenh-out">→ Evidenza: deliverable del modulo (draft 1)</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 7</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Peer review tra gruppi</h4>
+          <p class="tenh-desc">Fai scambiare il deliverable con un altro gruppo del tuo lab (idealmente un modulo diverso, così emerge la coerenza interna). Usa la griglia "<a href="#valutazione">una cosa bella + un consiglio</a>".</p>
+          <div class="tenh-out">→ Evidenza: feedback scritti, scambiati e archiviati</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 8</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Iterazione &amp; polish</h4>
+          <p class="tenh-desc">Aiuti il gruppo ad applicare i feedback. Ultimo passaggio AI per rifinire forma, ma le scelte restano loro: rifiuti il copia-incolla non compreso.</p>
+          <div class="tenh-out">→ Evidenza: deliverable finale del modulo</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 9</span><span class="tenh-hours">0,5 ore</span></div>
+          <h4 class="tenh-title">Integrazione nell'Event File</h4>
+          <p class="tenh-desc">Salvi il file con il naming ufficiale <strong>GFE_[capitolo]_[lab]_[classe]</strong> (es. <em>GFE_05_AI_2A_FAQ</em>), carichi in NotebookLM e inserisci nel <a href="event-file.html" target="_blank" rel="noopener">template Event File</a>.</p>
+          <div class="tenh-out">→ Evidenza: modulo nel dossier ufficiale</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 10</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Prove Opening Ceremony</h4>
+          <p class="tenh-desc">Decidi con il gruppo cosa diranno alla cerimonia, chi parla, per quanto tempo. Prove a voce alta almeno due volte: se sfora il tempo, accorciate.</p>
+          <div class="tenh-out">→ Evidenza: presentazione provata e cronometrata</div>
+        </div>
+      </div>
+      <div class="tenh-total">Totale: 1 + 1 + 1 + 1,5 + 1,5 + 1 + 1 + 1 + 0,5 + 1 = <strong>10 ore esatte</strong></div>
+      <p class="ref" style="margin-top:14px;">→ La distribuzione concreta per ogni laboratorio (con le 4 task nominate) è nei box <strong>Distribuzione 10 ore</strong> dentro la sezione <a href="#laboratori">Istruzioni per laboratorio</a>.</p>
     </section>
 
     <section id="ai">
@@ -550,6 +720,18 @@
           </div>
         </div>
 
+        <div class="ten-lab">
+          <div class="ten-lab-head">Distribuzione delle 10 ore — Intelligenza Artificiale</div>
+          <table>
+            <thead><tr><th>Blocco</th><th>Cosa fa il gruppo</th><th>Strumenti</th></tr></thead>
+            <tbody>
+              <tr><td>3 · 1h</td><td><strong>Task 1</strong> · Nome, personalità, ruolo dell'assistente</td><td>Carta + ChatGPT/Gemini per nomi</td></tr>
+              <tr><td>4 · 1,5h</td><td><strong>Task 2</strong> · 10 domande tipo dei visitatori</td><td>ChatGPT/Gemini</td></tr>
+              <tr><td>5 · 1,5h</td><td><strong>Task 3</strong> · 3 risposte AI, scelta della migliore</td><td>ChatGPT/Gemini + Google Docs</td></tr>
+              <tr><td>6 · 1h</td><td><strong>Task 4</strong> · Mini promptbook "come parlare con l'AI"</td><td>Google Docs + test con AI</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="prompt">Prompt docente pronto: "Aiuta questo gruppo a migliorare un assistente AI per un Expo scolastico del futuro. Fai domande di chiarimento prima di proporre soluzioni."</div>
       </div>
 
@@ -584,6 +766,18 @@
           </div>
         </div>
 
+        <div class="ten-lab">
+          <div class="ten-lab-head">Distribuzione delle 10 ore — Competenze Digitali</div>
+          <table>
+            <thead><tr><th>Blocco</th><th>Cosa fa il gruppo</th><th>Strumenti</th></tr></thead>
+            <tbody>
+              <tr><td>3 · 1h</td><td><strong>Task 1</strong> · Bozza home page ideale dell'Expo</td><td>Carta o Canva/Google Slides</td></tr>
+              <tr><td>4 · 1,5h</td><td><strong>Task 2</strong> · Mappa con 5 aree (AI, Sport, Cultura, Ambiente, Scuola)</td><td>Google Drawings/Canva + ChatGPT per i testi</td></tr>
+              <tr><td>5 · 1,5h</td><td><strong>Task 3</strong> · Testi brevi per QR code informativi</td><td>ChatGPT/Gemini + QR generator</td></tr>
+              <tr><td>6 · 1h</td><td><strong>Task 4</strong> · Badge digitale visitatore</td><td>Canva o Google Slides</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="prompt">Prompt docente pronto: "Agisci come UX designer per ragazzi. Suggerisci come rendere più chiara una mappa o home page del Global Future Expo 2035."</div>
       </div>
 
@@ -618,6 +812,18 @@
           </div>
         </div>
 
+        <div class="ten-lab">
+          <div class="ten-lab-head">Distribuzione delle 10 ore — Inglese</div>
+          <table>
+            <thead><tr><th>Blocco</th><th>Cosa fa il gruppo</th><th>Strumenti</th></tr></thead>
+            <tbody>
+              <tr><td>3 · 1h</td><td><strong>Task 1</strong> · Welcome speech breve per visitatori internazionali</td><td>ChatGPT/Gemini + telefono (registrare pronuncia)</td></tr>
+              <tr><td>4 · 1,5h</td><td><strong>Task 2</strong> · 5 slogan in inglese per l'Expo</td><td>ChatGPT/Gemini</td></tr>
+              <tr><td>5 · 1,5h</td><td><strong>Task 3</strong> · Mini intervista giornalista + studente inventore</td><td>ChatGPT/Gemini + Google Docs</td></tr>
+              <tr><td>6 · 1h</td><td><strong>Task 4</strong> · Social captions per il giorno di apertura</td><td>ChatGPT/Gemini + editor immagini (facoltativo)</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="prompt">Prompt docente pronto: "Help my middle school students simplify this English text for international visitors. Keep it natural, short and easy to pronounce."</div>
       </div>
 
@@ -643,6 +849,18 @@
           </div>
         </div>
 
+        <div class="ten-lab">
+          <div class="ten-lab-head">Distribuzione delle 10 ore — Italiano</div>
+          <table>
+            <thead><tr><th>Blocco</th><th>Cosa fa il gruppo</th><th>Strumenti</th></tr></thead>
+            <tbody>
+              <tr><td>3 · 1h</td><td><strong>Task 1</strong> · Manifesto del Global Future Expo 2035</td><td>ChatGPT/Gemini + Google Docs</td></tr>
+              <tr><td>4 · 1,5h</td><td><strong>Task 2</strong> · Articolo per il giornale ufficiale dell'Expo</td><td>ChatGPT/Gemini + Google Docs</td></tr>
+              <tr><td>5 · 1,5h</td><td><strong>Task 3</strong> · Racconto breve "Il mio primo giorno all'Expo del Futuro"</td><td>ChatGPT/Gemini + Google Docs</td></tr>
+              <tr><td>6 · 1h</td><td><strong>Task 4</strong> · Revisione con AI su stile, chiarezza, titolo</td><td>ChatGPT/Gemini</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="prompt">Prompt docente pronto: "Agisci come editor didattico. Aiuta gli studenti a migliorare chiarezza, titolo e ritmo senza sostituire la loro voce."</div>
       </div>
 
@@ -677,6 +895,18 @@
           </div>
         </div>
 
+        <div class="ten-lab">
+          <div class="ten-lab-head">Distribuzione delle 10 ore — Matematica</div>
+          <table>
+            <thead><tr><th>Blocco</th><th>Cosa fa il gruppo</th><th>Strumenti</th></tr></thead>
+            <tbody>
+              <tr><td>3 · 1h</td><td><strong>Task 1</strong> · Stima visitatori in 3 giorni</td><td>Carta + Fogli Google/Excel</td></tr>
+              <tr><td>4 · 1,5h</td><td><strong>Task 2</strong> · Mini budget (biglietti, materiali, stand, comunicazione)</td><td>Fogli Google/Excel</td></tr>
+              <tr><td>5 · 1,5h</td><td><strong>Task 3</strong> · Divisione spazi tra padiglioni in percentuali</td><td>Fogli Google/Excel (grafico a torta)</td></tr>
+              <tr><td>6 · 1h</td><td><strong>Task 4</strong> · Grafico semplice + spiegazione chiara</td><td>Fogli Google/Excel + Canva</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="prompt">Prompt docente pronto: "Aiuta il gruppo a creare dati realistici per un Expo scolastico e a trasformarli in tabella, grafico e decisioni motivate."</div>
       </div>
 
@@ -702,6 +932,18 @@
           </div>
         </div>
 
+        <div class="ten-lab">
+          <div class="ten-lab-head">Distribuzione delle 10 ore — Lingue Comunitarie</div>
+          <table>
+            <thead><tr><th>Blocco</th><th>Cosa fa il gruppo</th><th>Strumenti</th></tr></thead>
+            <tbody>
+              <tr><td>3 · 1h</td><td><strong>Task 1</strong> · 3 paesi europei, mini scheda per ciascuno</td><td>ChatGPT/Gemini + Canva o carta</td></tr>
+              <tr><td>4 · 1,5h</td><td><strong>Task 2</strong> · 10 frasi utili tradotte per accogliere visitatori</td><td>ChatGPT/Gemini + telefono (pronuncia)</td></tr>
+              <tr><td>5 · 1,5h</td><td><strong>Task 3</strong> · Future Expo Passport con timbri e tappe</td><td>Canva o carta</td></tr>
+              <tr><td>6 · 1h</td><td><strong>Task 4</strong> · Dialogo visitatore/staff internazionale</td><td>ChatGPT/Gemini + prove a coppie</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="prompt">Prompt docente pronto: "Aiuta gli studenti a creare frasi di accoglienza e dialoghi brevi in lingua europea per visitatori internazionali."</div>
       </div>
 
@@ -727,6 +969,18 @@
           </div>
         </div>
 
+        <div class="ten-lab">
+          <div class="ten-lab-head">Distribuzione delle 10 ore — Comunicazione Efficace</div>
+          <table>
+            <thead><tr><th>Blocco</th><th>Cosa fa il gruppo</th><th>Strumenti</th></tr></thead>
+            <tbody>
+              <tr><td>3 · 1h</td><td><strong>Task 1</strong> · Script dell'Opening Ceremony</td><td>Google Docs + ChatGPT/Gemini</td></tr>
+              <tr><td>4 · 1,5h</td><td><strong>Task 2</strong> · 5 domande per conferenza stampa</td><td>ChatGPT/Gemini</td></tr>
+              <tr><td>5 · 1,5h</td><td><strong>Task 3</strong> · Scaletta: chi parla, quando, per quanto</td><td>Fogli Google + cronometro</td></tr>
+              <tr><td>6 · 1h</td><td><strong>Task 4</strong> · Allenamento tono, postura, chiarezza, tempi</td><td>Telefono per registrare le prove</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="prompt">Prompt docente pronto: "Agisci come coach di public speaking. Aiuta questo gruppo a rendere più chiara e coinvolgente una presentazione breve."</div>
       </div>
     </section>

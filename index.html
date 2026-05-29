@@ -525,6 +525,85 @@
     .level-grid.two-modules {
       grid-template-columns: 1fr 1fr;
     }
+    .tenh-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 22px 0 4px;
+    }
+    @media (max-width: 760px) {
+      .tenh-grid { grid-template-columns: 1fr; }
+    }
+    .tenh-block {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .tenh-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .tenh-num {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: #000;
+      background: var(--primary);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .tenh-hours {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.4px;
+    }
+    .tenh-title {
+      font-size: 1rem;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -0.2px;
+    }
+    .tenh-desc {
+      font-size: 0.85rem;
+      color: rgba(232, 232, 232, 0.85);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .tenh-out {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      color: var(--primary);
+      letter-spacing: 0.3px;
+    }
+    .tenh-block a {
+      color: var(--primary);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--primary);
+    }
+    .tenh-block a:hover {
+      border-bottom-style: solid;
+    }
+    .tenh-total {
+      margin: 14px 0 0;
+      padding: 12px 16px;
+      background: rgba(0, 242, 234, 0.06);
+      border: 1px solid rgba(0, 242, 234, 0.22);
+      border-radius: 12px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      color: rgba(232, 232, 232, 0.9);
+      text-align: center;
+      letter-spacing: 0.4px;
+    }
     .task-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1256,20 +1335,71 @@
       <div class="section-header">
         <div class="section-label">Roadmap</div>
         <h2>Programma delle 10 ore</h2>
-        <p class="section-intro">Il percorso funziona come una missione: prima si entra nella storia, poi si progetta, si produce, si revisiona e infine si presenta.</p>
+        <p class="section-intro">Sono <strong>10 ore di lavoro condiviso</strong> per ogni gruppo. Ogni blocco ha un obiettivo, uno strumento e un output preciso. I blocchi 3-6 contengono le <strong>4 task del laboratorio</strong>; gli altri 6 blocchi sono lo scaffolding che tiene tutto insieme: ricerca, revisione tra pari, integrazione nell'Event File e prove per la cerimonia.</p>
       </div>
-      <div class="matrix">
-        <table>
-          <thead><tr><th>Fase</th><th>Ore</th><th>Cosa succede</th><th>Output</th></tr></thead>
-          <tbody>
-            <tr><td>Launch</td><td>1</td><td>Presentazione della missione, divisione in team, scelta del ruolo.</td><td>Badge, nome team, prima idea.</td></tr>
-            <tr><td>Design</td><td>2-3</td><td>Brainstorming con AI, scelta dell'idea migliore, mini piano di lavoro.</td><td>Concept del laboratorio.</td></tr>
-            <tr><td>Build</td><td>4-7</td><td>Produzione dei contenuti: testi, immagini, dati, script, poster, mappe.</td><td>Materiale quasi completo.</td></tr>
-            <tr><td>Refine</td><td>8-9</td><td>Revisione, prove di presentazione, caricamento materiali in NotebookLM.</td><td>Versione finale.</td></tr>
-            <tr><td>Show</td><td>10</td><td>Opening Ceremony: ogni team presenta il proprio contributo.</td><td>Expo finale.</td></tr>
-          </tbody>
-        </table>
+      <div class="tenh-grid">
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 1</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Launch &amp; identità del gruppo</h4>
+          <p class="tenh-desc">Leggete la missione del vostro modulo, scegliete i ruoli (coordinatore, scrittore, designer, speaker, controllore AI) e aprite il taccuino di lab. Senza AI per ora.</p>
+          <div class="tenh-out">→ Output: ruoli assegnati + prime idee scritte sul taccuino</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 2</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Brainstorm guidato</h4>
+          <p class="tenh-desc">Generate molte idee per il vostro modulo, poi scegliete le 3-5 più promettenti. L'AI entra solo come stimolatore (ChatGPT/Gemini), non come scrittore.</p>
+          <div class="tenh-out">→ Output: 3-5 direzioni selezionate</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 3</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Task 1 · prima costruzione</h4>
+          <p class="tenh-desc">Iniziate la prima delle 4 task operative del vostro laboratorio. Seguite le istruzioni nel popup della task e lavorate alla bozza.</p>
+          <div class="tenh-out">→ Output: bozza del primo pezzo</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 4</span><span class="tenh-hours">1,5 ore</span></div>
+          <h4 class="tenh-title">Task 2 · costruzione + revisione AI</h4>
+          <p class="tenh-desc">Seconda task del lab. Producete una bozza con le vostre idee, poi chiedete all'AI di migliorarla e scegliete cosa tenere e cosa riscrivere.</p>
+          <div class="tenh-out">→ Output: bozza del secondo pezzo</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 5</span><span class="tenh-hours">1,5 ore</span></div>
+          <h4 class="tenh-title">Task 3 · costruzione + revisione AI</h4>
+          <p class="tenh-desc">Terza task del lab. Stesso schema: prima la vostra idea, poi l'AI come revisore, infine la versione finale del pezzo.</p>
+          <div class="tenh-out">→ Output: bozza del terzo pezzo</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 6</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Task 4 · finalizzazione del modulo</h4>
+          <p class="tenh-desc">Ultima task del lab. Unite i tre pezzi precedenti in un unico output del modulo: la <em>prima versione completa</em> di quello che andrà nell'Event File.</p>
+          <div class="tenh-out">→ Output: deliverable del modulo (draft 1)</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 7</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Peer review con un altro gruppo</h4>
+          <p class="tenh-desc">Scambiate il deliverable con un altro gruppo del vostro lab. Usate la griglia "<a href="#valutazione">una cosa bella + un consiglio</a>": ricevete e date un feedback chiaro.</p>
+          <div class="tenh-out">→ Output: feedback ricevuti + lista revisioni</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 8</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Iterazione &amp; polish</h4>
+          <p class="tenh-desc">Applicate i feedback. Pulite il testo, sistemate la grafica, controllate tono e coerenza con il resto dell'Expo. Ultimo passaggio AI per rifinire.</p>
+          <div class="tenh-out">→ Output: deliverable finale del modulo</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 9</span><span class="tenh-hours">0,5 ore</span></div>
+          <h4 class="tenh-title">Integrazione nell'Event File</h4>
+          <p class="tenh-desc">Salvate il file con il <strong>naming ufficiale</strong> (es. <em>GFE_05_AI_2A_FAQ</em>), caricatelo in NotebookLM e inseritelo nel <a href="#eventfile">template dell'Event File</a>.</p>
+          <div class="tenh-out">→ Output: modulo dentro il dossier ufficiale</div>
+        </div>
+        <div class="tenh-block">
+          <div class="tenh-head"><span class="tenh-num">Blocco 10</span><span class="tenh-hours">1 ora</span></div>
+          <h4 class="tenh-title">Prove per l'Opening Ceremony</h4>
+          <p class="tenh-desc">Decidete cosa direte all'<a href="#finale">Opening Ceremony</a>, chi parla, per quanto tempo. Provate ad alta voce almeno due volte e accorciate se serve.</p>
+          <div class="tenh-out">→ Output: presentazione pronta</div>
+        </div>
       </div>
+      <div class="tenh-total">Totale: 1 + 1 + 1 + 1,5 + 1,5 + 1 + 1 + 1 + 0,5 + 1 = <strong>10 ore esatte</strong></div>
     </section>
 
     <section class="section" id="eventfile">

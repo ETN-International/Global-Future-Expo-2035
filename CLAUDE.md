@@ -210,6 +210,31 @@ Stile: **Dark Cyber Editorial** con sidebar fissa, navigazione interna, scrollsp
 4. **Refine** — revisione, miglioramento con AI, organizzazione in NotebookLM
 5. **Opening Ceremony** — presentazione finale, simulazione inaugurazione Expo
 
+→ La cadenza operativa concreta è il [micro-programma 10 ore per gruppo](#distribuzione-delle-10-ore-per-gruppo) qui sotto.
+
+---
+
+## Distribuzione delle 10 ore per gruppo
+
+Ogni gruppo (un docente, una classe, un modulo) lavora **10 ore complessive** distribuite in **10 blocchi**. I blocchi 3-6 ospitano le 4 task operative del lab; gli altri 6 sono lo scaffolding (brainstorm, peer review, integrazione Event File, prove cerimonia). Ogni blocco produce un'**evidenza tracciabile** (taccuino, bozza, feedback, file nominato, registrazione) — è ciò che rende le 10 ore difendibili in audit MIM.
+
+| # | Blocco | Durata |
+|---|--------|--------|
+| 1 | Launch &amp; identità del gruppo | 1h |
+| 2 | Brainstorm guidato | 1h |
+| 3 | Task 1 del lab | 1h |
+| 4 | Task 2 + revisione AI | 1,5h |
+| 5 | Task 3 + revisione AI | 1,5h |
+| 6 | Task 4 → draft 1 del modulo | 1h |
+| 7 | Peer review con un altro gruppo | 1h |
+| 8 | Iterazione &amp; polish | 1h |
+| 9 | Integrazione nell'Event File | 0,5h |
+| 10 | Prove Opening Ceremony | 1h |
+
+**Totale: 10 ore esatte.** Dettaglio universale in `index.html` § `#programma` (studenti) e `admin-docenti.html` § `#programma10` (docenti). Per ognuno dei 7 lab, la specializzazione dei blocchi 3-6 con tool e task concrete vive nel box "Distribuzione delle 10 ore" all'interno di ogni lab in `admin-docenti.html` § `#laboratori`.
+
+> La "Lezione tipo (90 min)" in `admin-docenti.html` § `#timeline` non è il modulo intero: è la singola lezione dentro un blocco di esecuzione task (blocchi 3-6).
+
 ---
 
 ## Filosofia d'uso dell'AI
