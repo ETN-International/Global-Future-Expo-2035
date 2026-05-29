@@ -31,6 +31,7 @@
 13. [Micro-programma 10 ore per Lab](#13-micro-programma-10-ore-per-lab)
 14. [Sezione "Inizia da qui" per i ragazzi](#14-sezione-inizia-da-qui-per-i-ragazzi)
 15. [Alfabetizzazione AI · Blocco 1 da 2 ore + 10h → 12h](#15-alfabetizzazione-ai--blocco-1-da-2-ore--10h--12h)
+16. [Event File · integrazione Google Drive](#16-event-file--integrazione-google-drive)
 
 ---
 
@@ -392,6 +393,41 @@ Il ragazzo che arriva cold deve poter rispondere in 5 minuti a: **chi sono, cosa
 - Le **4 task per lab** in `index.html` § `#labs` restano invariate come contenuto; cambia solo il riferimento "blocchi 3-6" → "blocchi 4-7".
 - La **"Lezione tipo (90 min)"** in `admin-docenti.html` § `#timeline` resta com'è (scheletro di una sessione tipo dentro un blocco di esecuzione task), aggiornati solo i riferimenti al programma.
 - Il § 13 di questo CHANGELOG resta **storia**: la sua tabella riflette lo stato precedente all'aggiunta del Blocco 1. Questa voce 15 lo aggiorna.
+
+---
+
+## 16. Event File · integrazione Google Drive
+
+**Problema:** il template `event-file.html` documentava esplicitamente "le modifiche non vengono salvate" — i `contenteditable` erano uno spazio di lavoro effimero per il PDF. Mancava un punto di verità per dire *dove sono effettivamente i file dei moduli dei 18 gruppi*.
+
+**Decisione:** un unico Drive condiviso (`GFE 2035 · Event File`) con 10 sottocartelle (una per capitolo dell'indice ufficiale). L'`event-file.html` diventa un **indice + portale** che linka alla cartella principale, alle 10 sottocartelle, e raccoglie i link puntuali ai file dei moduli.
+
+**Vincoli di design rispettati:**
+
+- Niente OAuth, niente Google Drive Picker API, niente Google Cloud (privacy-by-design del progetto: no login studenti, no dati personali nel codice).
+- Niente backend.
+- Riuso del design del template (palette carta + verde-acqua + oro), zero rotture di stile.
+
+### Struttura aggiunta
+
+1. **Master Drive link** (`.drive-master`) sotto il riquadro "Come usare": un singolo pulsante "📁 Cartella Drive principale · GFE 2035" + nota esplicativa.
+2. **Drive panel per capitolo** (`.drive-panel`, 10 istanze): pulsante "📁 Cartella Drive · Capitolo NN" + `<textarea class="drive-links">` per incollare i link puntuali ai file dei moduli (uno per riga, formato libero ma con placeholder esempi tipo `AI M1 — https://drive.google.com/...`).
+3. **Persistenza locale:** un piccolo `<script>` IIFE alla fine del file salva ogni textarea in `localStorage` con chiave `gfe_evt_drive_cap_NN`. Al ricaricare la pagina i link tornano. Niente sync tra dispositivi (per design: la redazione lavora da un dispositivo principale).
+4. **Stampa A4 fedele:** ogni textarea ha un gemello nascosto `.drive-links-print` che il JS popola con un `<ul>` di link parsati (`<a href="https://...">label</a>`). In `@media print` la textarea è nascosta e il gemello visibile. Il PDF esportato ha quindi tutti i link cliccabili — utile per audit MIM.
+
+### Configurazione URL placeholder
+
+Tutti gli `href` dei pulsanti "Cartella Drive" puntano per ora a `https://drive.google.com/` (placeholder). Un commento HTML all'inizio del `<body>` spiega come sostituire i 11 URL effettivi una volta create le cartelle (cercare `data-chapter="MASTER"` per la principale, `data-chapter="01"`…`"10"` per le sottocartelle).
+
+### Workflow risultante per i gruppi
+
+1. Ogni gruppo produce il modulo, lo nomina `GFE_NN_LAB_CLASSE_MODULO`, lo carica nella sottocartella Drive del capitolo che lo riempie.
+2. La redazione (o un docente capofila) apre `event-file.html` su un dispositivo, incolla nel capitolo corrispondente il link Drive del file appena caricato. Auto-save su `localStorage`.
+3. Quando il dossier è completo, click su "🖨 Esporta / Stampa": il PDF contiene per ogni capitolo i link cliccabili ai file Drive originali + lo spazio editoriale `contenteditable` se la redazione ha incollato anche dei contenuti.
+
+### Files modificati
+
+- `event-file.html` (+157 / -10 circa): CSS per i nuovi componenti + `.drive-master` + 10 `.drive-panel` + `<script>` IIFE + warning aggiornato + commento HTML di configurazione URL.
 
 ---
 

@@ -119,6 +119,72 @@
       border-top: 1px solid var(--line);
       padding-top: 16px;
     }
+    .drive-master {
+      background: rgba(10, 125, 114, 0.06);
+      border: 1px solid rgba(10, 125, 114, 0.22);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 16px 18px;
+      margin-bottom: 30px;
+    }
+    .drive-master-note {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .drive-panel {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+    .drive-folder-btn {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .drive-folder-btn:hover { opacity: 0.88; }
+    .drive-folder-btn--master { font-size: 0.74rem; }
+    .drive-label {
+      display: block;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.66rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 10px 0 6px;
+    }
+    .drive-links {
+      width: 100%;
+      min-height: 56px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      background: #fffefb;
+      color: var(--ink);
+      resize: vertical;
+      line-height: 1.55;
+    }
+    .drive-links:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(10, 125, 114, 0.08);
+    }
+    .drive-links::placeholder { color: #b3b0a6; font-style: italic; }
+    .drive-links-print { display: none; margin-top: 8px; font-size: 0.85rem; }
+    .drive-links-print ul { padding-left: 18px; }
+    .drive-links-print li { margin-bottom: 3px; }
+    .drive-links-print a { color: var(--accent); }
     @media (max-width: 620px) { .doc { padding: 28px 22px 40px; } }
     @media print {
       body { background: #fff; padding: 0; }
@@ -126,6 +192,24 @@
       .doc { box-shadow: none; border: none; max-width: 100%; padding: 0; }
       .ph { border: 1px solid #ddd; }
       .chap { page-break-inside: avoid; }
+      .drive-links { display: none; }
+      .drive-links-print { display: block; }
+      .drive-folder-btn {
+        background: transparent;
+        color: var(--accent);
+        padding: 0;
+        text-decoration: underline;
+        font-size: 0.74rem;
+      }
+      .drive-panel,
+      .drive-master {
+        background: transparent;
+        border: none;
+        border-left: 2px solid var(--accent);
+        padding: 4px 0 4px 12px;
+        margin-bottom: 14px;
+      }
+      .drive-label { margin-top: 4px; }
       @page { size: A4; margin: 16mm; }
     }
   </style>
@@ -138,7 +222,20 @@
 
   <div class="doc">
     <div class="howto">
-      <strong>Come usare questo template.</strong> Clicca dentro i riquadri tratteggiati per scrivere o incollare i contenuti dei moduli. Ogni capitolo indica quali moduli lo riempiono. Le modifiche <strong>non vengono salvate</strong>: quando hai finito, usa "Esporta / Stampa" per ottenere il PDF, oppure copia tutto nel documento condiviso / NotebookLM.
+      <strong>Come usare questo template.</strong> Tutti i file dei moduli vivono nel <strong>Drive condiviso del progetto</strong> (link qui sotto e nelle sottocartelle dei singoli capitoli). Per ogni capitolo, incollate nel riquadro Drive i link ai file dei moduli che lo alimentano (uno per riga, es. "AI M1 — https://drive.google.com/…"). I <strong>link Drive</strong> vengono salvati automaticamente <em>su questo dispositivo</em> e ricompaiono al prossimo accesso. I riquadri tratteggiati col contenuto del dossier sono uno spazio di lavoro temporaneo: <strong>non vengono salvati</strong> — usate "Esporta / Stampa" per il PDF finale o copiate in NotebookLM.
+    </div>
+
+    <!--
+      ⚙️  CONFIGURAZIONE LINK DRIVE
+      Sostituire gli href="https://drive.google.com/" con gli URL effettivi:
+      1. Cartella Drive principale: cerca data-chapter="MASTER" (la sezione .drive-master qui sotto).
+      2. Sottocartelle per capitolo: 10 link, uno per capitolo. Cercare data-chapter="01"…"10".
+      Le textarea per i link dei moduli si compilano direttamente dall'interfaccia (salvataggio automatico).
+    -->
+
+    <div class="drive-master">
+      <a class="drive-folder-btn drive-folder-btn--master" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="MASTER">📁 Cartella Drive principale · GFE 2035</a>
+      <p class="drive-master-note">Tutto il materiale del dossier vive in questa cartella Drive. Ogni capitolo qui sotto ha una sua sottocartella: caricate lì i file del vostro modulo (PDF, immagini, fogli, slide), poi incollate il link nel riquadro del capitolo corrispondente.</p>
     </div>
 
     <div class="cover">
@@ -150,60 +247,120 @@
     <div class="chap">
       <div class="chap-head"><span class="chap-num">01</span><h2>Copertina &amp; identità</h2></div>
       <p class="hint">Cosa va qui: slogan, logo/colori, manifesto · Italiano M1 · Inglese M2 · Digitale M2</p>
+      <div class="drive-panel">
+        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="01">📁 Cartella Drive · Capitolo 01</a>
+        <label class="drive-label" for="drive-cap-01">Link Drive ai moduli (uno per riga · es. "Italiano M1 — https://drive.google.com/…")</label>
+        <textarea class="drive-links" id="drive-cap-01" data-chapter="01" placeholder="Italiano M1 — https://drive.google.com/file/d/...&#10;Inglese M2 — https://drive.google.com/file/d/...&#10;Digitale M2 — https://drive.google.com/file/d/..."></textarea>
+        <div class="drive-links-print" id="drive-cap-01-print" aria-hidden="true"></div>
+      </div>
       <div class="ph" contenteditable="true" data-ph="Slogan ufficiale, logo/colori dell'Expo e manifesto…"></div>
     </div>
 
     <div class="chap">
       <div class="chap-head"><span class="chap-num">02</span><h2>La visione: la città del 2035</h2></div>
       <p class="hint">Cosa va qui: storytelling + articolo del giornale · Italiano M2 · M1</p>
+      <div class="drive-panel">
+        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="02">📁 Cartella Drive · Capitolo 02</a>
+        <label class="drive-label" for="drive-cap-02">Link Drive ai moduli (uno per riga)</label>
+        <textarea class="drive-links" id="drive-cap-02" data-chapter="02" placeholder="Italiano M2 — https://drive.google.com/file/d/...&#10;Italiano M1 — https://drive.google.com/file/d/..."></textarea>
+        <div class="drive-links-print" id="drive-cap-02-print" aria-hidden="true"></div>
+      </div>
       <div class="ph" contenteditable="true" data-ph="Il racconto della città del futuro e l'articolo del giornale dell'Expo…"></div>
     </div>
 
     <div class="chap">
       <div class="chap-head"><span class="chap-num">03</span><h2>Mappa &amp; padiglioni</h2></div>
       <p class="hint">Cosa va qui: mappa con aree e legenda · Digitale M1</p>
+      <div class="drive-panel">
+        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="03">📁 Cartella Drive · Capitolo 03</a>
+        <label class="drive-label" for="drive-cap-03">Link Drive ai moduli (uno per riga)</label>
+        <textarea class="drive-links" id="drive-cap-03" data-chapter="03" placeholder="Digitale M1 — https://drive.google.com/file/d/..."></textarea>
+        <div class="drive-links-print" id="drive-cap-03-print" aria-hidden="true"></div>
+      </div>
       <div class="ph" contenteditable="true" data-ph="Inserisci la mappa dell'Expo (immagine) e la legenda delle aree…"></div>
     </div>
 
     <div class="chap">
       <div class="chap-head"><span class="chap-num">04</span><h2>Esperienza del visitatore</h2></div>
       <p class="hint">Cosa va qui: home page, QR card, badge, percorso utente · Digitale M2 · M3</p>
+      <div class="drive-panel">
+        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="04">📁 Cartella Drive · Capitolo 04</a>
+        <label class="drive-label" for="drive-cap-04">Link Drive ai moduli (uno per riga)</label>
+        <textarea class="drive-links" id="drive-cap-04" data-chapter="04" placeholder="Digitale M2 — https://drive.google.com/file/d/...&#10;Digitale M3 — https://drive.google.com/file/d/..."></textarea>
+        <div class="drive-links-print" id="drive-cap-04-print" aria-hidden="true"></div>
+      </div>
       <div class="ph" contenteditable="true" data-ph="Home page, QR card, badge e user journey dall'arrivo all'uscita…"></div>
     </div>
 
     <div class="chap">
       <div class="chap-head"><span class="chap-num">05</span><h2>Assistente AI dell'Expo</h2></div>
       <p class="hint">Cosa va qui: identità, FAQ, promptbook &amp; regole · AI M1 · M2 · M3</p>
+      <div class="drive-panel">
+        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="05">📁 Cartella Drive · Capitolo 05</a>
+        <label class="drive-label" for="drive-cap-05">Link Drive ai moduli (uno per riga)</label>
+        <textarea class="drive-links" id="drive-cap-05" data-chapter="05" placeholder="AI M1 — https://drive.google.com/file/d/...&#10;AI M2 — https://drive.google.com/file/d/...&#10;AI M3 — https://drive.google.com/file/d/..."></textarea>
+        <div class="drive-links-print" id="drive-cap-05-print" aria-hidden="true"></div>
+      </div>
       <div class="ph" contenteditable="true" data-ph="Scheda dell'assistente, 10 FAQ con risposte, promptbook e regole d'uso…"></div>
     </div>
 
     <div class="chap">
       <div class="chap-head"><span class="chap-num">06</span><h2>Comunicazione internazionale</h2></div>
       <p class="hint">Cosa va qui: welcome kit, speech, slogan, press kit · Inglese M1 · M2 · M3</p>
+      <div class="drive-panel">
+        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="06">📁 Cartella Drive · Capitolo 06</a>
+        <label class="drive-label" for="drive-cap-06">Link Drive ai moduli (uno per riga)</label>
+        <textarea class="drive-links" id="drive-cap-06" data-chapter="06" placeholder="Inglese M1 — https://drive.google.com/file/d/...&#10;Inglese M2 — https://drive.google.com/file/d/...&#10;Inglese M3 — https://drive.google.com/file/d/..."></textarea>
+        <div class="drive-links-print" id="drive-cap-06-print" aria-hidden="true"></div>
+      </div>
       <div class="ph" contenteditable="true" data-ph="Welcome message, speech di benvenuto, slogan e press kit in inglese…"></div>
     </div>
 
     <div class="chap">
       <div class="chap-head"><span class="chap-num">07</span><h2>Accoglienza multiculturale</h2></div>
       <p class="hint">Cosa va qui: passaporto, schede paese, dialoghi · Lingue M1 · M2</p>
+      <div class="drive-panel">
+        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="07">📁 Cartella Drive · Capitolo 07</a>
+        <label class="drive-label" for="drive-cap-07">Link Drive ai moduli (uno per riga)</label>
+        <textarea class="drive-links" id="drive-cap-07" data-chapter="07" placeholder="Lingue M1 — https://drive.google.com/file/d/...&#10;Lingue M2 — https://drive.google.com/file/d/..."></textarea>
+        <div class="drive-links-print" id="drive-cap-07-print" aria-hidden="true"></div>
+      </div>
       <div class="ph" contenteditable="true" data-ph="Future Expo Passport, schede dei paesi europei e dialoghi staff/visitatori…"></div>
     </div>
 
     <div class="chap">
       <div class="chap-head"><span class="chap-num">08</span><h2>I numeri dell'Expo</h2></div>
       <p class="hint">Cosa va qui: stima visitatori, budget &amp; spazi, dashboard · Matematica M1 · M2 · M3</p>
+      <div class="drive-panel">
+        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="08">📁 Cartella Drive · Capitolo 08</a>
+        <label class="drive-label" for="drive-cap-08">Link Drive ai moduli (uno per riga)</label>
+        <textarea class="drive-links" id="drive-cap-08" data-chapter="08" placeholder="Matematica M1 — https://drive.google.com/file/d/...&#10;Matematica M2 — https://drive.google.com/file/d/...&#10;Matematica M3 — https://drive.google.com/file/d/..."></textarea>
+        <div class="drive-links-print" id="drive-cap-08-print" aria-hidden="true"></div>
+      </div>
       <div class="ph" contenteditable="true" data-ph="Tabella visitatori, budget, percentuali degli spazi e dashboard con indicatori…"></div>
     </div>
 
     <div class="chap">
       <div class="chap-head"><span class="chap-num">09</span><h2>Opening Ceremony</h2></div>
       <p class="hint">Cosa va qui: script, conferenza stampa, scaletta &amp; regia · Comunicazione M1 · M2</p>
+      <div class="drive-panel">
+        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="09">📁 Cartella Drive · Capitolo 09</a>
+        <label class="drive-label" for="drive-cap-09">Link Drive ai moduli (uno per riga)</label>
+        <textarea class="drive-links" id="drive-cap-09" data-chapter="09" placeholder="Comunicazione M1 — https://drive.google.com/file/d/...&#10;Comunicazione M2 — https://drive.google.com/file/d/..."></textarea>
+        <div class="drive-links-print" id="drive-cap-09-print" aria-hidden="true"></div>
+      </div>
       <div class="ph" contenteditable="true" data-ph="Script della cerimonia, domande per la conferenza stampa, scaletta e regia…"></div>
     </div>
 
     <div class="chap">
       <div class="chap-head"><span class="chap-num">10</span><h2>Crediti &amp; team</h2></div>
       <p class="hint">Cosa va qui: chi ha fatto cosa · Tutti i gruppi</p>
+      <div class="drive-panel">
+        <a class="drive-folder-btn" href="https://drive.google.com/" target="_blank" rel="noopener" data-chapter="10">📁 Cartella Drive · Capitolo 10</a>
+        <label class="drive-label" for="drive-cap-10">Link Drive ai contributi (uno per riga · gruppo + modulo)</label>
+        <textarea class="drive-links" id="drive-cap-10" data-chapter="10" placeholder="AI M1 — https://drive.google.com/file/d/...&#10;Digitale M1 — https://drive.google.com/file/d/...&#10;… (tutti i 18 moduli)"></textarea>
+        <div class="drive-links-print" id="drive-cap-10-print" aria-hidden="true"></div>
+      </div>
       <div class="ph" contenteditable="true" data-ph="Elenco dei gruppi e dei moduli realizzati (senza dati personali non necessari)…"></div>
     </div>
 
@@ -211,5 +368,68 @@
       Global Future Expo 2035 · Event File · ETN School — Ente accreditato dal Ministero dell'Istruzione e del Merito
     </div>
   </div>
+
+  <script>
+    (function () {
+      var PREFIX = 'gfe_evt_drive_cap_';
+
+      function safeGet(key) {
+        try { return localStorage.getItem(key) || ''; } catch (e) { return ''; }
+      }
+      function safeSet(key, value) {
+        try { localStorage.setItem(key, value); } catch (e) { /* quota or private mode */ }
+      }
+
+      function renderPrint(chapter, value) {
+        var target = document.getElementById('drive-cap-' + chapter + '-print');
+        if (!target) return;
+        while (target.firstChild) target.removeChild(target.firstChild);
+        var lines = value.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+        if (lines.length === 0) {
+          var em = document.createElement('em');
+          em.textContent = 'Nessun link inserito.';
+          target.appendChild(em);
+          return;
+        }
+        var ul = document.createElement('ul');
+        lines.forEach(function (line) {
+          var li = document.createElement('li');
+          var urlMatch = line.match(/(https?:\/\/\S+)/);
+          if (urlMatch) {
+            var url = urlMatch[0];
+            var label = line.replace(url, '').replace(/[—–\-:·]\s*$/, '').trim();
+            if (!label) label = url;
+            var a = document.createElement('a');
+            a.href = url;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.textContent = label;
+            li.appendChild(a);
+          } else {
+            li.textContent = line;
+          }
+          ul.appendChild(li);
+        });
+        target.appendChild(ul);
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var textareas = document.querySelectorAll('.drive-links');
+        for (var i = 0; i < textareas.length; i++) {
+          (function (ta) {
+            var chapter = ta.getAttribute('data-chapter');
+            var key = PREFIX + chapter;
+            var saved = safeGet(key);
+            if (saved) ta.value = saved;
+            renderPrint(chapter, ta.value);
+            ta.addEventListener('input', function () {
+              safeSet(key, ta.value);
+              renderPrint(chapter, ta.value);
+            });
+          })(textareas[i]);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
