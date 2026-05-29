@@ -210,13 +210,13 @@ Stile: **Dark Cyber Editorial** con sidebar fissa, navigazione interna, scrollsp
 4. **Refine** — revisione, miglioramento con AI, organizzazione in NotebookLM
 5. **Opening Ceremony** — presentazione finale, simulazione inaugurazione Expo
 
-→ La cadenza operativa concreta è il [micro-programma 10 ore per gruppo](#distribuzione-delle-10-ore-per-gruppo) qui sotto.
+→ La cadenza operativa concreta è il [micro-programma 10 ore per Lab](#distribuzione-delle-10-ore-per-lab) qui sotto.
 
 ---
 
-## Distribuzione delle 10 ore per gruppo
+## Distribuzione delle 10 ore per Lab
 
-Ogni gruppo (un docente, una classe, un modulo) lavora **10 ore complessive** distribuite in **10 blocchi**. I blocchi 3-6 ospitano le 4 task operative del lab; gli altri 6 sono lo scaffolding (brainstorm, peer review, integrazione Event File, prove cerimonia). Ogni blocco produce un'**evidenza tracciabile** (taccuino, bozza, feedback, file nominato, registrazione) — è ciò che rende le 10 ore difendibili in audit MIM.
+Ogni Lab dura **10 ore complessive**: i suoi 2-3 moduli vanno **in parallelo** nelle stesse 10 ore. Un docente conduce un gruppo nel suo modulo dentro questa finestra condivisa (quindi "10h per Lab" = "10h per gruppo" = "10h per docente"). Le 10 ore si distribuiscono in **10 blocchi**: i blocchi 3-6 ospitano le 4 task operative del lab; gli altri 6 sono lo scaffolding (brainstorm, peer review, integrazione Event File, prove cerimonia). Ogni blocco produce un'**evidenza tracciabile** (taccuino, bozza, feedback, file nominato, registrazione) — è ciò che rende le 10 ore difendibili in audit MIM.
 
 | # | Blocco | Durata |
 |---|--------|--------|

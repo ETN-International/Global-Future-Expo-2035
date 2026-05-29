@@ -28,7 +28,7 @@
 10. [Sistema di valutazione accreditation-grade](#10-sistema-di-valutazione-accreditation-grade)
 11. [Template dell'Event File](#11-template-dellevent-file)
 12. [Fix ritorno dal certificato all'admin](#12-fix-ritorno-dal-certificato-alladmin)
-13. [Micro-programma 10 ore per gruppo](#13-micro-programma-10-ore-per-gruppo)
+13. [Micro-programma 10 ore per Lab](#13-micro-programma-10-ore-per-lab)
 
 ---
 
@@ -281,9 +281,9 @@ Validazione: 18 moduli, 54 blocchi teleguidati (18×3), 0 residui del vecchio fo
 
 ---
 
-## 13. Micro-programma 10 ore per gruppo
+## 13. Micro-programma 10 ore per Lab
 
-**Problema emerso dall'audit:** il progetto dichiara 10 ore di attività per ogni gruppo (un docente, una classe, un modulo), ma lo scaffolding esistente copriva solo ~1,5 ore reali.
+**Problema emerso dall'audit:** il progetto dichiara 10 ore di attività per ogni Lab. Nei lab i 2-3 moduli (uno per classe) lavorano **in parallelo** nelle stesse 10 ore: ogni docente conduce un gruppo dentro questo arco condiviso. Quindi "10h per Lab" = "10h per gruppo" = "10h per docente". Lo scaffolding esistente, però, copriva solo ~1,5 ore reali.
 
 - `index.html` § `#programma` era una macro-timeline generica in 5 fasi (Launch / Design / Build / Refine / Show) senza distribuzione oraria sui task del singolo gruppo.
 - `admin-docenti.html` § `#timeline` prescriveva una sessione singola da 90 minuti per modulo — quindi 1,5 ore per gruppo, non 10.
