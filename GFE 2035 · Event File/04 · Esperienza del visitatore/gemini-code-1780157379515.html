@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCN-OS 2035 // Home Page Operativa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* RESET E CONFIGURAZIONE HUD FUTURISTICA */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #020617;
+            font-family: 'Rajdhani', sans-serif;
+            color: #f8fafc;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* SCHERMO MAIN DASHBOARD (16:9) */
+        .dashboard-container {
+            width: 1280px;
+            height: 720px;
+            background: #030712;
+            border: 2px solid #1e293b;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0, 174, 239, 0.15);
+        }
+
+        /* EFFETTO GRIGLIA DIGITALE */
+        .dashboard-container::before {
+            content: '';
+            position: absolute;
+            top:0; left:0; width:100%; height:100%;
+            background-image: linear-gradient(rgba(0, 174, 239, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 174, 239, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        /* HEADER */
+        .hud-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed rgba(0, 174, 239, 0.3);
+            padding-bottom: 20px;
+            z-index: 10;
+        }
+
+        .title-group h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(0, 174, 239, 0.5);
+        }
+
+        /* PANNELLO DI DETTAGLIO CENTRALE DINAMICO */
+        .display-monitor {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            height: 145px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .monitor-text {
+            font-size: 20px;
+            letter-spacing: 0.5px;
+            color: #cbd5e1;
+            max-width: 1050px;
+            transition: opacity 0.15s ease, color 0.3s ease;
+            line-height: 1.4;
+        }
+
+        /* STRUTTURA DEI PULSANTI CLICCABILI */
+        .button-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            height: 300px;
+            z-index: 10;
+        }
+
+        .hud-btn {
+            flex: 1;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px 15px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .hud-btn:hover {
+            transform: translateY(-8px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hud-btn.active {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 0 30px currentColor;
+            transform: scale(1.02);
+            border-color: currentColor;
+        }
+
+        .hud-btn i {
+            font-size: 44px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        .hud-btn:hover i { transform: scale(1.15); }
+
+        .hud-btn h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 17px;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .hud-btn p {
+            font-size: 13px;
+            color: #94a3b8;
+            line-height: 1.3;
+        }
+
+        /* COLORI */
+        .btn-ambiente { color: #ffd700; border-bottom: 4px solid #ffd700; }
+        .btn-scuola { color: #00aeef; border-bottom: 4px solid #00aeef; }
+        .btn-cultura { color: #ee2436; border-bottom: 4px solid #ee2436; }
+        .btn-ai { color: #00aeef; border-bottom: 4px solid #00aeef; }
+        .btn-sport { color: #ffd700; border-bottom: 4px solid #ffd700; }
+
+        /* FOOTER */
+        .hud-footer {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            font-family: monospace;
+            font-size: 11px;
+            color: #475569;
+        }
+        .pulse-node { color: #00aeef; animation: blink 1.5s infinite; font-weight: bold; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+    
+    <div class="hud-header">
+        <div class="title-group">
+            <h1>BARCELLONA 2035</h1>
+        </div>
+        <div style="font-family: monospace; text-align: right; color: #64748b;">
+            SYS_CORE: ONLINE <span class="pulse-node">●</span><br>
+            SYNC_RATE: 100%
+        </div>
+    </div>
+
+    <div class="display-monitor" id="main-monitor">
+        <p class="monitor-text" id="monitor-target">
+            [SISTEMA OPERATIVO ATTIVO]: Seleziona un modulo per caricare i dati in tempo reale.
+        </p>
+    </div>
+
+    <div class="button-grid">
+        
+        <div class="hud-btn btn-ambiente" onclick="activateModule('ambiente', this)">
+            <i class="fa-solid fa-leaf"></i>
+            <h3>Ambiente</h3>
+            <p>Superillas 3.0 & Abbattimento Inquinamento</p>
+        </div>
+
+        <div class="hud-btn btn-scuola" onclick="activateModule('scuola', this)">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h3>Scuola</h3>
+            <p>Orchestrazione Ibrida AI-Docente</p>
+        </div>
+
+        <div class="hud-btn btn-cultura" onclick="activateModule('cultura', this)">
+            <i class="fa-solid fa-landmark"></i>
+            <h3>Cultura</h3>
+            <p>Tradizioni Aumentate & Gaudí-OS</p>
+        </div>
+
+        <div class="hud-btn btn-ai" onclick="activateModule('ai', this)">
+            <i class="fa-solid fa-robot"></i>
+            <h3>Intelligenza Artificiale</h3>
+            <p>Infrastruttura di Ampliamento Umano</p>
+        </div>
+
+        <div class="hud-btn btn-sport" onclick="activateModule('sport', this)">
+            <i class="fa-solid fa-baseball-ball"></i>
+            <h3>Sport</h3>
+            <p>Benessere Predittivo & Gamification</p>
+        </div>
+
+    </div>
+
+    <div class="hud-footer">
+        <div>LAT: 41.3851° N // LONG: 2.1734° E</div>
+        <div>NET-ZERO TARGET 2035 // ECO-DATA SYNCED</div>
+        <div>SECURITY_FEED: SECURE</div>
+    </div>
+</div>
+
+<script>
+    const database2035 = {
+        ambiente: "🌿 [AMBIENTE - EMISSIONI ZERO]: Barcellona ha sconfitto lo smog integrando la De-carbonizzazione Algoritmica. L'AI analizza istante per istante l'efficienza dei tetti verdi e l'assorbimento delle macro-Superillas dell'Eixample, prevedendo le isole di calore prima che si formino. La tecnologia azzera la complessità logistica calcolando i flussi ideali, ma l'impatto reale dipende dall'uomo: spetta ai cittadini, ai comitati di quartiere e agli eco-architetti piantare fisicamente le nuove aree botaniche filtranti, preservando la biodiversità locale e guidando la rigenerazione urbana.",
+        scuola: "🎓 [SCUOLA - COLLABORAZIONE IBRIDA]: L'Intelligenza Artificiale opera come un assistente didattico invisibile e personalizzato: corregge i test di logica, mappa in tempo reale i ritmi di apprendimento e suggerisce materiali su misura per colmare le lacune di ogni studente. Questa automazione non sostituisce il docente, ma lo libera dal peso della burocrazia e della valutazione standardizzata. Al centro dell'aula resta l'uomo: l'insegnante riprende il suo ruolo fondamentale di guida emotiva e intellettuale, concentrandosi sul dibattito critico, sulla comprensione psicologica e sulla crescita valoriale degli alunni.",
+        cultura: "🏛️ [CULTURA - TRADIZIONE AUMENTATA]: Nel 2035, il folklore catalano abbraccia il futuro senza perdere l'anima. Durante la Fiesta de La Mercè, i tradizionali 'Castellers' scalano il cielo erigendo le loro torri umane protetti da bio-tessuti intelligenti e micro-esoscheletri che prevengono le cadute. Nel Barrio Gótico, intelligenze artificiali generative tracciano proiezioni olografiche e flussi sonori 4D che reagiscono ai canti popolari della folla. La tecnologia non sostituisce l'uomo, ma diventa uno scudo invisibile che preserva e amplifica il calore storico delle comunità.",
+        ai: "🤖 [INTELLIGENZA ARTIFICIALE 2035]: L'A.I. agisce come un 'Cervello Urbano' pubblico che azzera la burocrazia ed esegue analisi predittive su flussi logistici, trasporti e consumi energetici. Anziché rimpiazzare il personale, l'algoritmo funge da copilota analitico ad alta velocità: solleva i funzionari umani dai compiti ripetitivi e fornisce dati limpidi per la gestione delle emergencies, lasciando la direzione etica, l'intuizione sociale e le decisioni politiche finali ai cittadini e ai comitati di quartiere.",
+        sport: "🎾 [SPORT]: Vestiti intelligenti e I.A. adattano l'allenamento al tuo corpo per evitare infortuni. Visione artificiale e realtà aumentata gestiscono punteggi e sfide nei campetti di quartiere. I tuoi dati di movimento si trasformano automaticamente in sconti e trasporti pubblici."
+    };
+
+    function activateModule(moduleKey, element) {
+        document.querySelectorAll('.button-grid .hud-btn').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+        
+        const monitorTarget = document.getElementById('monitor-target');
+        monitorTarget.style.opacity = 0;
+        
+        setTimeout(() => {
+            monitorTarget.innerHTML = database2035[moduleKey];
+            monitorTarget.style.color = window.getComputedStyle(element).color;
+            monitorTarget.style.opacity = 1;
+        }, 150);
+    }
+</script>
+
+</body>
+</html>
