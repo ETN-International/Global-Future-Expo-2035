@@ -25,6 +25,19 @@ Il **Global Future Expo 2035** è uno **strumento formativo proprietario di ETN 
 
 ---
 
+## Repo correlato · output del processo
+
+Questo repo contiene il **processo formativo**: framework MIM, sistema modulare anti-doppione, valutazione, certificato, template dell'Event File, guida docenti teleguidata. È il *"come si fa"*.
+
+L'**output reale del processo** — i deliverable prodotti dai 18 gruppi della prima edizione (Assistente AI, dashboard dati, passaporto Francia, stand Spagna, manifesto, storytelling 2035, ecc.) — è pubblicato in un sito dedicato:
+
+🚀 **Sito live:** [gfefinal.netlify.app](https://gfefinal.netlify.app) — output reale visitabile
+📦 **Sorgente:** [Global-Future-Expo-2035---Final](https://github.com/ETN-International/Global-Future-Expo-2035---Final) (repo GitHub)
+
+I due progetti insieme dimostrano la **catena completa accreditation-grade**: processo formativo (questo) + risultati misurabili degli studenti (Final). È la prova esibibile in sede di accreditamento MIM.
+
+---
+
 # Concept del progetto
 
 ## Descrizione generale
