@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Glossario dell'Intelligenza Artificiale, Prompt Engineering e Wearable Tech</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fafbfd;
+            color: #2d3748;
+            margin: 0;
+            padding: 25px;
+        }
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+        }
+        h1 {
+            color: #0f172a;
+            border-bottom: 4px solid #3b82f6;
+            padding-bottom: 15px;
+            margin-top: 0;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        p.subtitle {
+            color: #64748b;
+            font-size: 16px;
+            margin-bottom: 35px;
+        }
+        .glossary-list {
+            margin-top: 20px;
+        }
+        .glossary-item {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .glossary-item:last-child {
+            border-bottom: none;
+        }
+        .header-group {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .term {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e40af;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #eff6ff;
+            color: #2563eb;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            vertical-align: middle;
+            border: 1px solid #dbeafe;
+        }
+        .definition {
+            font-size: 15.5px;
+            color: #334155;
+            margin: 0;
+            text-align: justify;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Glossario Avanzato di Intelligenza Artificiale & Tech</h1>
+    <p class="subtitle">Guida terminologica completa che unisce i concetti chiave dei modelli linguistici (LLM), del Prompt Engineering e delle tecnologie assistive di nuova generazione.</p>
+    
+    <div class="glossary-list">
+        
+        <!-- PAROLE RICHIESTE NUOVE & PRECEDENTI -->
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">Token</h2><span class="tag">LLM & NLP</span>
+            </div>
+            <p class="definition">La frazione di testo elementare in cui viene scomposta una stringa di caratteri per essere elaborata da un modello linguistico. Un token può corrispondere a una singola parola, a una parte di essa (morfema o sillaba) o a un singolo carattere di punteggiatura. Rappresenta l'unità di misura fondamentale per il calcolo della lunghezza dei testi e dei relativi costi di computazione.</p>
+        </div>
+
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">Prompt</h2><span class="tag">Prompt Engineering</span>
+            </div>
+            <p class="definition">L'input testuale, vocale o multimediale fornito dall'utente a un sistema di intelligenza artificiale. Funge da istruzione o contesto essenziale per guidare il modello nella generazione di una risposta coerente, accurata e allineata alle aspettative dell'utente.</p>
+        </div>
+
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">Promptbook</h2><span class="tag">Prompt Engineering</span>
+            </div>
+            <p class="definition">Una raccolta strutturata, un ricettario o un manuale di prompt predefiniti, testati e ottimizzati per compiti specifici. Viene utilizzato dai professionisti per standardizzare le interazioni con le AI, garantendo risultati ripetibili e di alta qualità in contesti aziendali o di sviluppo.</p>
+        </div>
+
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">Assistente Vocale</h2><span class="tag">Interfacce Utente</span>
+            </div>
+            <p class="definition">Un software basato sull'intelligenza artificiale e sul riconoscimento vocale avanzato. È in grado di interpretare il linguaggio naturale parlato dall'utente per eseguire comandi complessi, fornire informazioni in tempo reale, gestire l'ecosistema domotico o dialogare in modo fluido con l'utente.</p>
+        </div>
+
+        <!-- AGGIUNTE SPECIFICHE DELLO STESSO CAMPO COMPLEMENTARI -->
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">Prompt Engineering</h2><span class="tag">Metodologia</span>
+            </div>
+            <p class="definition">La disciplina e l'insieme di tecniche dedicate alla progettazione, alla formulazione e al perfezionamento degli input (prompt) strutturati da inviare ai modelli di intelligenza artificiale generativa, al fine di massimizzare la precisione e l'utilità delle risposte ottenute.</p>
+        </div>
+
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">Finishing / Fine-Tuning</h2><span class="tag">Addestramento</span>
+            </div>
+            <p class="definition">Il processo di specializzazione di un modello linguistico pre-addestrato (già generico) attraverso un ulteriore addestramento su un set di dati mirato e ristretto. Questo permette all'AI di adattarsi perfettamente a un dominio specifico (es. medico, legale, o aziendale).</p>
+        </div>
+
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">Context Window (Finestra di Contesto)</h2><span class="tag">LLM Limiti</span>
+            </div>
+            <p class="definition">La quantità massima di token che un modello di intelligenza artificiale riesce a elaborare e "ricordare" contemporaneamente in una singola sessione o interazione. Include sia il prompt dell'utente sia la risposta generata dall'AI.</p>
+        </div>
+
+        <!-- REINSERITE LE PAROLE DI PRIMA PER COMPLETEZZA -->
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">LLM (Large Language Model)</h2><span class="tag">Intelligenza Artificiale</span>
+            </div>
+            <p class="definition">Modello linguistico di grandi dimensioni addestrato su enormi volumi di dati testuali utilizzando reti neurali profonde. È l'architettura tecnologica alla base delle moderne AI generative capaci di comprendere, tradurre e produrre testi complessi.</p>
+        </div>
+
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">NLP (Natural Language Processing)</h2><span class="tag">Tecnologia</span>
+            </div>
+            <p class="definition">L'elaborazione del linguaggio naturale. Rappresenta il campo di studio dell'informatica e dell'AI focalizzato sulla capacità dei computer di analizzare, comprendere e manipolare il linguaggio umano parlato e scritto.</p>
+        </div>
+
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">Allucinazione (Hallucination)</h2><span class="tag">AI Behavior</span>
+            </div>
+            <p class="definition">Un errore tipico dei modelli generativi in cui il sistema produce un'affermazione errata o totalmente inventata, esponendola però con estrema sicurezza sintattica e logica formale, tanto da sembrare vera.</p>
+        </div>
+
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">Wearable (Tecnologia Indossabile)</h2><span class="tag">Hardware</span>
+            </div>
+            <p class="definition">Dispositivi elettronici miniaturizzati indossabili sul corpo come accessori o indumenti (es. anelli smart, occhiali AR, smartwatch). Raccolgono costantemente dati biologici, biometrici o ambientali interfacciandosi con software intelligenti.</p>
+        </div>
+
+        <div class="glossary-item">
+            <div class="header-group">
+                <h2 class="term">Realtà Aumentata (AR)</h2><span class="tag">Interfacce</span>
+            </div>
+            <p class="definition">Tecnologia grafica che arricchisce l'ambiente reale circostante inserendovi elementi digitali e interattivi in tempo reale (come ologrammi, scritte, o frecce direzionali), visibili esclusivamente tramite appositi schermi, smartphone o occhiali smart.</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
