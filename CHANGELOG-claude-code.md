@@ -10,7 +10,7 @@
 - `admin-docenti.html` · guida docenti
 - `attestato.html` · certificato finale (nuovo)
 - `event-file.html` · template dossier (nuovo)
-- `Progetto.md` · descrizione
+- `CLAUDE.md` · concept + regole operative (ex `Progetto.md`, rinominato 28/05/2026)
 
 ---
 
